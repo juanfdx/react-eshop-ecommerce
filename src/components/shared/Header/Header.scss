@@ -1,0 +1,55 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--bg-principal-color);
+  z-index: 8;
+  border-bottom: 1px solid var(--line-separator-color);
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    height: 60px;
+    margin: auto;
+    padding: 0 25px;
+
+    @include flex(row, nowrap, space-between, center);
+
+    @include min-768px {
+      height: 80px;
+      padding: 0 40px;
+    }
+  }
+
+  /* menu button */
+  &__menu-btn {
+
+    @include min-768px {
+      display: none;
+    }
+  }
+
+  &__menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* logo */
+  &__logo {
+    display: none;
+
+    @include min-768px {
+      display: block;
+    }
+  }
+
+  &__h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--font-green-color);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
