@@ -2,7 +2,7 @@
 
 /* Here we define the Custom properties */
 :root {
-  --color-primary: #181818;
+  --color-primary: #00B074;
   --color-secondary: #FFFFFF;
 
   /* Typography */
@@ -15,14 +15,10 @@
   --font-price-color: rgba(24, 24, 24, 0.8);
   --font-price-old-color: rgba(24, 24, 24, 0.5);
   --font-light-color: #9a9a9a;
-  --font-green-color: #00B074;
 
-  --bg-principal-color: #FFFFFF;
-  --bg-primary-button-color: #00B074;
+  --bg-hover-primary: #198754;
   --bg-secondary-button-color: #2B9BFF;
-  --bg-hover-primary-button-color: #198754;
-  --bg-hover-secondary-button-color: #0d6efd;
-  --bg-selection-color: #0d6efd;
+  --bg-hover-secondary: #0d6efd;
   --bg-table-td: #F6F6F6;
   --bg-valid-field: #6AD0A0;
   --bg-invalid-field: #E07878;
@@ -213,7 +209,7 @@ q:after {
 /* We configure the text we select */
 ::selection {
   color: var(--color-secondary);
-  background-color: var(--bg-selection-color);
+  background-color: var(--color-primary);
 }
 
 
@@ -259,7 +255,7 @@ body {
   min-height: 100vh;
   font-size: 100%;
   font-family: 'Outfit', 'Segoe UI', 'Segoe UI Symbol', sans-serif;
-  color: var(--color-primary);
+  color: var(--font-title-color);
   background-color: var(--color-secondary);
   /* optional */
   line-height: 1.3;

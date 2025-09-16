@@ -3,7 +3,7 @@
 
 .footer {
   width: 100%;
-  height: 200px;
+  height: 250px;
   background-color: var(--bg-footer);
 
   @include flex(row, nowrap, center, center);

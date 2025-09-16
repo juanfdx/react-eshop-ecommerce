@@ -45,7 +45,7 @@
     padding-left: 1px;
     border-radius: 50%;
     color: var(--color-secondary);
-    background-color: var(--font-green-color);
+    background-color: var(--color-primary);
     font-size: 12px;
     font-weight: 500;
 
@@ -53,7 +53,7 @@
 
     // hover here affects cart icon (siblings no matter their position)
     &:hover ~ .header-actions__cart-icon {
-      color: var(--font-green-color);
+      color: var(--color-primary);
     }
   }
 
