@@ -1,7 +1,7 @@
 // COMPONENTS
 import { HeroSlider } from '../../components/sliders/HeroSlider/HeroSlider'
-// import { Categories } from '../../components/categories/Categories/Categories'
 import { CategorySlider } from '../../components/sliders/CategorySlider/CategorySlider'
+import { StoreServices } from '../../components/storeServices/StoreServices/StoreServices'
 
 
 export const Home = () => {
@@ -9,8 +9,8 @@ export const Home = () => {
   return (
     <>
       <HeroSlider />
-      {/* <Categories /> */}
       <CategorySlider />
+      <StoreServices />
     </>
   )
 }

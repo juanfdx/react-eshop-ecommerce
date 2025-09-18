@@ -1,0 +1,70 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.service {
+  @include flex(row, nowrap, center, center);
+
+  @include min-768px {
+    @include flex(column, nowrap, center, center);
+  }
+
+  @include min-1024px {
+    @include flex(row, nowrap, center, center);
+  }
+
+  &__icon-box {
+    width: 62px;
+    min-width: 62px;
+    height: 62px;
+    border: 1px solid var(--border-primary);
+    border-radius: 50%;
+
+    @include flex(row, nowrap, center, center);
+  }
+
+  &__icon {
+    fill: none;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    transition: none;
+  }
+
+  &__text-box {
+    text-align: left;
+    margin-left: 15px;
+
+    @include min-768px {
+      text-align: center;
+      margin-left: 0;
+    }
+
+    @include min-1024px {
+      text-align: left;
+      margin-left: 15px;
+    }
+  }
+
+  &__h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--font-title-color);
+    text-transform: capitalize;
+    line-height: 1;
+
+    @include min-768px {
+      margin-top: 15px;
+    }
+
+    @include min-1024px {
+      margin-top: 0;
+    }
+  }
+
+  &__p {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--font-text-color);
+    line-height: 1;
+  }
+}

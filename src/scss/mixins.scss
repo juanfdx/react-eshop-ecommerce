@@ -10,6 +10,14 @@
   }
 }
 
+/* ----- GRID ----- */
+@mixin grid($columns, $just, $align) {
+  display: grid;
+  grid-template-columns: $columns;
+  justify-items: $just;
+  align-items: $align;
+}
+
 
 /* ----- MEDIA QUERIES ----- */
 

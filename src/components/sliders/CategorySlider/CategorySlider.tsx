@@ -174,7 +174,6 @@ useEffect(() => {
           </button>
         </div>
 
-
       </div>
     </section>
   )
