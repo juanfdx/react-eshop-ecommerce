@@ -92,10 +92,18 @@ export const products: Product[] = [
     }
     ],
     averageRating: 4.5,
-    colors: [
+    variations: [
       {
-        name: "titanium black",
+        _id: "5e71224d-7b52-4f63-b21d-f2cf8b8942a1",
+        name: "Apple iPhone 15 Pro Max 512GB Titanium Black",
+        slug: "apple-iphone-15-pro-max-512gb-titanium-black",
+        color: "titanium black",
         hexCode: "#454342",
+        memory: "512GB",
+        price: 155900,
+        stock: 11,
+        sku: "APL-IP15PM-512GB-TBK",
+        available: true,
         images: [
           {
             public_id: "eshop/products/apple-iphone-15-pro-max-titanium-black/irq5wj5rhsqllizspub7",
@@ -120,8 +128,84 @@ export const products: Product[] = [
         ],
       },
       {
-        name: "titanium natural",
+        _id: "ebf097b6-32a4-4061-83ce-3a30f97e0b3d",
+        name: "Apple iPhone 15 Pro Max 256GB Titanium Black",
+        slug: "apple-iphone-15-pro-max-256gb-titanium-black",
+        color: "titanium black",
+        hexCode: "#454342",
+        memory: "256GB",
+        price: 134900,
+        stock: 5,
+        sku: "APL-IP15PM-256GB-TBK",
+        available: true,
+        images: [
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-black/irq5wj5rhsqllizspub7",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168448/eshop/products/apple-iphone-15-pro-max-titanium-black/irq5wj5rhsqllizspub7.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-black/qd8godwsfiwir8e58af6",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168448/eshop/products/apple-iphone-15-pro-max-titanium-black/qd8godwsfiwir8e58af6.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-black/hsaotqjpqmz80ne2rjhc",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168447/eshop/products/apple-iphone-15-pro-max-titanium-black/hsaotqjpqmz80ne2rjhc.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-black/b0lypxpfgv84nlnwl9tq",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168448/eshop/products/apple-iphone-15-pro-max-titanium-black/b0lypxpfgv84nlnwl9tq.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-black/xonf0prl5bzf7qhnhqlv",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168448/eshop/products/apple-iphone-15-pro-max-titanium-black/xonf0prl5bzf7qhnhqlv.webp",
+          }
+        ],
+      },
+      {
+        _id: "a3f1fd1b-1eec-4816-93e2-3d3b0cf2c5b0",
+        name: "Apple iPhone 15 Pro Max 512GB Titanium Natural",
+        slug: "apple-iphone-15-pro-max-512gb-titanium-natural",
+        color: "titanium natural",
         hexCode: "#9D9996",
+        memory: "512GB", 
+        price: 155900,
+        stock: 15,
+        sku: "APL-IP15PM-512GB-TN",
+        available: true,
+        images: [
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-natural/p3kx52qpzse1sodfqepc",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168888/eshop/products/apple-iphone-15-pro-max-titanium-natural/p3kx52qpzse1sodfqepc.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-natural/h8fjaibtlpaob1xehhyr",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168888/eshop/products/apple-iphone-15-pro-max-titanium-natural/h8fjaibtlpaob1xehhyr.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-natural/fgp14jfrytgekd9p7wuu",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168888/eshop/products/apple-iphone-15-pro-max-titanium-natural/fgp14jfrytgekd9p7wuu.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-natural/mgwca10pgncizxuyrjml",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168888/eshop/products/apple-iphone-15-pro-max-titanium-natural/mgwca10pgncizxuyrjml.webp",
+          },
+          {
+            public_id: "eshop/products/apple-iphone-15-pro-max-titanium-natural/taxepyopoakvousqqwwn",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168888/eshop/products/apple-iphone-15-pro-max-titanium-natural/taxepyopoakvousqqwwn.webp",
+          }
+        ],
+      },
+      {
+        _id: "8a0cd5d3-bb24-4760-a6d8-b6cd4319c01d",
+        name: "Apple iPhone 15 Pro Max 256GB Titanium Natural",
+        slug: "apple-iphone-15-pro-max-256gb-titanium-natural",
+        color: "titanium natural",
+        hexCode: "#9D9996",
+        memory: "256GB", 
+        price: 134900,
+        stock: 8,
+        sku: "APL-IP15PM-256GB-TN",
+        available: true,
         images: [
           {
             public_id: "eshop/products/apple-iphone-15-pro-max-titanium-natural/p3kx52qpzse1sodfqepc",
@@ -146,52 +230,7 @@ export const products: Product[] = [
         ],
       }
     ],
-    variations: [
-      {
-        _id: "5e71224d-7b52-4f63-b21d-f2cf8b8942a1",
-        name: "Apple iPhone 15 Pro Max 512GB Titanium Black",
-        slug: "apple-iphone-15-pro-max-512gb-titanium-black",
-        color: "titanium black",
-        memory: "512GB",
-        price: 155900,
-        stock: 11,
-        sku: "APL-IP15PM-512GB-TBK",
-        available: true,
-      },
-      {
-        _id: "ebf097b6-32a4-4061-83ce-3a30f97e0b3d",
-        name: "Apple iPhone 15 Pro Max 256GB Titanium Black",
-        slug: "apple-iphone-15-pro-max-256gb-titanium-black",
-        color: "titanium black",
-        memory: "256GB",
-        price: 134900,
-        stock: 5,
-        sku: "APL-IP15PM-256GB-TBK",
-        available: true,
-      },
-      {
-        _id: "a3f1fd1b-1eec-4816-93e2-3d3b0cf2c5b0",
-        name: "Apple iPhone 15 Pro Max 512GB Titanium Natural",
-        slug: "apple-iphone-15-pro-max-512gb-titanium-natural",
-        color: "titanium natural",
-        memory: "512GB", 
-        price: 155900,
-        stock: 15,
-        sku: "APL-IP15PM-512GB-TN",
-        available: true
-      },
-      {
-        _id: "8a0cd5d3-bb24-4760-a6d8-b6cd4319c01d",
-        name: "Apple iPhone 15 Pro Max 256GB Titanium Natural",
-        slug: "apple-iphone-15-pro-max-256gb-titanium-natural",
-        color: "titanium natural",
-        memory: "256GB", 
-        price: 134900,
-        stock: 8,
-        sku: "APL-IP15PM-256GB-TN",
-        available: true
-      }
-    ]
+		createdAt: new Date().toISOString()
   },
   {
     _id: "4d8b3c5f-318b-4a3b-87a3-787469b38c57",
@@ -274,10 +313,18 @@ export const products: Product[] = [
     ],
     reviews: [],
     averageRating: 0,
-    colors: [
+    variations: [
       {
-        name: "titanium black",
+        _id: "340d6509-c98c-4f2f-81f0-218697013911",
+        name: "Samsung Galaxy S24 Ultra 512GB Titanium Black",
+        slug: "samsung-galaxy-s24-ultra-512gb-titanium-black",
+        color: "titanium black",
         hexCode: "#494544",
+        memory: "512GB",
+        price: 129900,
+        stock: 11,
+        sku: "SAM-S24U-512GB-TBK",
+        available: true,
         images: [
           {
             public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-black/t2evl9lwbvxm5ijpdq9x",
@@ -294,8 +341,68 @@ export const products: Product[] = [
         ],
       },
       {
-        name: "titanium yellow",
+        _id: "287c1ee0-1c6c-4391-810f-85ac148eb441",
+        name: "Samsung Galaxy S24 Ultra 256GB Titanium Black",
+        slug: "samsung-galaxy-s24-ultra-256gb-titanium-black",
+        color: "titanium black",
+        hexCode: "#494544",
+        memory: "256GB", 
+        price: 109900,
+        stock: 5,
+        sku: "SAM-S24U-256GB-TBK",
+        available: true,
+        images: [
+          {
+            public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-black/t2evl9lwbvxm5ijpdq9x",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727169265/eshop/products/samsung-galaxy-s24-ultra-titanium-black/t2evl9lwbvxm5ijpdq9x.webp",
+          },
+          {
+            public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-black/vlc4jdralbdosclj08mj",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727169265/eshop/products/samsung-galaxy-s24-ultra-titanium-black/vlc4jdralbdosclj08mj.webp",
+          },
+          {
+            public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-black/nb1hkq2zdrx9p6jvxyvw",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727169265/eshop/products/samsung-galaxy-s24-ultra-titanium-black/nb1hkq2zdrx9p6jvxyvw.webp",
+          }
+        ],
+      },
+      {
+        _id: "e0f6e3da-21f1-4f8c-a464-bba8f4ff5c4e",
+        name: "Samsung Galaxy S24 Ultra 512GB Titanium Yellow",
+        slug: "samsung-galaxy-s24-ultra-512gb-titanium-yellow",
+        color: "titanium yellow",
         hexCode: "#F4E0B0",
+        memory: "512GB", 
+        price: 129900,
+        stock: 14,
+        sku: "SAM-S24U-512GB-TYE",
+        available: true,
+        images: [
+          {
+            public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-yellow/e9upku7x7urntvssuspb",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727169588/eshop/products/samsung-galaxy-s24-ultra-titanium-yellow/e9upku7x7urntvssuspb.webp",
+          },
+          {
+            public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-yellow/yqjdbdtbo3bfrtcaewfv",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727169587/eshop/products/samsung-galaxy-s24-ultra-titanium-yellow/yqjdbdtbo3bfrtcaewfv.webp",
+          },
+          {
+            public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-yellow/t0qpazzunnkmgu6apzco",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727169588/eshop/products/samsung-galaxy-s24-ultra-titanium-yellow/t0qpazzunnkmgu6apzco.webp",
+          },
+        ],
+      },
+      {
+        _id: "47b96391-d097-481a-a241-e1cb23c1a0be",
+        name: "Samsung Galaxy S24 Ultra 256GB Titanium Yellow",
+        slug: "samsung-galaxy-s24-ultra-256gb-titanium-yellow",
+        color: "titanium yellow",
+        hexCode: "#F4E0B0",
+        memory: "256GB", 
+        price: 109900,
+        stock: 0,
+        sku: "SAM-S24U-256GB-TYE",
+        available: true,
         images: [
           {
             public_id: "eshop/products/samsung-galaxy-s24-ultra-titanium-yellow/e9upku7x7urntvssuspb",
@@ -312,52 +419,7 @@ export const products: Product[] = [
         ],
       }
     ],
-    variations: [
-      {
-        _id: "340d6509-c98c-4f2f-81f0-218697013911",
-        name: "Samsung Galaxy S24 Ultra 512GB Titanium Black",
-        slug: "samsung-galaxy-s24-ultra-512gb-titanium-black",
-        color: "titanium black",
-        memory: "512GB",
-        price: 129900,
-        stock: 11,
-        sku: "SAM-S24U-512GB-TBK",
-        available: true,
-      },
-      {
-        _id: "287c1ee0-1c6c-4391-810f-85ac148eb441",
-        name: "Samsung Galaxy S24 Ultra 256GB Titanium Black",
-        slug: "samsung-galaxy-s24-ultra-256gb-titanium-black",
-        color: "titanium black",
-        memory: "256GB", 
-        price: 109900,
-        stock: 5,
-        sku: "SAM-S24U-256GB-TBK",
-        available: true,
-      },
-      {
-        _id: "e0f6e3da-21f1-4f8c-a464-bba8f4ff5c4e",
-        name: "Samsung Galaxy S24 Ultra 512GB Titanium Yellow",
-        slug: "samsung-galaxy-s24-ultra-512gb-titanium-yellow",
-        color: "titanium yellow",
-        memory: "512GB", 
-        price: 129900,
-        stock: 14,
-        sku: "SAM-S24U-512GB-TYE",
-        available: true,
-      },
-      {
-        _id: "47b96391-d097-481a-a241-e1cb23c1a0be",
-        name: "Samsung Galaxy S24 Ultra 256GB Titanium Yellow",
-        slug: "samsung-galaxy-s24-ultra-256gb-titanium-yellow",
-        color: "titanium yellow",
-        memory: "256GB", 
-        price: 109900,
-        stock: 0,
-        sku: "SAM-S24U-256GB-TYE",
-        available: true,
-      }
-    ]
+    createdAt: new Date().toISOString()
   },
   {
     _id: "ec2844cb-e267-4640-b9f0-ff0b2fc14b8a",
@@ -470,10 +532,18 @@ export const products: Product[] = [
       },
     ],
     averageRating: 4.4,
-    colors: [
+    variations: [
       {
-        name: "black",
+        _id: "2f7931b2-b77b-4b56-bc99-c51bb8de07f6",
+        name: "Gigabyte G5 KF5-53SH Intel Core i5-13500H SSD RTX 4060 15.6\" 16GB 512GB BLACK",
+        slug: "gigabyte-g5-intel-core-i5-13500h-ssd-rtx-4060-156-16gb-512gb-black",
+        color: "black",
         hexCode: "#494544",
+        memory: "512GB", 
+        price: 103398,
+        stock: 17,
+        sku: "GIG-G5KF5-16GB512GB-RTX4060-BLK",
+        available: true,
         images: [
           {
             public_id: "eshop/products/gigabyte-g5-intel-core-i5-13500h-16gb-512gb-ssd-rtx-4060-156/jiaytwsqtchtlpnuvhwl",
@@ -494,19 +564,7 @@ export const products: Product[] = [
         ],
       },
     ],
-    variations: [
-      {
-        _id: "2f7931b2-b77b-4b56-bc99-c51bb8de07f6",
-        name: "Gigabyte G5 KF5-53SH Intel Core i5-13500H SSD RTX 4060 15.6\" 16GB 512GB BLACK",
-        slug: "gigabyte-g5-intel-core-i5-13500h-ssd-rtx-4060-156-16gb-512gb-black",
-        color: "black",
-        memory: "512GB", 
-        price: 103398,
-        stock: 17,
-        sku: "GIG-G5KF5-16GB512GB-RTX4060-BLK",
-        available: true,
-      },
-    ]
+    createdAt: new Date().toISOString()
   },
   {
     _id: "0bc51f36-cda7-4863-b431-f5dd5305a684",
@@ -603,10 +661,18 @@ export const products: Product[] = [
     ],
     reviews: [],
     averageRating: 0,
-    colors: [
+    variations: [
       {
-        name: "midnight",
+        _id: "967b2b7e-06e6-4707-bc53-50ec0b397cbb",
+        name: "Apple MacBook Air Apple M3 SSD GPU 8 Cores/13.6\" 8GB 512GB Midnight",
+        slug: "apple-macbook-air-apple-m3-ssd-gpu-8-cores-136-8gb-512gb-midnight",
+        color: "midnight",
         hexCode: "#40464F",
+        memory: "512GB", 
+        price: 132900,
+        stock: 12,
+        sku: "APP-MBAIR-M3-8GB512GB-MID",
+        available: true,
         images: [
           {
             public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/j2vlhkgnoao2yuzivxxm",
@@ -627,8 +693,46 @@ export const products: Product[] = [
         ],
       },
       {
-        name: "space grey",
+        _id: "3c2cf1bc-371a-4ff5-a4ec-c377188a2ff4",
+        name: "Apple MacBook Air Apple M3 SSD GPU 8 Cores/13.6\" 8GB 256GB Midnight",
+        slug: "apple-macbook-air-apple-m3-ssd-gpu-8-cores-136-8gb-256gb-midnight",
+        color: "midnight",
+        hexCode: "#40464F",
+        memory: "256GB", 
+        price: 109899,
+        stock: 16,
+        sku: "APP-MBAIR-M3-8GB256GB-MID",
+        available: true,
+        images: [
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/j2vlhkgnoao2yuzivxxm",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727170285/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/j2vlhkgnoao2yuzivxxm.webp",
+          },
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/gej5xo73ikam0swaf0m5",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727170285/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/gej5xo73ikam0swaf0m5.webp",
+          },
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/qvouxj55ihk68qvjtafw",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727170285/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/qvouxj55ihk68qvjtafw.webp",
+          },
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/xyukpvntcypm2uwemfxn",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727170285/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-midnight/xyukpvntcypm2uwemfxn.webp",
+          }
+        ],
+      },
+      {
+        _id: "f5aaf6a2-92ee-4709-82c1-8f8a44d8476e",
+        name: "Apple MacBook Air Apple M3 SSD GPU 8 Cores/13.6\" 8GB 512GB Space Grey",
+        slug: "apple-macbook-air-apple-m3-ssd-gpu-8-cores-136-8gb-512gb-space-grey",
+        color: "space grey",
+        memory: "512GB", 
         hexCode: "#9C9C9C",
+        price: 132900,
+        stock: 22,
+        sku: "APP-MBAIR-M3-8GB512GB-SPG",
+        available: true,
         images: [
           {
             public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/nkogezgqf5l6hfsqtyie",
@@ -648,52 +752,37 @@ export const products: Product[] = [
           }
         ],
       },
-    ],
-    variations: [
-      {
-        _id: "967b2b7e-06e6-4707-bc53-50ec0b397cbb",
-        name: "Apple MacBook Air Apple M3 SSD GPU 8 Cores/13.6\" 8GB 512GB Midnight",
-        slug: "apple-macbook-air-apple-m3-ssd-gpu-8-cores-136-8gb-512gb-midnight",
-        color: "midnight",
-        memory: "512GB", 
-        price: 132900,
-        stock: 12,
-        sku: "APP-MBAIR-M3-8GB512GB-MID",
-        available: true,
-      },
-      {
-        _id: "3c2cf1bc-371a-4ff5-a4ec-c377188a2ff4",
-        name: "Apple MacBook Air Apple M3 SSD GPU 8 Cores/13.6\" 8GB 256GB Midnight",
-        slug: "apple-macbook-air-apple-m3-ssd-gpu-8-cores-136-8gb-256gb-midnight",
-        color: "midnight",
-        memory: "256GB", 
-        price: 109899,
-        stock: 16,
-        sku: "APP-MBAIR-M3-8GB256GB-MID",
-        available: true,
-      },
-      {
-        _id: "f5aaf6a2-92ee-4709-82c1-8f8a44d8476e",
-        name: "Apple MacBook Air Apple M3 SSD GPU 8 Cores/13.6\" 8GB 512GB Space Grey",
-        slug: "apple-macbook-air-apple-m3-ssd-gpu-8-cores-136-8gb-512gb-space-grey",
-        color: "space grey",
-        memory: "512GB", 
-        price: 132900,
-        stock: 22,
-        sku: "APP-MBAIR-M3-8GB512GB-SPG",
-        available: true,
-      },
       {
         _id:  "290f18b2-cc67-4f3d-b3b7-4be0f6542726",
         name: "Apple MacBook Air Apple M3 SSD GPU 8 Cores/13.6\" 8GB 256GB Space Grey",
         slug: "apple-macbook-air-apple-m3-ssd-gpu-8-cores-136-8gb-256gb-space-grey",
         color: "space grey",
-        memory: "256GB", 
+        memory: "256GB",
+        hexCode: "#9C9C9C", 
         price: 109899,
         stock: 11,
         sku: "APP-MBAIR-M3-8GB256GB-SPG",
         available: true,
+        images: [
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/nkogezgqf5l6hfsqtyie",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168005/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/nkogezgqf5l6hfsqtyie.webp",
+          },
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/wsc3bsvqu3ahyiiyiwml",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168005/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/wsc3bsvqu3ahyiiyiwml.webp",
+          },
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/chutgsbdzfqynbft88ap",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168005/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/chutgsbdzfqynbft88ap.webp",
+          },
+          {
+            public_id: "eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/cdluvw6ttjsku8wyjlq4",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727168005/eshop/products/apple-macbook-air-apple-m3-ssd-gpu-136-space-grey/cdluvw6ttjsku8wyjlq4.webp",
+          }
+        ],
       }
-    ]
+    ],
+    createdAt: new Date().toISOString()
   }
 ]

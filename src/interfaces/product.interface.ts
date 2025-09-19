@@ -9,8 +9,8 @@ export interface Product {
   specs: Spec[];
   reviews: Review[];
   averageRating: number;
-  colors: ProductColor[];
   variations: ProductVariation[];
+	createdAt: string;
 }
 
 export interface Feature {
@@ -30,12 +30,6 @@ export interface Review {
   createdAt: string; // ISO date string
 }
 
-export interface ProductColor {
-  name: string;
-  hexCode: string;
-  images: ProductImage[];
-}
-
 export interface ProductImage {
   public_id: string;
   url: string;
@@ -46,9 +40,11 @@ export interface ProductVariation {
   name: string;
   slug: string;
   color: string; // Match with ProductColor.name
+  hexCode: string;
   memory: string; // e.g., '256GB', '512GB'
   price: number; // In cents or local currency smallest unit
   stock: number;
   sku: string;
   available: boolean;
+  images: ProductImage[];
 }
