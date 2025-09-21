@@ -1,0 +1,125 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.our-team-slider {
+  width: 100%;
+  margin-top: 40px;
+
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0 25px;
+
+    @include min-768px {
+      padding: 0 40px;
+    }
+  }
+
+  /* ----- slider wrapper ----- */
+  &__wrapper {
+    position: relative;
+    margin-top: 20px;
+
+    &:hover {
+      .arrow-btn__icon {
+        color: black;
+      }
+    }
+  }
+
+  /* ----- card ----- */
+  &__card {
+    padding: 10px;
+  }
+
+  &__card-link {
+    position: relative;
+
+    &:hover {
+      cursor: default;
+
+      .our-team-slider__img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  /* ----- img wrapper ----- */
+  &__img-wrapper {
+    aspect-ratio: 1 / 1.14752;
+    overflow: clip;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+  }
+
+  &__img {
+    transition: all .5s ease;
+  }
+
+  /* ----- text wrapper ----- */
+  &__text-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__label {
+    position: relative;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--font-text-color);
+    background-color: var(--color-secondary);
+    border-radius: 0 10px 0 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-image: url('../../../assets/images/corner/small-left-corner.svg');
+      top: -10px;
+      left: 0px;
+      width: 10px;
+      height: 10px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url('../../../assets/images/corner/small-left-corner.svg');
+      bottom: 2px;
+      right: -9px;
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &__name {
+    position: relative;
+    padding: 5px 30px 5px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--font-title-color);
+    background-color: var(--color-secondary);
+    border-radius: 0 10px 0 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url('../../../assets/images/corner/small-left-corner.svg');
+      bottom: 0px;
+      right: -10px;
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+// default react-slick slider class
+.slick-list {
+  width: calc(100% + 20px);
+  transform: translateX(-10px) !important;
+  overflow: clip;
+}

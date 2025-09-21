@@ -78,18 +78,20 @@ export const products: Product[] = [
       }
     ],
     reviews: [
-    {
-      user: "John Doe",
-      comment: "Amazing performance and great battery life!",
-      rating: 5,
-      createdAt: "2024-09-11"
-    },
-    {
-      user: "Jane Smith",
-      comment: "Loving the new camera improvements.",
-      rating: 4,
-      createdAt: "2024-09-21"
-    }
+      {
+        _id: "bdcb7c37-3d5c-426c-a6f3-c01e2f5eabf3",
+        user: "john doe",
+        comment: "amazing performance and great battery life!",
+        rating: 5,
+        createdAt: "2024-09-11"
+      },
+      {
+        _id: "9140f6d8-8ad6-40a7-a048-f244c7d6b90c",
+        user: "jane smith",
+        comment: "loving the new camera improvements.",
+        rating: 4,
+        createdAt: "2024-09-21"
+      }
     ],
     averageRating: 4.5,
     variations: [
@@ -525,8 +527,9 @@ export const products: Product[] = [
     ],
     reviews: [
       {
-        user: "Mary Lopez",
-        comment: "Amazing performance and great battery life!",
+        _id: "e4be9a07-b497-41dc-91f2-1e4a6e2466d3",
+        user: "mary lopez",
+        comment: "amazing performance and great battery life!",
         rating: 4.4,
         createdAt: "2024-08-21"
       },

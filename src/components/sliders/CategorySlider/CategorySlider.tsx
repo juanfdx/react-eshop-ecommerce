@@ -29,20 +29,20 @@ export const CategorySlider = () => {
   const cardWidth = 100 / imgAmount 
 
 
-useEffect(() => {
-  setTransition(false);
+  useEffect(() => {
+    setTransition(false);
 
-  if (width === undefined) return;
+    if (width === undefined) return;
 
-  const size =
-    width < 375 ? 1 :
-    width < 576 ? 2 :
-    width < 768 ? 3 :
-    width < 992 ? 4 :
-    5;
+    const size =
+      width < 375 ? 1 :
+      width < 576 ? 2 :
+      width < 768 ? 3 :
+      width < 992 ? 4 :
+      5;
 
-  setImgToShow(size);
-}, [width]);
+    setImgToShow(size);
+  }, [width]);
 
 
   const handlePrevImage = () => {
@@ -120,8 +120,8 @@ useEffect(() => {
         <div className='categories-slider__wrapper'>
           <div className='categories-slider__mask'>
             <ul
-              style={{width: `${slideWidth}%`}}
               className='categories-slider__slide'
+              style={{width: `${slideWidth}%`}}
               //optional
               onMouseOver={handleMouseOver} 
               onMouseLeave={handleMouseLeave}
@@ -130,7 +130,7 @@ useEffect(() => {
                 <li 
                   style={{
                     width : `${cardWidth}%`,  
-                    transform : `translateX(${-100 * index }%)`,
+                    transform : `translateX(${-100 * index}%)`,
                     transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
                   }}
                   key={cat.id} 

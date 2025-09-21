@@ -24,6 +24,7 @@ export interface Spec {
 }
 
 export interface Review {
+  _id: string;
   user: string;
   comment: string;
   rating: number; // Assuming 1 to 5

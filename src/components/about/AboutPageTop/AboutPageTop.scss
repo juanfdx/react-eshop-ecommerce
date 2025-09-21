@@ -1,0 +1,79 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.about-page-top {
+  width: 100%;
+  margin-top: 20px;
+
+  @include min-992px {
+    margin-top: 30px;
+  }
+
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0 25px;
+
+    @include min-768px {
+      padding: 0 40px;
+    }
+  }
+
+
+  &__title {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 600;
+    text-align: left;
+    hyphens: none;
+
+    @include min-480px {
+      line-height: 32px;
+    }
+
+    @include min-768px {
+      font-size: 42px;
+      line-height: 56px;
+    }
+
+    @include min-992px {
+      font-size: 48px;
+      line-height: 60px;
+    }
+
+    @include min-1024px {
+      font-size: 60px;
+      line-height: 80px;
+    }
+
+    @include min-1280px {
+      max-width: 80%;
+    }
+
+    @include min-1400px {
+      max-width: 70%;
+    }
+  }
+
+  &__img-wrapper {
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 2.20689 / 1;
+    background-color: #F5F5F5;
+
+    @include min-380px {
+      border-radius: 20px;
+    }
+
+    @include min-768px {
+      margin-top: 40px;
+    }
+
+    @include min-1024px {
+      margin-top: 60px;
+    }
+  }
+}
