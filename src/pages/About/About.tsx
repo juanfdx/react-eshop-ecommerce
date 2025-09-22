@@ -1,4 +1,3 @@
-import './About.scss';
 // COMPONENTS
 import { AboutPageTop } from '../../components/about/AboutPageTop/AboutPageTop';
 import { AboutDescription } from '../../components/about/AboutDescription/AboutDescription';

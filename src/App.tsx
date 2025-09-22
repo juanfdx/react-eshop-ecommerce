@@ -28,7 +28,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <Products />
+        element: <Products />,
+        errorElement: <ErrorElement />
       },
       {
         path: 'product/:slug',
@@ -37,21 +38,25 @@ const router = createBrowserRouter([
       },
       {
         path: 'about',
-        element: <About />
+        element: <About />,
+        errorElement: <ErrorElement />
       },
       {
         path: 'contact',
-        element: <Contact />
+        element: <Contact />,
+        errorElement: <ErrorElement />
       },
     ]
   },
   {
     path: '/login',
     element: <Login />,
+    errorElement: <ErrorElement />
   },
   {
     path: '/register',
     element: <Register />,
+    errorElement: <ErrorElement />
   }
 
 ])

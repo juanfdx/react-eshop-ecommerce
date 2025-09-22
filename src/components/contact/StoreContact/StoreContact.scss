@@ -1,0 +1,30 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.store-contact {
+  width: 100%;
+  margin: 50px 0 60px;
+
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0 25px;
+
+    @include flex(column, nowrap, center, center);
+    gap: 30px;
+    
+    @include min-768px {
+      padding: 0 40px;
+    }
+
+    @include min-992px {
+      @include flex(row, nowrap, center, flex-start);
+    }
+  }
+
+  &__col {
+    width: 100%;
+  }
+}

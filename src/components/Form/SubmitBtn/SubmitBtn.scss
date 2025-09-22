@@ -1,0 +1,25 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.submit-btn {
+  width: 100%;
+  margin-top: 50px;
+  padding: 18px 32px;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  &:hover {
+    background-color: var(--bg-hover-primary);
+  }
+
+  &--submitting {
+    background-color: rgb(164, 164, 164);
+    pointer-events: none;
+  }
+}

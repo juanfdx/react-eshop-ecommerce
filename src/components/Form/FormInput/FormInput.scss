@@ -1,0 +1,32 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.form-input {
+  position: relative;
+  margin-bottom: 40px;
+
+  &__input {
+    width: 100%;
+    padding: 14px 12px;
+    font-size: 14px;
+    color: var(--font-text-color);
+    border: none;
+    outline: none;
+    border: 1px solid var(--border-form-control);
+    border-radius: 3px;
+    transition: all .3s ease;
+
+    &:focus {
+      border: 1px solid var(--border-dark);
+    }
+  }
+
+  &__error {
+    position: absolute;
+    top: 52px;
+    left: 1px;
+    font-size: 14px;
+    color: #dc3232;
+    line-height: 1;
+  }
+}

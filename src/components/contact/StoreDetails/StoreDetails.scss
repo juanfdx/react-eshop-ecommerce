@@ -1,0 +1,18 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.store-details {
+  width: 100%;
+
+  &__name {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--font-title-color);
+  }
+
+  &__address {
+    margin-top: 10px;
+    font-size: 16px;
+    color: var(--font-text-color);
+  }
+}

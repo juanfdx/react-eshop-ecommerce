@@ -21,7 +21,6 @@ export const TeamSlider = ({ team }: TeamSliderProps) => {
   const [teamArray, setTeamArray] = useState(team);
   const [transition, setTransition] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  // const [isHovered, setIsHovered] = useState<boolean>(false); //optional
   
   const { width } = useWindowSize();
 
@@ -46,6 +45,7 @@ export const TeamSlider = ({ team }: TeamSliderProps) => {
   }, [width]);
 
 
+  // PREV
   const handlePrevImage = () => {
     // prevent fast consecutive clicks
     if (isProcessing) return;
@@ -67,6 +67,7 @@ export const TeamSlider = ({ team }: TeamSliderProps) => {
     }, 500);
   };
 
+  // NEXT
   const handleNextImage = useCallback(() => {
     // prevent fast consecutive clicks
     if (isProcessing) return;

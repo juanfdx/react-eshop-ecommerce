@@ -11,11 +11,18 @@
 }
 
 /* ----- GRID ----- */
-@mixin grid($columns, $just, $align) {
+@mixin grid($columns, $just: null, $align: null, $alignContent: null) {
   display: grid;
   grid-template-columns: $columns;
-  justify-items: $just;
-  align-items: $align;
+
+  // Aligns items along the row (inline) axis
+  @if $just != null { justify-items: $just;}
+
+  // Aligns items along the column (block) axis
+  @if $align != null { align-items: $align;}
+
+  // Aligns rows inside the grid container when there is extra vertical space
+  @if $alignContent !=null { align-content: $alignContent;}
 }
 
 

@@ -1,1 +1,91 @@
 @use '../../../scss/mixins.scss' as *;
+
+
+.error-element {
+  width: 100%;
+  margin-top: 20px;
+
+
+  &__container {
+    width: 100%;
+    max-width: 1480px;
+    margin: 40px 0 100px;
+    padding: 0 25px;
+
+    @include flex(column, nowrap, center, center);
+    // gap: 20px;
+
+    @include min-768px {
+      margin: 80px 0 80px;
+      padding: 0 40px;
+    }
+
+    @include min-992px {
+      padding: 0 60px;
+    }
+
+    @include min-1024px {
+      padding: 0 80px;
+    }
+
+    @include min-1280px {
+      padding: 0 100px;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+
+    @include min-480px {
+      font-size: 28px;
+    }
+  }
+
+  &__text {
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center;
+    hyphens: none;
+    line-height: 1.2;
+    color: var(--font-text-color);
+
+    @include min-480px {
+      font-size: 18px;
+    }
+  }
+
+  /* ---- link btn ---- */
+  &__link {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    transition: all .3s ease;
+
+    &:hover {
+      background-color: var(--bg-hover-primary);
+    }
+
+    @include min-480px {
+      padding: 16px 32px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  /* ---- text error type ---- */
+  &__text-error {
+    margin-top: 15px;
+    font-size: 10px;
+    color: var(--font-text-color);
+
+    @include min-480px {
+      font-size: 14px;
+    }
+  }
+}

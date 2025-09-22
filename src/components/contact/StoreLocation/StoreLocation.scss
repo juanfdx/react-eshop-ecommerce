@@ -1,0 +1,41 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.store-location {
+  width: 100%;
+  
+  @include flex(column, nowrap, flex-start, flex-start);
+  gap: 20px;
+
+
+  &__title {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--font-title-color);
+    line-height: 1;
+
+    @include min-768px {
+      font-size: 36px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    color: var(--font-text-color);
+  }
+
+  &__stores {
+    width: 100%;
+    margin-top: 30px;
+
+    @include grid(repeat(1, 1fr), start, center);
+    gap: 20px;
+
+    @include min-576px {
+      @include grid(repeat(2, 1fr), start, center);
+      gap: 50px 20px;
+    }
+  }
+
+
+}

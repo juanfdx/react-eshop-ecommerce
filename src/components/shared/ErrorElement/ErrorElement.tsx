@@ -14,7 +14,7 @@ export const ErrorElement = () => {
     <main className='error-element'>
       <div className='error-element__container'>
 
-        <h1 className='error-element__h1'>Oops!</h1>
+        <h1 className='error-element__title'>Oops!</h1>
         
         {isRouteErrorResponse(error) ? (
           <p className='error-element__text'>Our team can't find what you're looking for...</p>
