@@ -2,35 +2,13 @@
 
 
 .error-element {
-  width: 100%;
-  margin-top: 20px;
-
+  position: absolute; // root-layout__main is position: relative
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   &__container {
-    width: 100%;
-    max-width: 1480px;
-    margin: 40px 0 100px;
-    padding: 0 25px;
-
     @include flex(column, nowrap, center, center);
-    // gap: 20px;
-
-    @include min-768px {
-      margin: 80px 0 80px;
-      padding: 0 40px;
-    }
-
-    @include min-992px {
-      padding: 0 60px;
-    }
-
-    @include min-1024px {
-      padding: 0 80px;
-    }
-
-    @include min-1280px {
-      padding: 0 100px;
-    }
   }
 
   &__title {
@@ -38,7 +16,7 @@
     font-size: 20px;
 
     @include min-480px {
-      font-size: 28px;
+      font-size: 30px;
     }
   }
 
@@ -51,13 +29,13 @@
     color: var(--font-text-color);
 
     @include min-480px {
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 
   /* ---- link btn ---- */
   &__link {
-    margin-top: 30px;
+    margin-top: 25px;
     padding: 12px 24px;
     font-size: 12px;
     font-weight: 500;
@@ -72,7 +50,8 @@
     }
 
     @include min-480px {
-      padding: 16px 32px;
+      margin-top: 30px;
+      padding: 14px 30px;
       font-size: 14px;
       font-weight: 500;
     }
@@ -80,11 +59,12 @@
 
   /* ---- text error type ---- */
   &__text-error {
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 10px;
     color: var(--font-text-color);
 
     @include min-480px {
+      margin-top: 15px;
       font-size: 14px;
     }
   }

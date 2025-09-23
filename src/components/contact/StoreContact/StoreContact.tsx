@@ -1,6 +1,7 @@
 import './StoreContact.scss';
 // COMPONENTS
 import { StoreLocation } from '../StoreLocation/StoreLocation';
+import { ContactForm } from '../ContactForm/ContactForm';
 
 
 export const StoreContact = () => {
@@ -10,12 +11,13 @@ export const StoreContact = () => {
       <div className='store-contact__container'>
 
         <div className='store-contact__col'>
-          Form
+          <StoreLocation />
         </div>
 
         <div className='store-contact__col'>
-          <StoreLocation />
+          <ContactForm />
         </div>
+
       </div>
     </section>
   )

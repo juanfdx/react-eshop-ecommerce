@@ -4,25 +4,28 @@ import { BsCheckLg } from "react-icons/bs";
 
 
 type FormCheckboxProps = {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  isChecked?: boolean
+  id: string;
+  name: string;
+  label: string;
+  isChecked?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 
-export const FormCheckbox = ({ onChange, isChecked = true }: FormCheckboxProps) => {
+export const FormCheckbox = ({ id, label, name, isChecked = true, onChange }: FormCheckboxProps) => {
   
   return (
     <div className='form-checkbox'>
       
       <input 
-        id='remember-me'
+        id={id}
         className='form-checkbox__checkbox'
         type='checkbox'
-        name='checkbox' 
+        name={name} 
         onChange={onChange}
       />
 
-      <label htmlFor='remember-me' className='form-checkbox__label'>Remember me</label>
+      <label htmlFor={id} className='form-checkbox__label'>{label}</label>
 
       <BsCheckLg 
         className={`form-checkbox__icon ${isChecked ? 'form-checkbox__icon--checked' : ''}`} 

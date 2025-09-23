@@ -9,6 +9,7 @@
   @include flex(column, nowrap, flex-start, center);
 
   &__main {
+    position: relative;
     width: 100%;
     padding-top: 60px; //same as header height, bc header is position: fixed
     flex: 1; //when flex column this make main take all available space in container

@@ -4,17 +4,17 @@ import { useState } from 'react';
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 type FormPasswordProps = {
-  inputRef: React.RefObject<HTMLInputElement>
+  inputRef?: React.RefObject<HTMLInputElement>
   id: string
   name: string
-  placeHolder: string
-  value: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  errors: string
+  placeholder: string
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  error: string
 }
 
 
-export const FormPassword = ({inputRef, id, name, placeHolder, value, onChange, errors}: FormPasswordProps) => {
+export const FormPassword = ({inputRef, id, name, placeholder, value, onChange, error}: FormPasswordProps) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,13 +41,13 @@ export const FormPassword = ({inputRef, id, name, placeHolder, value, onChange, 
         type={showPassword ? 'text' : 'password'}
         autoComplete='off'
         name={name}
-        placeholder={placeHolder}
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
 
-      { (errors) &&
-        <p className='form-password__label'>{errors}</p>
+      {error &&
+        <p className='form-password__label'>{error}</p>
       }
 
     </div>

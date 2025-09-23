@@ -1,19 +1,20 @@
 @use '../../../scss/mixins.scss' as *;
 
 
-.form-password {
+.form-textarea {
   position: relative;
   margin-bottom: 40px;
 
-  &__input {
+  &__textarea {
     width: 100%;
-    padding: 14px 12px;
+    padding: 12px 12px;
     font-size: 14px;
     color: var(--font-text-color);
     border: none;
     outline: none;
     border: 1px solid var(--border-form-control);
     border-radius: 3px;
+    resize: none;
     transition: all .3s ease;
 
     &:focus {
@@ -21,29 +22,16 @@
     }
   }
 
-  &__label {
-    position: absolute;
-    top: 52px;
-    left: 1px;
+  /* ---- ERROR MESSAGE ---- */
+  &__error {
+    margin-top: 2px;
     font-size: 14px;
     color: #dc3232;
     line-height: 1;
-  }
 
-  &__show-password-btn {
-    position: absolute;
-    width: 26px;
-    height: 100%;
-    top: 0;
-    right: 0;
-    border-left: 1px solid var(--border-form-control);
-    cursor: pointer;
-
-    @include flex(row, nowrap, center, center);
-  }
-
-  &__icon {
-    width: 18px;
-    height: 18px;
+    &--small {
+      top: 35px;
+      font-size: 11px;
+    }
   }
 }

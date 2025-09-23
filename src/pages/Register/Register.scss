@@ -3,4 +3,41 @@
 
 .register {
   width: 100%;
+  min-height: 100vh;
+  background-color: rgb(244, 244, 244);
+
+  @include flex(row, nowrap, center, center);
+
+
+  &__container {
+    width: 370px;
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px -3px;
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+  }
+
+  &__title {
+    margin-bottom: 50px;
+    font-size: 37px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  &__text {
+    margin: 10px 0px 15px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  &__link {
+    margin-left: 10px;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
+  }
 }

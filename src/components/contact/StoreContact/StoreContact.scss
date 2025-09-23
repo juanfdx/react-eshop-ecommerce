@@ -3,7 +3,15 @@
 
 .store-contact {
   width: 100%;
-  margin: 50px 0 60px;
+  margin: 40px 0 70px;
+
+  @include min-768px {
+    margin-top: 50px;
+  }
+
+  @include min-992px {
+    margin-top: 60px;
+  }
 
 
   &__container {
@@ -13,14 +21,15 @@
     padding: 0 25px;
 
     @include flex(column, nowrap, center, center);
-    gap: 30px;
+    gap: 70px;
     
     @include min-768px {
       padding: 0 40px;
     }
 
     @include min-992px {
-      @include flex(row, nowrap, center, flex-start);
+      @include flex(row-reverse, nowrap, center, flex-start);
+      gap: 30px;
     }
   }
 

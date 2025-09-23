@@ -18,6 +18,15 @@
     background-color: var(--bg-hover-primary);
   }
 
+  &--small {
+    width: auto;
+    margin-top: 0px;
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
   &--submitting {
     background-color: rgb(164, 164, 164);
     pointer-events: none;
