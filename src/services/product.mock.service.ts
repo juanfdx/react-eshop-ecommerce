@@ -1,6 +1,6 @@
 import { products } from '../data/data-products';
 // INTERFACES
-import type { Product, ProductVariation } from '../interfaces/product.interface';
+import type { Product } from '../interfaces/product.interface';
 
 
 export interface ResponseProducts {
@@ -12,11 +12,10 @@ export interface ResponseProducts {
 
 export interface ResponseProduct {
   readonly status: number;
-  readonly data?: {
-    readonly product: Product;
-    readonly variation: ProductVariation;
+  readonly data: {
+    readonly product?: Product;
+    readonly message?: string;
   };
-  readonly error?: string;
 }
 
 
@@ -35,29 +34,50 @@ export const getProducts = (): Promise<ResponseProducts> => {
 
 
 /*========================================================
-  GET PRODUCT BY SLUG & VARIATION ID 
+  GET PRODUCT BY SLUG
 ========================================================*/
-export const getProductBySlugAndVariationId = (slug: string, variationId: string): Promise<ResponseProduct> => {
+export const getProductBySlug = (slug: string): Promise<ResponseProduct> => {
   return new Promise((resolve) => {
 
     setTimeout(() => {
       const product = products.find((p) => p.slug === slug);
 
       if (!product) {
-        resolve({ status: 404, error: 'Product not found' });
-        return;
-      }
-
-      const variation = product.variations.find((v) => v._id === variationId);
-
-      if (!variation) {
-        resolve({ status: 404, error: 'Variation not found' });
+        resolve({ status: 404, data: { message: 'Product not found' } });
         return;
       }
 
       resolve({
         status: 200,
-        data: { product, variation }
+        data: { product }
+      })
+    }, 400);
+  })
+}
+/*========================================================
+  GET PRODUCT BY SLUG & VARIATION ID 
+========================================================*/
+export const getProductBySlugAndVariationId = (slug: string, variantId: string): Promise<ResponseProduct> => {
+  return new Promise((resolve) => {
+
+    setTimeout(() => {
+      const product = products.find((p) => p.slug === slug);
+
+      if (!product) {
+        resolve({ status: 404, data: { message: 'Product not found' }});
+        return;
+      }
+
+      const variant = product.variations.find((v) => v._id === variantId);
+
+      if (!variant) {
+        resolve({ status: 404, data: { message: 'Variant not found' } });
+        return;
+      }
+
+      resolve({
+        status: 200,
+        data: { product: { ...product, variations: [variant] } }
       });
     }, 400);
 

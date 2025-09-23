@@ -1,0 +1,38 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.star-rating-display-span {
+  color: var(--stars-color);
+  font-size: 20px;
+}
+
+.star-rating-display {
+  margin: 20px 0 15px 0;
+
+  @include flex(row, wrap, flex-start, flex-end);
+
+
+  &__rating {
+    margin-right: 6px;
+    font-size: 20px;
+    color: var(--font-title-color);
+    line-height: 1
+  }
+
+  &__stars {
+    margin-right: 12px;
+
+    @include flex(row, nowrap, center, center);
+  }
+
+  &__reviews {
+    font-size: 15px;
+    color: var(--font-text-color);
+    line-height: 1
+  }
+
+  &__reviews-number {
+    margin-right: 1px;
+    font-weight: bold;
+  }
+}

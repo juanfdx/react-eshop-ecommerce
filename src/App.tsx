@@ -13,6 +13,9 @@ import { Product } from './pages/Product/Product'
 import { Login } from './pages/Login/Login'
 import { Register } from './pages/Register/Register'
 
+// LOADERS
+import { productLoader } from './loaders/productLoader'
+
 
 
 
@@ -34,7 +37,8 @@ const router = createBrowserRouter([
       {
         path: 'product/:slug',
         element: <Product />,
-        errorElement: <ErrorElement />
+        errorElement: <ErrorElement />,
+        loader: productLoader
       },
       {
         path: 'about',

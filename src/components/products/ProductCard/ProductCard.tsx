@@ -19,7 +19,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     <li key={product._id} className='product-card'>
       <Link 
         className='product-card__link' 
-        to={`/product/${product?.slug}?variation=${product?.variations[0]?._id}`} 
+        to={`/product/${product?.slug}?variantId=${product?.variations[0]?._id}`} 
       >
         <div className='product-card__img-wrapper'>
 
@@ -37,7 +37,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         
         <Link 
           className='product-card__title' 
-          to={`/product/${product?.slug}?variation=${product?.variations[0]?._id}`}
+          to={`/product/${product?.slug}?variantId=${product?.variations[0]?._id}`}
         >
           {product?.variations[0]?.name}
         </Link>

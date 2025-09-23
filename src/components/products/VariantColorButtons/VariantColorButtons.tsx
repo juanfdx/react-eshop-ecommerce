@@ -20,15 +20,15 @@ export const VariantColorButtons = ({ product }: VariantColorButtonsProps) => {
   
   return (
     <ul className='variant-color-buttons'>
-      {topColorVariants?.map((variation, index) => (
+      {topColorVariants?.map((variant, index) => (
         <li 
-          key={variation._id} 
+          key={variant._id} 
           className={`variant-color-buttons__li ${index === 0 ? 'variant-color-buttons__li--active' : ''}`}       
         >
           <Link 
-            className={`variant-color-buttons__link ${isWhiteSpectrum(variation?.hexCode) ? 'variant-color-buttons__link--active' : ''}`} 
-            to={`/product/${product?.slug}?variation=${variation?._id}`} 
-            style={{ backgroundColor: variation?.hexCode }}
+            className={`variant-color-buttons__link ${isWhiteSpectrum(variant?.hexCode) ? 'variant-color-buttons__link--active' : ''}`} 
+            to={`/product/${product?.slug}?variantId=${variant?._id}`} 
+            style={{ backgroundColor: variant?.hexCode }}
           ></Link>
           
         </li>

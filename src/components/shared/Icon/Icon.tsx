@@ -9,6 +9,7 @@ import { Shipping } from '../customIcons/Shipping';
 import { Guarantee } from '../customIcons/Guarantee';
 import { Support } from '../customIcons/Support';
 import { Payment } from '../customIcons/Payment';
+import { ChevronRight } from '../customIcons/ChevronRight';
 
 type IconProps = {
   type: string;
@@ -49,6 +50,10 @@ export const Icon = ({ type, className }: IconProps) => {
       }
       {type === 'payment' &&
         <Payment className={`icon ${className}`} />
+      }
+      {/* breadcrumbs icon chevron right */}
+      {type === 'breadcrumbs' &&
+        <ChevronRight className={`icon ${className}`} />
       }
     </>
   )

@@ -1,0 +1,36 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.breadcrumbs {
+  margin-top: 40px;
+
+  &__h3 {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0 25px;
+    font-size: 16px;
+    color: var(--font-title-color);
+
+    @include flex(row, wrap, flex-start, center);
+
+    @include min-768px {
+      padding: 0 40px;
+    }
+  }
+
+  &__products {
+    @include flex(row, nowrap, flex-start, center);
+  }
+
+  &__icon {
+    width: 16px;
+    margin: 1px 2px 0 2px;
+    pointer-events: none;
+  }
+
+  &__title {
+    color: var(--font-light-color);
+    text-transform: capitalize;
+  }
+}
