@@ -39,7 +39,7 @@ export const OurTeamSlider = ({team}: TeamSliderProps) => {
     if (width === undefined) return;
 
     const size =
-      width < 576 ? 1 :
+      width < 480 ? 1 :
       width < 768 ? 2 :
       width < 992 ? 3 :
       4;

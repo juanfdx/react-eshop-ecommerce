@@ -10,6 +10,8 @@ import { Guarantee } from '../customIcons/Guarantee';
 import { Support } from '../customIcons/Support';
 import { Payment } from '../customIcons/Payment';
 import { ChevronRight } from '../customIcons/ChevronRight';
+import { ChevronLeftTh } from '../customIcons/ChevronLeftTh';
+import { ChevronRightTh } from '../customIcons/ChevronRightTh';
 
 type IconProps = {
   type: string;
@@ -54,6 +56,13 @@ export const Icon = ({ type, className }: IconProps) => {
       {/* breadcrumbs icon chevron right */}
       {type === 'breadcrumbs' &&
         <ChevronRight className={`icon ${className}`} />
+      }
+      {/* product thumbnail slider */}
+      {type === 'chevron-left' &&
+        <ChevronLeftTh className={`icon ${className}`} />
+      }
+      {type === 'chevron-right' &&
+        <ChevronRightTh className={`icon ${className}`} />
       }
     </>
   )

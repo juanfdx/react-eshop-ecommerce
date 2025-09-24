@@ -15,12 +15,13 @@
     gap: 30px;
 
     @include min-768px {
+      flex-direction: row;
       padding: 0 40px;
     }
 
-    @include min-992px {
-      flex-direction: row;
-    }
+    // @include min-992px {
+    //   flex-direction: row;
+    // }
 
     @include min-1280px {
       gap: 60px;
@@ -30,6 +31,10 @@
   /* ---- variant images ---- */
   &__images {
     width: 100%;
+
+    @include min-768px {
+      width: 45%;
+    }
 
     @include min-992px {
       width: 40%;
@@ -43,6 +48,10 @@
   /* ---- variant card ---- */
   &__info {
     width: 100%;
+
+    @include min-768px {
+      width: 55%;
+    }
 
     @include min-992px {
       width: 60%;

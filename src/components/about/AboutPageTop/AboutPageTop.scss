@@ -61,7 +61,6 @@
     margin-top: 20px;
     overflow: hidden;
     border-radius: 10px;
-    aspect-ratio: 2.20689 / 1;
     background-color: #F5F5F5;
 
     @include min-380px {
@@ -73,7 +72,12 @@
     }
 
     @include min-1024px {
-      margin-top: 60px;
+      margin-top: 50px;
     }
+  }
+
+  &__img {
+    width: 100%;
+    min-height: 200px;
   }
 }
