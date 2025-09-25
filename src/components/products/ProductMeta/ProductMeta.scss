@@ -1,0 +1,36 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.product-meta {
+  margin-top: 50px;
+
+  &__details-container {
+    margin-bottom: 12px;
+    color: var(--font-text-color);
+
+    @include flex(row, nowrap, flex-start, center);
+  }
+
+  &__label {
+    min-width: 108px;
+    font-size: 16px;
+  }
+
+  &__sku {
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  &__span {
+    font-size: 16px;
+    text-transform: capitalize;
+
+    &--available {
+      color: var(--color-primary);
+    }
+
+    &--out-of-stock {
+      color: red;
+    }
+  }
+}

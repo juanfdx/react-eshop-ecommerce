@@ -1,0 +1,20 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--overlay-color);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+  transition: all .2s ease;
+
+  &--active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}

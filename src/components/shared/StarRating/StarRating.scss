@@ -1,0 +1,15 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.star-rating{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+  @include flex(row, nowrap, flex-start, center);
+}
+
+.one-star-span {
+  color: var(--stars-color);
+  font-size: 18px;
+}

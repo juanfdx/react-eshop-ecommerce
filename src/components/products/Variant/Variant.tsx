@@ -1,14 +1,18 @@
 import './Variant.scss';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { formatPrice } from '../../../utils/currencyUtils';
 // COMPONENTS
-import { StarRatingDisplay } from '../../shared/StarRatingDisplay/StarRatingDisplay';
+import { StarsReviews } from '../../shared/StarsReviews/StarsReviews';
 import { ProductColorSelector } from '../ProductColorSelector/ProductColorSelector';
 import { ProductMemorySelector } from '../ProductMemorySelector/ProductMemorySelector';
 import { ProductImageSlider } from '../../sliders/ProductImageSlider/ProductImageSlider';
+import { AmountButtons } from '../../shared/AmountButtons/AmountButtons';
+import { ProductMeta } from '../ProductMeta/ProductMeta';
+import { ProductTabs } from '../ProductTabs/ProductTabs';
 
 
 type VariantProps = {
@@ -19,11 +23,34 @@ type VariantProps = {
 
 export const Variant = ({ product, colors, memories }: VariantProps) => {
 
+  const [amount, setAmount] = useState<number>(1);
+  
   const [searchParams] = useSearchParams();
   const variantId = searchParams.get('variantId');
 
   const variant = product.variations.find(v => v._id === variantId);
   if (!variant) return <div>Variant not found</div>;
+
+  const cartProduct = {
+    _id: variant?._id,
+    name: variant?.name,
+    description: product?.description,
+    brand: product?.brand,
+    product_id: product?._id,
+    category: product?.category,
+    price: variant?.price,
+    color: variant?.color,
+    hexCode: variant?.hexCode,
+    memory: variant?.memory,
+    images: variant?.images,
+    quantity: amount
+  }
+
+  const addToCart = () => {
+    console.log(cartProduct);
+    // dispatch(addItem(cartProduct));
+  }
+
   
   
   return (
@@ -39,7 +66,7 @@ export const Variant = ({ product, colors, memories }: VariantProps) => {
           {/* product name */}
           <h1 className='variant__name'>{variant?.name}</h1>
           {/* product rating */}
-          <StarRatingDisplay rating={product?.averageRating} reviews={product?.reviews?.length} />
+          <StarsReviews rating={product?.averageRating} reviews={product?.reviews?.length} />
           {/* product info */}
           <p className='variant__price'>{formatPrice(variant?.price)}</p>
           <div className='variant__line-separator'></div>
@@ -48,10 +75,15 @@ export const Variant = ({ product, colors, memories }: VariantProps) => {
           <ProductColorSelector colors={colors} variant={variant} />
           {/* product memory selector */}
           <ProductMemorySelector memories={memories} variant={variant} />
-
+          {/* product buy buttons */}
+          <AmountButtons variant={variant} amount={amount} setAmount={setAmount} addToCart={addToCart} />
+          {/* product meta data */}
+          <ProductMeta product={product} variant={variant} />
         </div>
 
       </div>
+      {/* product info specs reviews*/}
+      <ProductTabs product={product} />
     </section>
   )
 }

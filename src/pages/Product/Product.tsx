@@ -18,11 +18,11 @@ export const Product = () => {
   // Get unique color options (color name + color code) and memory options
   const colors = getUniqueColorOptions(product);
   const memories = getUniqueMemoryOptions(product);
-  
+
 
   return (
     <>
-      <Breadcrumbs name={product?.category} product={'product'} />
+      <Breadcrumbs label={'products'} href={product?.category} />
       <Variant 
         product={product} 
         colors={colors} 

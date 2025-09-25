@@ -1,0 +1,17 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.rating-badge {
+  font-size: 14px;
+  line-height: 1;
+
+  @include flex(row, nowrap, flex-start, flex-end);
+
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    color: var(--stars-color);
+  }
+}

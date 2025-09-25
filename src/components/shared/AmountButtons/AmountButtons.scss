@@ -1,0 +1,87 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.amount-buttons {
+  margin-top: 40px;
+
+  @include flex(column, nowrap, center, center);
+  gap: 10px;
+
+  @include min-380px {
+    @include flex(row, nowrap, flex-start, center);
+    gap: 16px;
+  }
+
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    color: var(--font-text-color);
+    border: 1px solid var(--border-primary);
+
+    @include flex(row, nowrap, space-between, center);
+
+
+    @include min-380px {
+      width: 120px;
+
+      @include flex(row, nowrap, center, center);
+    }
+  }
+
+  &__btn {
+    width: 38px;
+    min-width: 38px;
+    height: 44px;
+    font-size: 24px;
+    cursor: pointer;
+
+    @include flex(row, nowrap, center, center);
+  }
+
+  &__input-amount {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    text-align: center;
+
+    @include min-380px {
+      width: 38px;
+    }
+  }
+
+  /* ---- ADD BUTTON ---- */
+  &__add-btn {
+    width: 100%;
+    min-width: 140px;
+    padding: 14px 0;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--bg-hover-primary);
+    }
+
+    &--disabled {
+      background-color: #a9a9a9;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: #a9a9a9;
+      }
+    }
+
+    @include min-380px {
+      width: auto;
+    }
+  }
+}

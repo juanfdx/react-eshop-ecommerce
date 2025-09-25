@@ -4,7 +4,8 @@
 .breadcrumbs {
   margin-top: 40px;
 
-  &__h3 {
+  
+  &__container {
     width: 100%;
     max-width: 1200px;
     margin: 0px auto;
@@ -23,13 +24,21 @@
     @include flex(row, nowrap, flex-start, center);
   }
 
+  &__link {
+    text-transform: capitalize;
+
+    &--gray-text {
+      color: var(--font-light-color);
+    }
+  }
+
   &__icon {
     width: 16px;
     margin: 1px 2px 0 2px;
     pointer-events: none;
   }
 
-  &__title {
+  &__name {
     color: var(--font-light-color);
     text-transform: capitalize;
   }

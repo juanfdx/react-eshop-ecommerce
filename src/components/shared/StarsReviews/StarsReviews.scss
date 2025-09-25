@@ -1,12 +1,7 @@
 @use '../../../scss/mixins.scss' as *;
 
 
-.star-rating-display-span {
-  color: var(--stars-color);
-  font-size: 20px;
-}
-
-.star-rating-display {
+.stars-reviews {
   margin: 20px 0 15px 0;
 
   @include flex(row, wrap, flex-start, flex-end);
@@ -35,4 +30,9 @@
     margin-right: 1px;
     font-weight: bold;
   }
+}
+
+.single-star-span {
+  color: var(--stars-color);
+  font-size: 20px;
 }

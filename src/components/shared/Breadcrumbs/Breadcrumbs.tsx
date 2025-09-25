@@ -4,33 +4,38 @@ import { Link } from 'react-router';
 import { Icon } from '../Icon/Icon';
 
 type BreadcrumbsProps = {
-  name: string;
-  product: string;
+  label?: string;
+  href?: string;
 }
 
 
-export const Breadcrumbs = ({name, product}: BreadcrumbsProps) => {
+export const Breadcrumbs = ({label, href}: BreadcrumbsProps) => {
   
 
   return (
     <section className='breadcrumbs' >
-      <h3 className={`breadcrumbs__h3`} >
+      <div className={`breadcrumbs__container`} >
         <Link to='/'>Home</Link>
 
-        { product && 
+        { label && 
           <div className='breadcrumbs__products'>
             <Icon type={'breadcrumbs'} className='breadcrumbs__icon' />
-            <Link to='/products'>Products</Link> 
+            <Link className={`breadcrumbs__link ${!href ? 'breadcrumbs__link--gray-text' : ''}`} to={`/${label}`}>{label}</Link>
           </div>
         }
-        { name &&
-          <>
+        { href &&
+          <div className='breadcrumbs__products'>
             <Icon type={'breadcrumbs'} className='breadcrumbs__icon' />
-            <span className='breadcrumbs__title'>{name}</span>
-          </>
+            <Link 
+              className='breadcrumbs__name' 
+              to={`/products?category=${href}`}
+            >
+              {href}
+            </Link>
+          </div>
         }
         
-      </h3>
+      </div>
     </section>
   )
 }

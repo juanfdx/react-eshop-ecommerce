@@ -1,0 +1,70 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  padding: 80px 0;
+  background-color: var(--color-secondary);
+  transform: translateX(-300px);
+  z-index: 12;
+  transition: all .5s ease;
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  @include min-320px {
+    width: 300px;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+  }
+
+  &__close-icon {
+    width: 21px;
+    height: 21px;
+    color: rgb(92, 92, 92);
+    transition: all .3s ease;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__li {
+
+    &::before {
+      content: '';
+      border-bottom: 1px solid;
+      border-color: var(--line-separator-color);
+      margin: 0 24px;
+      display: block;
+    }
+  }
+
+  &__link {
+    padding: 14px 24px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--font-title-color);
+    text-transform: uppercase;
+    transition: all .3s ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  //active class its part of NavLink tag functionality
+  &__link.active {
+    color: var(--color-primary);
+  }
+}
