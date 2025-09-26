@@ -24,7 +24,7 @@ export const ProductColorSelector = ({ colors, variant, handleVariantChange }: P
           <li 
             key={i} 
             className={`color-selector__color-li ${color === variant?.color ? 'color-selector__color-li--active' : ''}`}
-            onClick={()=>handleVariantChange(color, variant?.memory)}
+            onClick={()=>handleVariantChange(variant?.memory, color)}
           >
             <div className='color-selector__color-btn'> 
               <div 

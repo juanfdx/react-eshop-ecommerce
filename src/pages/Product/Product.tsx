@@ -17,7 +17,7 @@ export const Product = () => {
   const { slug, color, memory } = useParams();
   const navigate = useNavigate();
 
-  const {product} = useLoaderData() as {product: ProductType} || {};
+  const { product} = useLoaderData() as {product: ProductType} || {};
 
   // Try to match variant eagerly || use product?.variations[0]
   const safeVariant = getSafeVariantFromParams(product, memory, color);
@@ -38,7 +38,7 @@ export const Product = () => {
 
 
   // Update selected variation based on selected color and memory
-  const handleVariantChange = (color: string, memory: string) => {
+  const handleVariantChange = (memory: string,color: string ) => {
     const newVariant = product?.variations.find(
       (v) => v.color === color && v.memory === memory
     );

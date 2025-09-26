@@ -27,7 +27,7 @@ export const ProductMemorySelector = ({ memories, variant, handleVariantChange }
             <button
               type="button"
               className='memory-selector__color-btn'
-              onClick={() => handleVariantChange(variant?.color, memory)}
+              onClick={() => handleVariantChange(memory, variant?.color)}
             >
               {memory}
             </button>
