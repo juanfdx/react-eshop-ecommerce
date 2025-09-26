@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
+import { slugify } from '../../../utils/stringUtils';
 import { formatPrice } from '../../../utils/currencyUtils';
 // COMPONENTS
 import { VariantColorButtons } from '../VariantColorButtons/VariantColorButtons';
@@ -19,7 +20,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     <li key={product._id} className='product-card'>
       <Link 
         className='product-card__link' 
-        to={`/product/${product?.slug}?variantId=${product?.variations[0]?._id}`} 
+        to={`/product/${product?.slug}/${slugify(product?.variations[0]?.memory)}/${slugify(product?.variations[0]?.color)}`} 
       >
         <div className='product-card__img-wrapper'>
 
@@ -37,7 +38,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         
         <Link 
           className='product-card__title' 
-          to={`/product/${product?.slug}?variantId=${product?.variations[0]?._id}`}
+          to={`/product/${product?.slug}/${slugify(product?.variations[0]?.memory)}/${slugify(product?.variations[0]?.color)}`} 
         >
           {product?.variations[0]?.name}
         </Link>
