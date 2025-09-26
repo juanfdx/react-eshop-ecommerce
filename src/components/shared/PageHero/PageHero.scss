@@ -1,0 +1,58 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.page-hero {
+  width: 100%;
+  
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0;
+
+    @include min-768px {
+      padding: 0 40px;
+    }
+  }
+
+  &__background {
+    position: relative;
+    height: 150px;
+    padding: 20px 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include flex(column, nowrap, center, center);
+
+    @include min-480px {
+      height: 200px;
+    }
+
+    @include min-768px {
+      padding: 40px;
+    }
+
+    @include min-992px {
+      height: 300px;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.04);
+    pointer-events: none; // this allowing clicks to pass through the layer 
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__cta {
+    // color: white;
+  }
+}

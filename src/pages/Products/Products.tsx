@@ -1,11 +1,16 @@
-import './Products.scss';
-
+import { PageHero } from '../../components/shared/PageHero/PageHero';
+import pcHero from '../../assets/images/hero/apple_pc_hero.webp';
 
 export const Products = () => {
   
   return (
-    <section className='products'>
-      Products
-    </section>
+    <>
+      <PageHero 
+        title={'Shop'} 
+        backgroundImage={pcHero} 
+        ctaLabel={'View All'} 
+        ctaHref={'/products'}
+      />
+    </>
   )
 }
