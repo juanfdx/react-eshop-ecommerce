@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { isWhiteSpectrum } from '../../../utils/colorUtils';
-import { getTopColorVariants } from '../../../utils/productUtils';
+import { getProductVariantUrl, getTopColorVariants } from '../../../utils/productUtils';
 
 
 type VariantColorButtonsProps = {
@@ -27,7 +27,7 @@ export const VariantColorButtons = ({ product }: VariantColorButtonsProps) => {
         >
           <Link 
             className={`variant-color-buttons__link ${isWhiteSpectrum(variant?.hexCode) ? 'variant-color-buttons__link--active' : ''}`} 
-            to={`/product/${product?.slug}?variantId=${variant?._id}`} 
+            to={getProductVariantUrl(product?.slug, variant)} 
             style={{ backgroundColor: variant?.hexCode }}
           ></Link>
           

@@ -3,8 +3,8 @@ import { Link } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
-import { slugify } from '../../../utils/stringUtils';
 import { formatPrice } from '../../../utils/currencyUtils';
+import { getFirstVariantUrl } from '../../../utils/productUtils';
 // COMPONENTS
 import { VariantColorButtons } from '../VariantColorButtons/VariantColorButtons';
 
@@ -18,10 +18,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   
   return (
     <li key={product._id} className='product-card'>
-      <Link 
-        className='product-card__link' 
-        to={`/product/${product?.slug}/${slugify(product?.variations[0]?.memory)}/${slugify(product?.variations[0]?.color)}`} 
-      >
+      <Link className='product-card__link' to={getFirstVariantUrl(product)}>
         <div className='product-card__img-wrapper'>
 
           <img 
@@ -36,10 +33,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <div className='product-card__text-wrapper'>
         <VariantColorButtons product={product} />
         
-        <Link 
-          className='product-card__title' 
-          to={`/product/${product?.slug}/${slugify(product?.variations[0]?.memory)}/${slugify(product?.variations[0]?.color)}`} 
-        >
+        <Link className='product-card__title' to={getFirstVariantUrl(product)}>
           {product?.variations[0]?.name}
         </Link>
         

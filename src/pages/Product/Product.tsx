@@ -3,51 +3,38 @@ import { useLoaderData, useNavigate, useParams } from 'react-router';
 import type { Product as ProductType, ProductVariation} from '../../interfaces/product.interface';
 // UTILS
 import { getUniqueColorOptions, getUniqueMemoryOptions } from '../../utils/colorUtils';
-import { deslugify, slugify } from '../../utils/stringUtils';
+import { slugify } from '../../utils/stringUtils';
 // COMPONENTS
 import { Breadcrumbs } from '../../components/shared/Breadcrumbs/Breadcrumbs';
 import { Variant } from '../../components/products/Variant/Variant';
 import { useEffect, useState } from 'react';
+import { getSafeVariantFromParams } from '../../utils/productUtils';
 
 
 
 export const Product = () => {
   
-  const {product} = useLoaderData() as {product: ProductType} || {};
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariation | null>(null);
-  
   const { slug, color, memory } = useParams();
   const navigate = useNavigate();
 
-  // Get unique color options (color name + color code) and memory options
-  const colors = getUniqueColorOptions(product);
-  const memories = getUniqueMemoryOptions(product);
-  
+  const {product} = useLoaderData() as {product: ProductType} || {};
 
-  // Update selectedVariant based on selected color and memory
+  // Try to match variant eagerly || use product?.variations[0]
+  const safeVariant = getSafeVariantFromParams(product, memory, color);
+
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariation>(
+    safeVariant
+  );
+
+  // Navigate to valid variant if URL params are invalid
   useEffect(() => {
-    if (!product?.variations?.length || !color || !memory) return;
-
-    const variant = product.variations.find(
-      (v) =>
-        v.memory.toLowerCase() === deslugify(memory.toLowerCase()) &&
-        v.color.toLowerCase() === deslugify(color.toLowerCase())
-    );
-
-    if (variant) { setSelectedVariant(variant); } 
-    else {
-      // If color/memory combo is invalid, redirect to first valid one
-      const fallback = product.variations[0];
-      setSelectedVariant(fallback);
+    if (safeVariant) {
       navigate(
-        `/product/${slug}/${slugify(fallback.memory)}/${slugify(fallback.color)}`,
-        { replace: true }
+        `/product/${slug}/${slugify(safeVariant.memory)}/${slugify(safeVariant.color)}`,
+        { replace: true } // true for no back-button history
       );
     }
-  }, [product?.variations, color, memory, navigate, slug]);
-  
-
-  if (!product || !selectedVariant) return <div>Product not found</div>;
+  }, [safeVariant, navigate, slug]);
 
 
   // Update selected variation based on selected color and memory
@@ -60,7 +47,7 @@ export const Product = () => {
       setSelectedVariant(newVariant);
       navigate(
         `/product/${slug}/${slugify(newVariant.memory)}/${slugify(newVariant.color)}`,
-        { replace: false } // or true for no back-button history
+        { replace: false } // false for back-button history
       );
     }
   };
@@ -73,8 +60,8 @@ export const Product = () => {
       <Variant 
         product={product} 
         variant={selectedVariant}
-        colors={colors} 
-        memories={memories} 
+        colors={getUniqueColorOptions(product)} 
+        memories={getUniqueMemoryOptions(product)} 
         handleVariantChange={handleVariantChange}
       />
     </>

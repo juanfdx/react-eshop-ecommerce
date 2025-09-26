@@ -1,5 +1,6 @@
 import './ProductThumbnailSlider.scss';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 // INTERFACES
 import type { ProductImage } from '../../../interfaces/product.interface';
 // HOOKS
@@ -15,6 +16,7 @@ type ProductThumbnailSliderProps = {
 
 export const ProductThumbnailSlider = ({ images, handlePosition }: ProductThumbnailSliderProps) => {
 
+  const location = useLocation();
   const [imgSelected, setImgSelected]     = useState<number>(0);
   const [slidePosition, setSlidePosition] = useState<number>(0)
   const [imgToShow, setImgToShow]   = useState(5);
@@ -27,6 +29,14 @@ export const ProductThumbnailSlider = ({ images, handlePosition }: ProductThumbn
   const slideWidth = slideMoveX * 100
   const slideTranslate = 100 / slideMoveX
   const cardWidth = 100 / imgAmount
+
+
+  //reset slider when url changes
+  useEffect(() => {
+    setTransition(false)
+    setImgSelected(0)
+    setSlidePosition(0)
+  }, [location])
 
 
   useEffect(() => {

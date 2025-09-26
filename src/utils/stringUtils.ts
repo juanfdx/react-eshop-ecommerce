@@ -12,7 +12,7 @@ export const capitalizeFirstLetter = (paragraph: string): string => {
   SLUGIFY
 ========================================================*/
 export const slugify = (text: string): string => {
-  return text.toLowerCase().replace(/\s+/g, '-');
+  return text.trim().toLowerCase().replace(/\s+/g, '-');
 };
 
 
@@ -20,5 +20,5 @@ export const slugify = (text: string): string => {
   DESLUGIFY
 ========================================================*/
 export const deslugify = (text: string): string => {
-  return text.replace(/-/g, ' ').toLowerCase();
+  return text.trim().replace(/-/g, ' ').toLowerCase();
 };

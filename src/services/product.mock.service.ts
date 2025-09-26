@@ -51,7 +51,7 @@ export const getProductBySlug = (slug: string): Promise<ResponseProduct> => {
         status: 200,
         data: { product }
       })
-    }, 400);
+    }, 100);
   })
 }
 /*========================================================
