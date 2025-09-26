@@ -39,7 +39,7 @@ export const ProductTabs = ({ product }: ProductTabsProps) => {
         ))}
       </ul>
 
-      {/* tabs wrapper */}
+      {/* tabs container */}
       <div className='product-tabs__wrapper'>
         {/* description */}
         <div className={`product-tabs__panel ${(position === 0) ? 'product-tabs__panel--active' : ''}`}>   
@@ -99,10 +99,9 @@ export const ProductTabs = ({ product }: ProductTabsProps) => {
                           <div className='product-tabs__comment-one-star-wrapper'>
                             <RatingBadge rating={review.rating} />
                           </div>
-                         
-      
                         </h6>
                         <p className='product-tabs__comment-p'>{review.comment}</p>
+                        
                       </div>
                     </div>
                   </li>            

@@ -59,6 +59,7 @@
     }
   }
 
+  /* ---- tabs container ---- */
   &__wrapper {
     width: 100%;
   }
@@ -163,7 +164,11 @@
   }
 
   &__comments-li {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+
+    @include min-576px {
+      margin-bottom: 20px;
+    }
   }
 
   /* ---- review ---- */
@@ -175,9 +180,15 @@
   }
 
   &__comment-avatar {
-    width: 60px;
-    height: 60px;
-    margin-right: 20px;
+    width: 55px;
+    height: 55px;
+    margin-right: 15px;
+
+    @include min-576px {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+    }
   }
 
   &__comment-text-box {
@@ -207,6 +218,10 @@
     font-size: 14px;
     font-weight: 700;
     color: var(--font-title-color);
+
+    @include min-576px {
+      font-size: 16px;
+    }
   }
 
   &__comment-date {
@@ -236,12 +251,13 @@
 
   &__comment-p {
     width: 100%;
-    font-size: 16px;
+    font-size: 14px;
     hyphens: none;
     color: var(--font-text-color);
 
     @include min-576px {
       width: 75%;
+      font-size: 16px;
     }
   }
 }

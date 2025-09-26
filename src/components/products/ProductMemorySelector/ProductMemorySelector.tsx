@@ -5,10 +5,11 @@ import type { ProductVariation } from '../../../interfaces/product.interface';
 type ProductMemorySelectorProps = {
   memories: string[];
   variant: ProductVariation;
+  handleVariantChange: (color: string, memory: string) => void
 }
 
 
-export const ProductMemorySelector = ({ memories, variant }: ProductMemorySelectorProps) => {
+export const ProductMemorySelector = ({ memories, variant, handleVariantChange }: ProductMemorySelectorProps) => {
   
   return (
     <div className='memory-selector'>
@@ -26,7 +27,7 @@ export const ProductMemorySelector = ({ memories, variant }: ProductMemorySelect
             <button
               type="button"
               className='memory-selector__color-btn'
-              // onClick={() => handleVariationChange(selectedVariation?.color, memory)}
+              onClick={() => handleVariantChange(variant?.color, memory)}
             >
               {memory}
             </button>

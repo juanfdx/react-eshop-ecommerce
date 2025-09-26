@@ -1,8 +1,7 @@
 import './Variant.scss';
 import { useState } from 'react';
-import { useSearchParams } from 'react-router';
 // INTERFACES
-import type { Product } from '../../../interfaces/product.interface';
+import type { Product, ProductVariation } from '../../../interfaces/product.interface';
 // UTILS
 import { formatPrice } from '../../../utils/currencyUtils';
 // COMPONENTS
@@ -17,19 +16,16 @@ import { ProductTabs } from '../ProductTabs/ProductTabs';
 
 type VariantProps = {
   product: Product;
+  variant: ProductVariation;
   colors: [string, string][];
   memories: string[];
+  handleVariantChange: (color: string, memory: string) => void
 }
 
-export const Variant = ({ product, colors, memories }: VariantProps) => {
+export const Variant = ({ product, variant, colors, memories, handleVariantChange }: VariantProps) => {
 
   const [amount, setAmount] = useState<number>(1);
   
-  const [searchParams] = useSearchParams();
-  const variantId = searchParams.get('variantId');
-
-  const variant = product.variations.find(v => v._id === variantId);
-  if (!variant) return <div>Variant not found</div>;
 
   const cartProduct = {
     _id: variant?._id,
@@ -72,9 +68,9 @@ export const Variant = ({ product, colors, memories }: VariantProps) => {
           <div className='variant__line-separator'></div>
           <p className='variant__description'>{product?.description}</p>       
           {/* product color selector */}
-          <ProductColorSelector colors={colors} variant={variant} />
+          <ProductColorSelector colors={colors} variant={variant} handleVariantChange={handleVariantChange} />
           {/* product memory selector */}
-          <ProductMemorySelector memories={memories} variant={variant} />
+          <ProductMemorySelector memories={memories} variant={variant} handleVariantChange={handleVariantChange} />
           {/* product buy buttons */}
           <AmountButtons variant={variant} amount={amount} setAmount={setAmount} addToCart={addToCart} />
           {/* product meta data */}

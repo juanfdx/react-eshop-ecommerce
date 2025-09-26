@@ -86,7 +86,11 @@
 
     &--left {
       left: 0px;
-      padding-left: 3px;
+      padding-left: 2px;
+
+      @include min-576px {
+        padding-left: 3px;
+      }
     }
 
     &--right {

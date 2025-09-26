@@ -5,10 +5,11 @@ import type { ProductVariation } from '../../../interfaces/product.interface';
 type ProductColorSelectorProps = {
   colors: [string, string][];
   variant: ProductVariation;
+  handleVariantChange: (color: string, memory: string) => void
 };
 
 
-export const ProductColorSelector = ({ colors, variant }: ProductColorSelectorProps) => {
+export const ProductColorSelector = ({ colors, variant, handleVariantChange }: ProductColorSelectorProps) => {
   
   return (
     <div className='color-selector'>
@@ -18,17 +19,17 @@ export const ProductColorSelector = ({ colors, variant }: ProductColorSelectorPr
       </p>
 
       <ul className='color-selector__color-ul'>
-        {colors?.map(([color, hex], i) => (
+        {colors?.map(([color, hexCode], i) => (
 
           <li 
             key={i} 
             className={`color-selector__color-li ${color === variant?.color ? 'color-selector__color-li--active' : ''}`}
-            // onClick={()=>handleVariationChange(color, variant?.memory)}
+            onClick={()=>handleVariantChange(color, variant?.memory)}
           >
             <div className='color-selector__color-btn'> 
               <div 
                 className='color-selector__color-circle' 
-                style={{ backgroundColor: hex }}
+                style={{ backgroundColor: hexCode }}
               >
               </div>        
             </div>
