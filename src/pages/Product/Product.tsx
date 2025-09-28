@@ -1,14 +1,15 @@
+import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate, useParams } from 'react-router';
 // INTERFACES
 import type { Product as ProductType, ProductVariation} from '../../interfaces/product.interface';
 // UTILS
 import { getUniqueColorOptions, getUniqueMemoryOptions } from '../../utils/colorUtils';
+import { getSafeVariantFromParams } from '../../utils/productUtils';
 import { slugify } from '../../utils/stringUtils';
 // COMPONENTS
 import { Breadcrumbs } from '../../components/shared/Breadcrumbs/Breadcrumbs';
 import { Variant } from '../../components/products/Variant/Variant';
-import { useEffect, useState } from 'react';
-import { getSafeVariantFromParams } from '../../utils/productUtils';
+import { RelatedProducts } from '../../components/products/RelatedProducts/RelatedProducts';
 
 
 
@@ -17,7 +18,7 @@ export const Product = () => {
   const { slug, color, memory } = useParams();
   const navigate = useNavigate();
 
-  const { product} = useLoaderData() as {product: ProductType} || {};
+  const { product, allProducts }: { product: ProductType, allProducts: ProductType[] } = useLoaderData() || {};
 
   // Try to match variant eagerly || use product?.variations[0]
   const safeVariant = getSafeVariantFromParams(product, memory, color);
@@ -26,16 +27,9 @@ export const Product = () => {
     safeVariant
   );
 
-  // Navigate to valid variant if URL params are invalid
   useEffect(() => {
-    if (safeVariant) {
-      navigate(
-        `/product/${slug}/${slugify(safeVariant.memory)}/${slugify(safeVariant.color)}`,
-        { replace: true } // true for no back-button history
-      );
-    }
-  }, [safeVariant, navigate, slug]);
-
+    setSelectedVariant(safeVariant);
+  }, [safeVariant]);
 
   // Update selected variation based on selected color and memory
   const handleVariantChange = (memory: string,color: string ) => {
@@ -43,6 +37,8 @@ export const Product = () => {
       (v) => v.color === color && v.memory === memory
     );
 
+    if (newVariant?._id === selectedVariant?._id) return;
+    
     if (newVariant) {
       setSelectedVariant(newVariant);
       navigate(
@@ -63,6 +59,10 @@ export const Product = () => {
         colors={getUniqueColorOptions(product)} 
         memories={getUniqueMemoryOptions(product)} 
         handleVariantChange={handleVariantChange}
+      />
+      <RelatedProducts 
+        product={product} 
+        products={allProducts}
       />
     </>
   )

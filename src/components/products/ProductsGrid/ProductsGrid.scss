@@ -7,13 +7,13 @@
 
 
   @include grid(repeat(1, 1fr));
-  gap: 20px;
+  gap: 10px;
 
-  @include min-380px {
+  @include min-480px {
     @include grid(repeat(2, 1fr));
   }
 
-  @include min-576px {
+  @include min-768px {
     @include grid(repeat(3, 1fr));
   }
 

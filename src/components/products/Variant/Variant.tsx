@@ -25,7 +25,6 @@ type VariantProps = {
 export const Variant = ({ product, variant, colors, memories, handleVariantChange }: VariantProps) => {
 
   const [amount, setAmount] = useState<number>(1);
-  
 
   const cartProduct = {
     _id: variant?._id,

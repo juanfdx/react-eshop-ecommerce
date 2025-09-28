@@ -7,11 +7,28 @@
 
   @include flex(row, nowrap, flex-start, flex-end);
 
+  &--small {
+    font-size: 13px;
+  }
 
   &__icon {
     width: 14px;
     height: 14px;
     margin-left: 2px;
     color: var(--stars-color);
+
+    &--small {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  &__reviews {
+    margin-left: 4px;
+    font-size: 13px;
+
+    &--small {
+      font-size: 12px;
+    }
   }
 }

@@ -6,7 +6,7 @@ export const ErrorElement = () => {
   
   const error = useRouteError();
 
-  if (isRouteErrorResponse(error)) console.error(`Error: ${error?.status} ${error?.statusText}`); 
+  if (isRouteErrorResponse(error)) console.error(`Error: ${error?.status} ${error?.data}`); 
   else console.error(`Error: Something went wrong!`)
 
 
@@ -17,7 +17,7 @@ export const ErrorElement = () => {
         <h1 className='error-element__title'>Oops!</h1>
         
         {isRouteErrorResponse(error) ? (
-          <p className='error-element__text'>Sorry {error?.statusText}</p>
+          <p className='error-element__text'>Sorry, {error?.data}</p>
         ) : (
           <p className='error-element__text'>Something went wrong</p>
         )}

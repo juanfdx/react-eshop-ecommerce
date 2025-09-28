@@ -24,7 +24,7 @@ export function getTopColorVariants(variations: ProductVariation[]): ProductVari
   GET VARIANT FROM PARAMS
 ========================================================*/
 export function getVariantFromParams(product: Product, memory?: string, color?: string): ProductVariation | undefined {
-  if (!memory || !color ) return undefined;
+  if (!memory || !color || !product ) return undefined;
 
   return product?.variations?.find(
     (v) =>
@@ -59,4 +59,16 @@ export function getProductVariantUrl(
 export function getFirstVariantUrl(product: Product): string {
   const variant = product?.variations[0];
   return getProductVariantUrl(product?.slug, variant);
+}
+
+
+/*========================================================
+  GET RELATED PRODUCTS
+========================================================*/
+export const getRelatedProducts = (product: Product, products: Product[]) => {
+  const relatedProducts = products.filter((p) => p?._id !== product?._id && p?.category === product?.category);
+  
+  if (relatedProducts?.length == 0) return { relatedProducts: products, isRelated: false };
+
+  return { relatedProducts, isRelated: true }; 
 }

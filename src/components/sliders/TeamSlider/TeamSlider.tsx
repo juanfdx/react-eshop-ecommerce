@@ -111,7 +111,7 @@ export const TeamSlider = ({ team }: TeamSliderProps) => {
                   className='team-slider__card'
                   style={{
                     width : `${cardWidth}%`,  
-                    transform: (imgAmount > 4 || imgToShow <= 3) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
+                    transform: (imgAmount >= imgToShow + 2) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
                     transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
                   }}
                 >
@@ -140,7 +140,7 @@ export const TeamSlider = ({ team }: TeamSliderProps) => {
             <BsChevronCompactLeft className='team-slider__chevron' />
           </button>
 
-          <button className='team-slider__btn team-slider__btn--right' onClick={handleNextImage} >
+          <button className='team-slider__btn team-slider__btn--next' onClick={handleNextImage} >
             <BsChevronCompactRight className='team-slider__chevron' />
           </button>
 

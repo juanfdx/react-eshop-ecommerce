@@ -35,6 +35,12 @@
   }
 }
 
+@mixin min-375px {
+  @media (min-width: 375px) {
+    @content;
+  }
+}
+
 @mixin min-380px {
   @media (min-width: 380px) {
     @content;
