@@ -1,0 +1,37 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.hero-breadcrumbs {
+  margin: 1px 0 0 1px;
+
+  
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto;
+    font-size: 14px;
+    color: var(--font-title-color);
+
+    @include flex(row, wrap, flex-start, center);
+  }
+
+  &__products {
+    @include flex(row, nowrap, flex-start, center);
+  }
+
+  &__link {
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  &__slash {
+    margin: 0 5px;
+    padding-top: 1px;
+    font-size: 12px;
+  }
+
+  &__label {
+    color: var(--font-light-color);
+    text-transform: capitalize;
+  }
+}

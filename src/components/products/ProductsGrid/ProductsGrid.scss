@@ -13,15 +13,15 @@
     @include grid(repeat(2, 1fr));
   }
 
-  @include min-576px {
+  @include min-768px {
     @include grid(repeat(3, 1fr));
   }
 
-  @include min-768px {
+  @include min-992px {
     @include grid(repeat(4, 1fr));
   }
 
-  @include min-992px {
+  @include min-1200px {
     @include grid(repeat(5, 1fr));
   }
 }

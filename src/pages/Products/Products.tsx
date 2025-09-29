@@ -10,8 +10,7 @@ export const Products = () => {
       <PageHero 
         title={'Shop'} 
         backgroundImage={pcHero} 
-        ctaLabel={'View All'} 
-        ctaHref={'/products'}
+        label={'shop'} 
       />
     </>
   )

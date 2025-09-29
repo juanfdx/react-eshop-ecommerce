@@ -1,16 +1,17 @@
 import './PageHero.scss';
 // COMPONENTS
 import { Title } from '../Title/Title';
+import { HeroBreadCrumbs } from '../HeroBreadCrumbs/HeroBreadCrumbs';
 
 
 type PageHeroProps = {
   title: string;
   backgroundImage: string;
-  ctaLabel?: string;
-  ctaHref?: string;
+  label?: string;
 };
 
-export const PageHero = ({title, backgroundImage, ctaLabel, ctaHref}: PageHeroProps) => {
+
+export const PageHero = ({title, backgroundImage, label}: PageHeroProps) => {
   
   return (
     <section className="page-hero">
@@ -25,8 +26,8 @@ export const PageHero = ({title, backgroundImage, ctaLabel, ctaHref}: PageHeroPr
 
           <div className="page-hero__content">
             <Title title={title} />
-            {ctaLabel && ctaHref && (
-              <h1><a href={ctaHref}>{ctaLabel}</a></h1>
+            {label && (
+              <HeroBreadCrumbs label={label}  />
             )}
           </div>
           
