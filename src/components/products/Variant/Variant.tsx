@@ -69,7 +69,10 @@ export const Variant = ({ product, variant, colors, memories, handleVariantChang
           {/* product color selector */}
           <ProductColorSelector colors={colors} variant={variant} handleVariantChange={handleVariantChange} />
           {/* product memory selector */}
-          <ProductMemorySelector memories={memories} variant={variant} handleVariantChange={handleVariantChange} />
+          {
+            memories?.length > 0 &&
+            <ProductMemorySelector memories={memories} variant={variant} handleVariantChange={handleVariantChange} />
+          }
           {/* product buy buttons */}
           <AmountButtons variant={variant} amount={amount} setAmount={setAmount} addToCart={addToCart} />
           {/* product meta data */}

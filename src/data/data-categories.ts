@@ -6,7 +6,7 @@ import televisions from '../assets/images/categories/televisions.webp';
 import headphones from '../assets/images/categories/headphones.webp';
 import speakers from '../assets/images/categories/speakers.webp';
 import earphones from '../assets/images/categories/earphones.webp';
-import smartWatches from '../assets/images/categories/smartWatches.webp';
+import smartwatches from '../assets/images/categories/smartWatches.webp';
 
 
 export interface Category {
@@ -62,9 +62,9 @@ export const categories: Category[] = [
   },
   {
     id       : 8,
-    category : 'smartWatches',
-    image    : smartWatches,
-    alt      : 'smartWatch image'
+    category : 'smartwatches',
+    image    : smartwatches,
+    alt      : 'smartwatch image'
   },
   {
     id       : 9,

@@ -1,0 +1,37 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.initial-loader {
+  width: 100%;
+  height: 100vh;
+
+  @include flex(column, nowrap, center, center);
+
+  &__title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+
+    animation: pulse-scale 4s infinite ease-in-out;
+    display: inline-block;
+    transition: transform 0.3s;
+
+    @include min-576px {
+      font-size: 32px;
+    }
+  }
+
+  /* ANIMATIONS */
+  @keyframes pulse-scale {
+  
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+  }
+}

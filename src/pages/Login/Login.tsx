@@ -1,10 +1,10 @@
 import './Login.scss';
 import { Form, Link, useActionData } from 'react-router';
 // COMPONENTS
-import { FormInput } from '../../components/Form/FormInput/FormInput';
-import { FormPassword } from '../../components/Form/FormPassword/FormPassword';
-import { FormCheckbox } from '../../components/Form/FormCheckbox/FormCheckbox';
-import { SubmitBtn } from '../../components/Form/SubmitBtn/SubmitBtn';
+import { FormInput } from '../../components/form/FormInput/FormInput';
+import { FormPassword } from '../../components/form/FormPassword/FormPassword';
+import { FormCheckbox } from '../../components/form/FormCheckbox/FormCheckbox';
+import { SubmitBtn } from '../../components/form/SubmitBtn/SubmitBtn';
 
 
 export const Login = () => {

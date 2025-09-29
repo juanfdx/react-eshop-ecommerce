@@ -45,5 +45,11 @@ export function getUniqueColorOptions(product: Product): [string, string][] {
   GET UNIQUE MEMORY OPTIONS
 ========================================================*/
 export function getUniqueMemoryOptions(product: Product): string[] {
-  return [...new Set(product.variations.map((v) => v.memory))];
+  const memories = product.variations
+    .map((v) => v.memory?.trim())           // Handle undefined/null and trim whitespace
+    .filter((m): m is string => !!m);       // Filter out falsy (null, '', undefined)
+
+  const uniqueMemories = [...new Set(memories)];
+
+  return uniqueMemories.length > 0 ? uniqueMemories : [];
 }

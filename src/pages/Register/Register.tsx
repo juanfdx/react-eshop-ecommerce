@@ -1,9 +1,9 @@
 import './Register.scss';
 import { Form, Link, useActionData } from 'react-router';
 // COMPONENTS
-import { FormInput } from '../../components/Form/FormInput/FormInput';
-import { FormPassword } from '../../components/Form/FormPassword/FormPassword';
-import { SubmitBtn } from '../../components/Form/SubmitBtn/SubmitBtn';
+import { FormInput } from '../../components/form/FormInput/FormInput';
+import { FormPassword } from '../../components/form/FormPassword/FormPassword';
+import { SubmitBtn } from '../../components/form/SubmitBtn/SubmitBtn';
 
 
 export const Register = () => {

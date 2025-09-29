@@ -16,14 +16,6 @@
     padding: 10px;
     overflow: clip;
 
-    @include min-375px {
-      padding: 10px 20px;
-    }
-
-    @include min-480px {
-      padding: 10px;
-    }
-
     &:hover {
       .product-card__img {
         transform: scale(1.05);

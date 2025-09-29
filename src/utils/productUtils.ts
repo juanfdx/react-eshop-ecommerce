@@ -24,13 +24,28 @@ export function getTopColorVariants(variations: ProductVariation[]): ProductVari
   GET VARIANT FROM PARAMS
 ========================================================*/
 export function getVariantFromParams(product: Product, memory?: string, color?: string): ProductVariation | undefined {
-  if (!memory || !color || !product ) return undefined;
+  if (!color || !product ) return undefined;
 
-  return product?.variations?.find(
-    (v) =>
-      v.memory.toLowerCase() === deslugify(memory.toLowerCase()) &&
-      v.color.toLowerCase() === deslugify(color.toLowerCase())
-  );
+  const normalizedColor = deslugify(color.toLowerCase());
+  const normalizedMemory = memory ? deslugify(memory.toLowerCase()) : undefined;
+
+  const hasMemoryVariants = product.variations.some(v => !!v.memory?.trim());
+
+  return product.variations.find((v) => {
+    const variantColor = v.color.toLowerCase();
+    const variantMemory = v.memory?.toLowerCase();
+
+    // If product has memory variants, match both memory and color
+    if (hasMemoryVariants) {
+      return (
+        variantColor === normalizedColor &&
+        variantMemory === normalizedMemory
+      );
+    }
+
+    // If product has no memory variants, match only color
+    return variantColor === normalizedColor;
+  });
 }
 
 
@@ -49,6 +64,8 @@ export function getProductVariantUrl(
   slug: string,
   variant: ProductVariation
 ): string {
+  // check if variant has memory
+  if (!variant?.memory) return `/product/${slug}/${slugify(variant?.color)}`;
   return `/product/${slug}/${slugify(variant?.memory)}/${slugify(variant?.color)}`;
 }
 
@@ -68,7 +85,10 @@ export function getFirstVariantUrl(product: Product): string {
 export const getRelatedProducts = (product: Product, products: Product[]) => {
   const relatedProducts = products.filter((p) => p?._id !== product?._id && p?.category === product?.category);
   
-  if (relatedProducts?.length == 0) return { relatedProducts: products, isRelated: false };
+  if (relatedProducts?.length == 0) {
+    const otherProducts = products.filter((p) => p?._id !== product?._id);
+    return { relatedProducts: otherProducts, isRelated: false };
+  };
 
   return { relatedProducts, isRelated: true }; 
 }

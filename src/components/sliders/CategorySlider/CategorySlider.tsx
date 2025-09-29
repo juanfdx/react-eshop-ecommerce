@@ -39,7 +39,8 @@ export const CategorySlider = () => {
       width < 576 ? 2 :
       width < 768 ? 3 :
       width < 992 ? 4 :
-      5;
+      width < 1200 ? 5 :
+      6;
 
     setImgToShow(size);
   }, [width]);

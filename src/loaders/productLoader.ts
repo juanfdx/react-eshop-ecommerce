@@ -17,7 +17,7 @@ export const productLoader = async ({ params }: LoaderFunctionArgs) => {
   
   const { slug, memory, color } = params;
 
-  if (!slug || !memory || !color) {
+  if (!slug || !color) {
     throw new Response('Missing parameters', { status: 400 });
   }
 
@@ -34,19 +34,29 @@ export const productLoader = async ({ params }: LoaderFunctionArgs) => {
     const product: Product = productResponse.data.product;
 
     // Find matching variant from URL params (update url if invalid)
-    const matchedVariant = product.variations.find(
-      (v) =>
-        slugify(v.memory) === slugify(memory || '') &&
-        slugify(v.color) === slugify(color || '')
-      );
+    const hasMemoryVariants = product.variations.some(v => !!v.memory);
+    
+    const matchedVariant = product.variations.find(v => {
+      const colorMatch = slugify(v.color) === slugify(color || '');
 
-    // If invalid or missing color/memory, redirect to first valid variant
+      if (hasMemoryVariants) {
+        return colorMatch && slugify(v.memory) === slugify(memory || '');
+      } else {
+        return colorMatch; // Only check color if no memory variants
+      }
+    });
+
+    // If no valid variant is found, redirect to the first one with the correct params
     if (!matchedVariant) {
       const defaultVariant = product.variations[0];
-      const safeMemory = slugify(defaultVariant.memory);
       const safeColor = slugify(defaultVariant.color);
+      const safeMemory = defaultVariant.memory ? slugify(defaultVariant.memory) : undefined;
 
-      return redirect(`/product/${slug}/${safeMemory}/${safeColor}`);
+      const url = safeMemory
+        ? `/product/${slug}/${safeMemory}/${safeColor}`
+        : `/product/${slug}/${safeColor}`;
+
+      return redirect(url);
     }
 
     // Then: get all products (optional or less critical)

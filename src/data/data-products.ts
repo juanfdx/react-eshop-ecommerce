@@ -787,5 +787,744 @@ export const products: Product[] = [
       }
     ],
     createdAt: new Date().toISOString()
-  }
+  },
+  {
+    _id: "1c60f872-45da-44f9-800c-c5fef5b2b0d4",
+    name: "Apple Watch SE GPS 44mm",
+    slug: "apple-watch-se-gps-44mm",
+    brand: "apple",
+    category: "smartwatches",
+    description: "The 13-inch MacBook Air is powered by the M3 chip, which offers a super-compact design and up to 18 hours of battery life.1 It's the perfect companion for work and play, anywhere.",
+    features: [
+      {
+        key: "M3 Power. Sharpened to the max",
+        value: "MacBook Air with M3 chip is compact enough to work and play anywhere."
+      },
+      {
+        key: "Compact design",
+        value: "Because it's super lightweight and just over an inch thick, you can take your MacBook Air with you anywhere."
+      },
+      {
+        key: "Do more. Faster.",
+        value: "The power of the Apple M3 chip's 8-core CPU and up to 10-core GPU keeps everything running smoothly."
+      },
+      {
+        key: "Up to 18 hours of autonomyn",
+        value: "With all-day battery life, you can leave the adapter at home with peace of mind."
+      },
+      {
+        key: "A bright screen",
+        value: "The 13.6-inch Liquid Retina display2 supports 1 billion colors."
+      },
+      {
+        key: "Full connectivity",
+        value: "MacBook Air has two Thunderbolt ports, a headphone jack, Wi-Fi 6E,4 Bluetooth 5.3, and a MagSafe charging port. And you can connect up to two external monitors with the lid of the laptop closed."
+      }
+    ],
+    specs: [
+      {
+        key: "chip",
+        value: [
+          "Apple M3 chip",
+          "8-core CPU (4 performance and 4 efficiency)",
+          "8-core GPU",
+          "16-core Neural Engine",
+          "100 GB/s memory bandwidth"
+        ]
+      },
+      {
+        key: "display",
+        value: [
+          "Liquid Retina display",
+          "13.6-inch (diagonal) LED-backlit display with IPS technology;1 2,560-by-1,664 native resolution at 224 pixels per inch",
+          "500 nits brightness",
+          "Supports 1 billion colors",
+          "True Tone Technology"
+        ]
+      },
+      {
+        key: "memory",
+        value: [
+          "8GB unified memory"
+        ]
+      },
+      {
+        key: "connectivity",
+        value: [
+          "WiFi 6E (802.11ax)4",
+          "Bluetooth 5.3"
+        ]
+      },
+      {
+        key: "Webcam",
+        value: [
+          "1080p FaceTime HD camera",
+          "Advanced Image Signal Processor with Computational Video"
+        ]
+      },
+      {
+        key: "battery",
+        value: [
+          "Up to 18 hours of video playback on the Apple TV app",
+          "Up to 15 hours of wireless web browsing",
+          "52.6 watt hour lithium polymer battery",
+          "30W USB-C power adapter (included with M2 and M3 with 8-core GPU)"
+        ]
+      },
+      {
+        key: "dimensions and weight",
+        value: [
+          "width: 30.41 cm",
+          "depth: 21.5 cm",
+          "height: 1.13 cm",
+          "weight: 1.24 kg"
+        ]
+      }
+    ],
+    reviews: [],
+    averageRating: 0,
+    variations: [
+      {
+        _id: "24c6f6fa-8358-40fc-a197-4f0a3c82c4e6",
+        name: "Apple Watch SE GPS 44mm Midnight",
+        slug: "apple-watch-se-gps-44mm-midnight",
+        color: "midnight",
+        hexCode: "#40464F",
+        memory: "", 
+        price: 26900,
+        stock: 15,
+        sku: "APL-WSE-GPS44-MID",
+        available: true,
+        images: [
+          {
+            public_id: "mn163vnnfpw5nuc5e2br",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726208525/eshop/products/apple-watch-se-gps-44mm-midnight-aluminum-with-midnight-sport-band-m-l/mn163vnnfpw5nuc5e2br.webp",
+          },
+          {
+            public_id: "wvesgrb9gqw31wmopdpc",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726231635/eshop/products/apple-watch-se-gps-44mm-midnight-aluminum-with-midnight-sport-band-m-l/wvesgrb9gqw31wmopdpc.webp",
+          },
+          {
+            public_id: "w4kkqetzkvjufqaouklr",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726231658/eshop/products/apple-watch-se-gps-44mm-midnight-aluminum-with-midnight-sport-band-m-l/w4kkqetzkvjufqaouklr.webp",
+          },
+          {
+            public_id: "ab68xynbbfjf3yub5cod",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726208525/eshop/products/apple-watch-se-gps-44mm-midnight-aluminum-with-midnight-sport-band-m-l/ab68xynbbfjf3yub5cod.webp",
+          },
+        ],
+      },
+      {
+        _id: "0aab02e6-23bb-4bb7-b0bc-c05910b689b6",
+        name: "Apple Watch SE GPS 44mm White Aluminum",
+        slug: "apple-watch-se-gps-44mm-white-aluminum",
+        color: "white aluminum",
+        hexCode: "#DBD0C8",
+        memory: "", 
+        price: 26900,
+        stock:24,
+        sku: "APL-WSE-GPS44-ALU",
+        available: true,
+        images: [
+          {
+            public_id: "oiw8tsls54i2pjgmd30m",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726208685/eshop/products/apple-watch-se-gps-44mm-star-white-aluminum-with-star-white-sport-band-m-l/oiw8tsls54i2pjgmd30m.webp",
+          },
+          {
+            public_id: "tvbaxdhofoaeq942vnpx",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726208685/eshop/products/apple-watch-se-gps-44mm-star-white-aluminum-with-star-white-sport-band-m-l/tvbaxdhofoaeq942vnpx.webp",
+          },
+          {
+            public_id: "w2y8diq7ecs3erlwa3nu",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726208685/eshop/products/apple-watch-se-gps-44mm-star-white-aluminum-with-star-white-sport-band-m-l/w2y8diq7ecs3erlwa3nu.webp",
+          },
+          {
+            public_id: "q21iaqzzd6skylp46okb",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726208685/eshop/products/apple-watch-se-gps-44mm-star-white-aluminum-with-star-white-sport-band-m-l/q21iaqzzd6skylp46okb.webp",
+          },
+        ],
+      },
+    ],
+    createdAt: new Date().toISOString()
+  },
+  {
+    _id: "199c9986-0fe3-44c7-b07f-32ad268bf087",
+    name: 'Apple iPad 2021 10.2" WiFi',
+    slug: "apple-ipad-2021-102-wifi",
+    brand: "apple",
+    category: "tablets",
+    description: "The 13-inch MacBook Air is powered by the M3 chip, which offers a super-compact design and up to 18 hours of battery life.1 It's the perfect companion for work and play, anywhere.",
+    features: [
+      {
+        key: "M3 Power. Sharpened to the max",
+        value: "MacBook Air with M3 chip is compact enough to work and play anywhere."
+      },
+      {
+        key: "Compact design",
+        value: "Because it's super lightweight and just over an inch thick, you can take your MacBook Air with you anywhere."
+      },
+      {
+        key: "Do more. Faster.",
+        value: "The power of the Apple M3 chip's 8-core CPU and up to 10-core GPU keeps everything running smoothly."
+      },
+      {
+        key: "Up to 18 hours of autonomyn",
+        value: "With all-day battery life, you can leave the adapter at home with peace of mind."
+      },
+      {
+        key: "A bright screen",
+        value: "The 13.6-inch Liquid Retina display2 supports 1 billion colors."
+      },
+      {
+        key: "Full connectivity",
+        value: "MacBook Air has two Thunderbolt ports, a headphone jack, Wi-Fi 6E,4 Bluetooth 5.3, and a MagSafe charging port. And you can connect up to two external monitors with the lid of the laptop closed."
+      }
+    ],
+    specs: [
+      {
+        key: "chip",
+        value: [
+          "Apple M3 chip",
+          "8-core CPU (4 performance and 4 efficiency)",
+          "8-core GPU",
+          "16-core Neural Engine",
+          "100 GB/s memory bandwidth"
+        ]
+      },
+      {
+        key: "display",
+        value: [
+          "Liquid Retina display",
+          "13.6-inch (diagonal) LED-backlit display with IPS technology;1 2,560-by-1,664 native resolution at 224 pixels per inch",
+          "500 nits brightness",
+          "Supports 1 billion colors",
+          "True Tone Technology"
+        ]
+      },
+      {
+        key: "memory",
+        value: [
+          "8GB unified memory"
+        ]
+      },
+      {
+        key: "connectivity",
+        value: [
+          "WiFi 6E (802.11ax)4",
+          "Bluetooth 5.3"
+        ]
+      },
+      {
+        key: "Webcam",
+        value: [
+          "1080p FaceTime HD camera",
+          "Advanced Image Signal Processor with Computational Video"
+        ]
+      },
+      {
+        key: "battery",
+        value: [
+          "Up to 18 hours of video playback on the Apple TV app",
+          "Up to 15 hours of wireless web browsing",
+          "52.6 watt hour lithium polymer battery",
+          "30W USB-C power adapter (included with M2 and M3 with 8-core GPU)"
+        ]
+      },
+      {
+        key: "dimensions and weight",
+        value: [
+          "width: 30.41 cm",
+          "depth: 21.5 cm",
+          "height: 1.13 cm",
+          "weight: 1.24 kg"
+        ]
+      }
+    ],
+    reviews: [],
+    averageRating: 0,
+    variations: [
+      {
+        _id: "778948db-445b-4b96-a57e-25d8beea3e53",
+        name: 'Apple iPad 2021 10.2" 64GB WiFi Silver',
+        slug: "apple-ipad-2021-102-64gb-wifi-silver",
+        color: "silver",
+        hexCode: "#E0E2E4",
+        memory: "64GB", 
+        price: 28500,
+        stock: 11,
+        sku: "APL-IPAD-21-102-64GB-WIFI-SLV",
+        available: true,
+        images: [
+          {
+            public_id: "xoulggydjbcnsuwm3rtt",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171736/eshop/products/apple-ipad-2021-102-wifi-silver/xoulggydjbcnsuwm3rtt.webp",
+          },
+          {
+            public_id: "j491qatevt4l2q1e2qql",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171736/eshop/products/apple-ipad-2021-102-wifi-silver/j491qatevt4l2q1e2qql.webp",
+          },
+          {
+            public_id: "stcfxzll4xy5iillzzlk",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171735/eshop/products/apple-ipad-2021-102-wifi-silver/stcfxzll4xy5iillzzlk.webp",
+          },
+          {
+            public_id: "j6gasd9jsmxmyuff0obm",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171736/eshop/products/apple-ipad-2021-102-wifi-silver/j6gasd9jsmxmyuff0obm.webp",
+          },
+        ],
+      },
+      {
+        _id: "a5dc899d-d5c7-4fd8-b2c4-8eec07117a14",
+        name: 'Apple iPad 2021 10.2" 64GB WiFi Space Grey',
+        slug: "apple-ipad-2021-102-64gb-wifi-space-grey",
+        color: "space grey",
+        hexCode: "#9C9C9C",
+        memory: "64GB", 
+        price: 28500,
+        stock: 5,
+        sku: "APL-IPAD-21-102-64GB-WIFI-SPG",
+        available: true,
+        images: [
+          {
+            public_id: "xfr9fb6jkfnaulpyknhw",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171490/eshop/products/apple-ipad-2021-102-wifi-space-grey/xfr9fb6jkfnaulpyknhw.webp",
+          },
+          {
+            public_id: "ta8fgn6sfwq5oraf8tx9",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171490/eshop/products/apple-ipad-2021-102-wifi-space-grey/ta8fgn6sfwq5oraf8tx9.webp",
+          },
+          {
+            public_id: "p4ppos5hvxpfpbw0sw1q",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171490/eshop/products/apple-ipad-2021-102-wifi-space-grey/p4ppos5hvxpfpbw0sw1q.webp",
+          },
+          {
+            public_id: "y5uy5cfjhpc5zljbzmb4",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1727171490/eshop/products/apple-ipad-2021-102-wifi-space-grey/y5uy5cfjhpc5zljbzmb4.webp",
+          },
+        ],
+      },
+    ],
+    createdAt: new Date().toISOString()
+  },
+  {
+    _id: "b7e9b1c1-c93a-4322-8614-9cf55f0b41de",
+    name: 'Logitech Speaker System Z313',
+    slug: "logitech-speaker-system-z313",
+    brand: "logitech",
+    category: "speakers",
+    description: "The 13-inch MacBook Air is powered by the M3 chip, which offers a super-compact design and up to 18 hours of battery life.1 It's the perfect companion for work and play, anywhere.",
+    features: [
+      {
+        key: "M3 Power. Sharpened to the max",
+        value: "MacBook Air with M3 chip is compact enough to work and play anywhere."
+      },
+      {
+        key: "Compact design",
+        value: "Because it's super lightweight and just over an inch thick, you can take your MacBook Air with you anywhere."
+      },
+      {
+        key: "Do more. Faster.",
+        value: "The power of the Apple M3 chip's 8-core CPU and up to 10-core GPU keeps everything running smoothly."
+      },
+      {
+        key: "Up to 18 hours of autonomyn",
+        value: "With all-day battery life, you can leave the adapter at home with peace of mind."
+      },
+      {
+        key: "A bright screen",
+        value: "The 13.6-inch Liquid Retina display2 supports 1 billion colors."
+      },
+      {
+        key: "Full connectivity",
+        value: "MacBook Air has two Thunderbolt ports, a headphone jack, Wi-Fi 6E,4 Bluetooth 5.3, and a MagSafe charging port. And you can connect up to two external monitors with the lid of the laptop closed."
+      }
+    ],
+    specs: [
+      {
+        key: "chip",
+        value: [
+          "Apple M3 chip",
+          "8-core CPU (4 performance and 4 efficiency)",
+          "8-core GPU",
+          "16-core Neural Engine",
+          "100 GB/s memory bandwidth"
+        ]
+      },
+      {
+        key: "display",
+        value: [
+          "Liquid Retina display",
+          "13.6-inch (diagonal) LED-backlit display with IPS technology;1 2,560-by-1,664 native resolution at 224 pixels per inch",
+          "500 nits brightness",
+          "Supports 1 billion colors",
+          "True Tone Technology"
+        ]
+      },
+      {
+        key: "memory",
+        value: [
+          "8GB unified memory"
+        ]
+      },
+      {
+        key: "connectivity",
+        value: [
+          "WiFi 6E (802.11ax)4",
+          "Bluetooth 5.3"
+        ]
+      },
+      {
+        key: "Webcam",
+        value: [
+          "1080p FaceTime HD camera",
+          "Advanced Image Signal Processor with Computational Video"
+        ]
+      },
+      {
+        key: "battery",
+        value: [
+          "Up to 18 hours of video playback on the Apple TV app",
+          "Up to 15 hours of wireless web browsing",
+          "52.6 watt hour lithium polymer battery",
+          "30W USB-C power adapter (included with M2 and M3 with 8-core GPU)"
+        ]
+      },
+      {
+        key: "dimensions and weight",
+        value: [
+          "width: 30.41 cm",
+          "depth: 21.5 cm",
+          "height: 1.13 cm",
+          "weight: 1.24 kg"
+        ]
+      }
+    ],
+    reviews: [],
+    averageRating: 0,
+    variations: [
+      {
+        _id: "687fdc40-bd9d-4746-83d6-d6f8fd21a240",
+        name: 'Logitech Speaker System Z313 Speakers 2.1',
+        slug: "logitech-speaker-system-z313-speakers-21",
+        color: "black",
+        hexCode: "#000000",
+        memory: "", 
+        price: 4400,
+        stock: 14,
+        sku: "LOG-SPK-Z313-21",
+        available: true,
+        images: [
+          {
+            public_id: "n2lmocihq6xyzbvz3nok",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726211256/eshop/products/logitech-speaker-system-z313-speakers-21/n2lmocihq6xyzbvz3nok.webp",
+          },
+          {
+            public_id: "asezwk6sushnet8hfkdh",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726211256/eshop/products/logitech-speaker-system-z313-speakers-21/asezwk6sushnet8hfkdh.webp",
+          },
+          {
+            public_id: "r4h0ught2pxz0az90zau",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726211255/eshop/products/logitech-speaker-system-z313-speakers-21/r4h0ught2pxz0az90zau.webp",
+          },
+          {
+            public_id: "vawayvs1dnxmjjtrgfu3",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726211255/eshop/products/logitech-speaker-system-z313-speakers-21/vawayvs1dnxmjjtrgfu3.webp",
+          },
+        ],
+      },
+    ],
+    createdAt: new Date().toISOString()
+  },
+  {
+    _id: "66b51ef8-c3d7-4db4-a3a6-900e708b37b0",
+    name: 'Bose QuietComfort Ultra Wireless Noise Cancelling Headphones',
+    slug: "bose-quietcomfort-ultra-wireless-noise-cancelling-headphones",
+    brand: "bose",
+    category: "headphones",
+    description: "The 13-inch MacBook Air is powered by the M3 chip, which offers a super-compact design and up to 18 hours of battery life.1 It's the perfect companion for work and play, anywhere.",
+    features: [
+      {
+        key: "M3 Power. Sharpened to the max",
+        value: "MacBook Air with M3 chip is compact enough to work and play anywhere."
+      },
+      {
+        key: "Compact design",
+        value: "Because it's super lightweight and just over an inch thick, you can take your MacBook Air with you anywhere."
+      },
+      {
+        key: "Do more. Faster.",
+        value: "The power of the Apple M3 chip's 8-core CPU and up to 10-core GPU keeps everything running smoothly."
+      },
+      {
+        key: "Up to 18 hours of autonomyn",
+        value: "With all-day battery life, you can leave the adapter at home with peace of mind."
+      },
+      {
+        key: "A bright screen",
+        value: "The 13.6-inch Liquid Retina display2 supports 1 billion colors."
+      },
+      {
+        key: "Full connectivity",
+        value: "MacBook Air has two Thunderbolt ports, a headphone jack, Wi-Fi 6E,4 Bluetooth 5.3, and a MagSafe charging port. And you can connect up to two external monitors with the lid of the laptop closed."
+      }
+    ],
+    specs: [
+      {
+        key: "chip",
+        value: [
+          "Apple M3 chip",
+          "8-core CPU (4 performance and 4 efficiency)",
+          "8-core GPU",
+          "16-core Neural Engine",
+          "100 GB/s memory bandwidth"
+        ]
+      },
+      {
+        key: "display",
+        value: [
+          "Liquid Retina display",
+          "13.6-inch (diagonal) LED-backlit display with IPS technology;1 2,560-by-1,664 native resolution at 224 pixels per inch",
+          "500 nits brightness",
+          "Supports 1 billion colors",
+          "True Tone Technology"
+        ]
+      },
+      {
+        key: "memory",
+        value: [
+          "8GB unified memory"
+        ]
+      },
+      {
+        key: "connectivity",
+        value: [
+          "WiFi 6E (802.11ax)4",
+          "Bluetooth 5.3"
+        ]
+      },
+      {
+        key: "Webcam",
+        value: [
+          "1080p FaceTime HD camera",
+          "Advanced Image Signal Processor with Computational Video"
+        ]
+      },
+      {
+        key: "battery",
+        value: [
+          "Up to 18 hours of video playback on the Apple TV app",
+          "Up to 15 hours of wireless web browsing",
+          "52.6 watt hour lithium polymer battery",
+          "30W USB-C power adapter (included with M2 and M3 with 8-core GPU)"
+        ]
+      },
+      {
+        key: "dimensions and weight",
+        value: [
+          "width: 30.41 cm",
+          "depth: 21.5 cm",
+          "height: 1.13 cm",
+          "weight: 1.24 kg"
+        ]
+      }
+    ],
+    reviews: [],
+    averageRating: 0,
+    variations: [
+      {
+        _id: "2cfb3f18-2bfc-4b95-8b6e-1c132985d5cb",
+        name: 'Bose QuietComfort Ultra Wireless Noise Cancelling Headphones Black',
+        slug: "bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-black",
+        color: "black",
+        hexCode: "#000000",
+        memory: "", 
+        price: 31599,
+        stock: 4,
+        sku: "BOSE-QCU-WLS-NC-BLK",
+        available: true,
+        images: [
+          {
+            public_id: "tv8ii6w33g0kdchbxoiy",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726209828/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-black/tv8ii6w33g0kdchbxoiy.webp",
+          },
+          {
+            public_id: "zdug01kfbzbuy2hwqe76",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726209828/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-black/zdug01kfbzbuy2hwqe76.webp",
+          },
+          {
+            public_id: "flao9nlitvmbiufeu056",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726209828/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-black/flao9nlitvmbiufeu056.webp",
+          },
+          {
+            public_id: "ghauhtbsensusjuahyda",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726209828/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-black/ghauhtbsensusjuahyda.webp",
+          },
+        ],
+      },
+      {
+        _id: "964b6d85-1bc1-4e49-bfa5-59f9fd279546",
+        name: 'Bose QuietComfort Ultra Wireless Noise Cancelling Headphones Gold',
+        slug: "bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-gold",
+        color: "gold",
+        hexCode: "#9B8D8D",
+        memory: "", 
+        price: 31599,
+        stock: 8,
+        sku: "BOSE-QCU-WLS-NC-GRY",
+        available: true,
+        images: [
+          {
+            public_id: "fwwzyufs0diszhhtgf3n",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726210000/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-grey/fwwzyufs0diszhhtgf3n.webp",
+          },
+          {
+            public_id: "gyemtsup6bmgbrtkzoyf",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726210000/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-grey/gyemtsup6bmgbrtkzoyf.webp",
+          },
+          {
+            public_id: "m8dqbaufstejkxjaywk8",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726210000/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-grey/m8dqbaufstejkxjaywk8.webp",
+          },
+          {
+            public_id: "awtbgeidtisgn0itckrs",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726209999/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-grey/awtbgeidtisgn0itckrs.webp",
+          },
+          {
+            public_id: "lfyhfvecxggfxnwtdgqv",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726210000/eshop/products/bose-quietcomfort-ultra-wireless-noise-cancelling-headphones-grey/lfyhfvecxggfxnwtdgqv.webp",
+          },
+        ],
+      },
+    ],
+    createdAt: new Date().toISOString()
+  },
+  {
+    _id: "7c88c257-9fc3-4531-9eb6-917db5869a18",
+    name: 'Samsung TV QLED 65" Ultra HD 4K Quantum HDR',
+    slug: "samsung-tv-qled-65-ultra-hd-4k-quantum-hdr",
+    brand: "samsung",
+    category: "televisions",
+    description: "The 13-inch MacBook Air is powered by the M3 chip, which offers a super-compact design and up to 18 hours of battery life.1 It's the perfect companion for work and play, anywhere.",
+    features: [
+      {
+        key: "M3 Power. Sharpened to the max",
+        value: "MacBook Air with M3 chip is compact enough to work and play anywhere."
+      },
+      {
+        key: "Compact design",
+        value: "Because it's super lightweight and just over an inch thick, you can take your MacBook Air with you anywhere."
+      },
+      {
+        key: "Do more. Faster.",
+        value: "The power of the Apple M3 chip's 8-core CPU and up to 10-core GPU keeps everything running smoothly."
+      },
+      {
+        key: "Up to 18 hours of autonomyn",
+        value: "With all-day battery life, you can leave the adapter at home with peace of mind."
+      },
+      {
+        key: "A bright screen",
+        value: "The 13.6-inch Liquid Retina display2 supports 1 billion colors."
+      },
+      {
+        key: "Full connectivity",
+        value: "MacBook Air has two Thunderbolt ports, a headphone jack, Wi-Fi 6E,4 Bluetooth 5.3, and a MagSafe charging port. And you can connect up to two external monitors with the lid of the laptop closed."
+      }
+    ],
+    specs: [
+      {
+        key: "chip",
+        value: [
+          "Apple M3 chip",
+          "8-core CPU (4 performance and 4 efficiency)",
+          "8-core GPU",
+          "16-core Neural Engine",
+          "100 GB/s memory bandwidth"
+        ]
+      },
+      {
+        key: "display",
+        value: [
+          "Liquid Retina display",
+          "13.6-inch (diagonal) LED-backlit display with IPS technology;1 2,560-by-1,664 native resolution at 224 pixels per inch",
+          "500 nits brightness",
+          "Supports 1 billion colors",
+          "True Tone Technology"
+        ]
+      },
+      {
+        key: "memory",
+        value: [
+          "8GB unified memory"
+        ]
+      },
+      {
+        key: "connectivity",
+        value: [
+          "WiFi 6E (802.11ax)4",
+          "Bluetooth 5.3"
+        ]
+      },
+      {
+        key: "Webcam",
+        value: [
+          "1080p FaceTime HD camera",
+          "Advanced Image Signal Processor with Computational Video"
+        ]
+      },
+      {
+        key: "battery",
+        value: [
+          "Up to 18 hours of video playback on the Apple TV app",
+          "Up to 15 hours of wireless web browsing",
+          "52.6 watt hour lithium polymer battery",
+          "30W USB-C power adapter (included with M2 and M3 with 8-core GPU)"
+        ]
+      },
+      {
+        key: "dimensions and weight",
+        value: [
+          "width: 30.41 cm",
+          "depth: 21.5 cm",
+          "height: 1.13 cm",
+          "weight: 1.24 kg"
+        ]
+      }
+    ],
+    reviews: [],
+    averageRating: 0,
+    variations: [
+      {
+        _id: "83cf8893-f260-4b0a-8662-dfce1e1a30f5",
+        name: 'Samsung TV QLED 65" Ultra HD 4K Quantum HDR Black',
+        slug: "samsung-tv-qled-65-ultra-hd-4k-quantum-hdr-black",
+        color: "black",
+        hexCode: "#000000",
+        memory: "", 
+        price: 57900,
+        stock: 12,
+        sku: "SAM-TV-QLED-65-UHD-4K-HDR-BLK",
+        available: true,
+        images: [
+          {
+            public_id: "szmawrefwavgvucofcep",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726215147/eshop/products/samsung-tv-qe65q60dauxxh-65-qled-ultrahd-4k-quantum-hdr/szmawrefwavgvucofcep.webp",
+          },
+          {
+            public_id: "guj7d2jvnx7x46ulwnh6",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726215146/eshop/products/samsung-tv-qe65q60dauxxh-65-qled-ultrahd-4k-quantum-hdr/guj7d2jvnx7x46ulwnh6.webp",
+          },
+          {
+            public_id: "qxxow8ui11mywiiksys1",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726215148/eshop/products/samsung-tv-qe65q60dauxxh-65-qled-ultrahd-4k-quantum-hdr/qxxow8ui11mywiiksys1.webp",
+          },
+          {
+            public_id: "g0sax2wjjvxswunuhl99",
+            url: "https://res.cloudinary.com/did3sbjr8/image/upload/v1726215147/eshop/products/samsung-tv-qe65q60dauxxh-65-qled-ultrahd-4k-quantum-hdr/g0sax2wjjvxswunuhl99.webp",
+          },
+        ],
+      },
+    ],
+    createdAt: new Date().toISOString()
+  },
 ]

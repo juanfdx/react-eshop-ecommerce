@@ -9,15 +9,19 @@
   @include grid(repeat(1, 1fr));
   gap: 10px;
 
-  @include min-480px {
+  @include min-375px {
     @include grid(repeat(2, 1fr));
   }
 
-  @include min-768px {
+  @include min-576px {
     @include grid(repeat(3, 1fr));
   }
 
-  @include min-992px {
+  @include min-768px {
     @include grid(repeat(4, 1fr));
+  }
+
+  @include min-992px {
+    @include grid(repeat(5, 1fr));
   }
 }

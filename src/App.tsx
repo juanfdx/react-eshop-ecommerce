@@ -5,6 +5,7 @@ import { RootLayout } from './layouts/RootLayout/RootLayout'
 import { ErrorElement } from './components/shared/ErrorElement/ErrorElement'
 // PAGES
 import { Error } from './pages/Error/Error'
+import { InitialLoader } from './components/loaders/InitialLoader/InitialLoader'
 import { Home } from './pages/Home/Home'
 import { About } from './pages/About/About'
 import { Contact } from './pages/Contact/Contact'
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    hydrateFallbackElement: <InitialLoader />,
     errorElement: <Error />,
     children: [
       {
@@ -36,6 +38,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'product/:slug/:memory/:color',
+        element: <Product />,
+        errorElement: <ErrorElement />,
+        loader: productLoader
+      },
+      {
+        path: 'product/:slug/:color',
         element: <Product />,
         errorElement: <ErrorElement />,
         loader: productLoader

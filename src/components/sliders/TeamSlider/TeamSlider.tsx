@@ -111,7 +111,7 @@ export const TeamSlider = ({ team }: TeamSliderProps) => {
                   className='team-slider__card'
                   style={{
                     width : `${cardWidth}%`,  
-                    transform: (imgAmount >= imgToShow + 2) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
+                    transform: ((imgToShow + 2) <= team?.length ) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
                     transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
                   }}
                 >

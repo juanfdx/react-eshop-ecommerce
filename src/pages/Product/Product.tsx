@@ -32,20 +32,28 @@ export const Product = () => {
   }, [safeVariant]);
 
   // Update selected variation based on selected color and memory
-  const handleVariantChange = (memory: string,color: string ) => {
-    const newVariant = product?.variations.find(
-      (v) => v.color === color && v.memory === memory
-    );
+  const handleVariantChange = (memory: string, color: string ) => {
+    if (!color || !product) return;
 
-    if (newVariant?._id === selectedVariant?._id) return;
-    
-    if (newVariant) {
-      setSelectedVariant(newVariant);
-      navigate(
-        `/product/${slug}/${slugify(newVariant.memory)}/${slugify(newVariant.color)}`,
-        { replace: false } // false for back-button history
-      );
-    }
+    // this whole expression returns true only if v.memory exists and is not just whitespace.
+    const hasMemoryVariants = product.variations.some(v => !!v.memory?.trim());
+
+    const newVariant = product.variations.find((v) => {
+      const colorMatch = v.color === color;
+      const memoryMatch = hasMemoryVariants ? v.memory === memory : true; // memoryMatch is true if there are no memory variants
+
+      return colorMatch && memoryMatch;
+    });
+
+    if (!newVariant || newVariant._id === selectedVariant?._id) return;
+
+    setSelectedVariant(newVariant);
+
+    const basePath = `/product/${slug}`;
+    const memorySlug = newVariant.memory ? `/${slugify(newVariant.memory)}` : '';
+    const colorSlug = `/${slugify(newVariant.color)}`;
+
+    navigate(`${basePath}${memorySlug}${colorSlug}`, { replace: false });
   };
 
 
