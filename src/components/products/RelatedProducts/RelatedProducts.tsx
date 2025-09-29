@@ -11,7 +11,7 @@ import { formatPrice } from '../../../utils/currencyUtils';
 // COMPONENTS
 import { Title } from '../../shared/Title/Title';
 import { RatingBadge } from '../../shared/RatingBadge/RatingBadge';
-import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 
 type RelatedProductsProps = {
   product: Product;
@@ -26,13 +26,13 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
 
   const [index, setIndex] = useState<number>(1);
   const [imgToShow, setImgToShow] = useState<number>(4);
-  const [productsArray, setProductsArray] = useState(products);
+  const [productsArray, setProductsArray] = useState(relatedProducts);
   const [transition, setTransition] = useState<boolean>(false);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   
   const { width } = useWindowSize();
 
-  const imgAmount = products?.length
+  const imgAmount = relatedProducts?.length
   const slideMoveX = imgAmount/imgToShow
   const slideWidth = slideMoveX * 100
   const cardWidth = 100 / imgAmount 
@@ -119,7 +119,7 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
                   className='related__card'
                   style={{
                     width : `${cardWidth}%`,  
-                    transform: (imgAmount >= imgToShow + 2) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
+                    transform: ((imgToShow + 2) <= relatedProducts?.length ) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
                     transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
                   }}
                 >
@@ -137,7 +137,7 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
                   {/* TEXT */}
                   <div className='related__text-wrapper'>   
                     <Link className='related__title' to={getFirstVariantUrl(product)}>
-                      {product?.variations[0]?.name}
+                    {product?.variations[0]?.name}
                     </Link>     
                     {product?.reviews?.length > 0 &&
                       <RatingBadge rating={product?.averageRating} reviews={product?.reviews?.length} small={true} />
@@ -150,20 +150,16 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
           </div>
 
           {/* BUTTONS */}
-          <button 
-            className={`related__btn related__btn--prev ${(imgAmount >= imgToShow + 2) ? 'related__btn--show' : ''}`} 
-            onClick={handlePrevImage}
-          >
-            <IoChevronBack className='related__btn-chevron' />
-          </button>
-
-          <button 
-            className={`related__btn related__btn--next ${(imgAmount >= imgToShow + 2) ? 'related__btn--show' : ''}`} 
-            onClick={handleNextImage}
-          >
-            <IoChevronForward className='related__btn-chevron' />
-          </button>
-
+          {(imgToShow + 2) <= relatedProducts?.length && (
+            <div className='related__btns'>
+              <button className='related__btn related__btn--prev' onClick={handlePrevImage}>
+                <HiChevronLeft className='related__btn-chevron' />
+              </button>
+              <button className='related__btn related__btn--next' onClick={handleNextImage}>
+                <HiChevronRight className='related__btn-chevron' />
+              </button>
+            </div>
+          )}
         </div>
       
       </div>
