@@ -12,6 +12,7 @@ import { ProductImageSlider } from '../../sliders/ProductImageSlider/ProductImag
 import { AmountButtons } from '../../shared/AmountButtons/AmountButtons';
 import { ProductMeta } from '../ProductMeta/ProductMeta';
 import { ProductTabs } from '../ProductTabs/ProductTabs';
+import { ProductSizeSelector } from '../ProductSizeSelector/ProductSizeSelector';
 
 
 type VariantProps = {
@@ -19,10 +20,11 @@ type VariantProps = {
   variant: ProductVariation;
   colors: [string, string][];
   memories: string[];
-  handleVariantChange: (color: string, memory: string) => void
+  sizes: string[];
+  handleVariantChange: (color: string, memory: string, size: string) => void
 }
 
-export const Variant = ({ product, variant, colors, memories, handleVariantChange }: VariantProps) => {
+export const Variant = ({ product, variant, colors, memories, sizes, handleVariantChange }: VariantProps) => {
 
   const [amount, setAmount] = useState<number>(1);
 
@@ -69,9 +71,11 @@ export const Variant = ({ product, variant, colors, memories, handleVariantChang
           {/* product color selector */}
           <ProductColorSelector colors={colors} variant={variant} handleVariantChange={handleVariantChange} />
           {/* product memory selector */}
-          {
-            memories?.length > 0 &&
+          {memories?.length > 0 &&
             <ProductMemorySelector memories={memories} variant={variant} handleVariantChange={handleVariantChange} />
+          }
+          {sizes?.length > 0 &&
+            <ProductSizeSelector sizes={sizes} variant={variant} handleVariantChange={handleVariantChange} />
           }
           {/* product buy buttons */}
           <AmountButtons variant={variant} amount={amount} setAmount={setAmount} addToCart={addToCart} />

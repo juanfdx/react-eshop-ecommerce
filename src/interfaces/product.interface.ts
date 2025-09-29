@@ -44,6 +44,7 @@ export interface ProductVariation {
   hexCode: string;
   memory: string; // e.g., '256GB', '512GB'
   price: number; // In cents or local currency smallest unit
+  size: string;
   stock: number;
   sku: string;
   available: boolean;

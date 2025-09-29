@@ -53,3 +53,27 @@ export function getUniqueMemoryOptions(product: Product): string[] {
 
   return uniqueMemories.length > 0 ? uniqueMemories : [];
 }
+
+
+/*========================================================
+  GET UNIQUE SIZE OPTIONS
+========================================================*/
+export function getUniqueSizeOptions(product: Product): string[] {
+  const sizes = product.variations
+    .map((v) => v.size?.trim())             // Handle undefined/null and trim whitespace
+    .filter((s): s is string => !!s);       // Filter out falsy (null, '', undefined)
+
+  const uniqueSizes = [...new Set(sizes)];
+
+  return uniqueSizes.length > 0 ? uniqueSizes : [];
+}
+
+
+/*========================================================
+  GET UNIQUE colors
+========================================================*/
+export function getUniqueColors(product: Product): string[] {
+  const colors = product?.variations?.map(v => v.color?.toLowerCase()?.trim());
+  const unique = Array.from(new Set(colors));
+  return unique;
+}

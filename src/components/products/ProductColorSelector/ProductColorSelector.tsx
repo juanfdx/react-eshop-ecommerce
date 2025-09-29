@@ -5,7 +5,7 @@ import type { ProductVariation } from '../../../interfaces/product.interface';
 type ProductColorSelectorProps = {
   colors: [string, string][];
   variant: ProductVariation;
-  handleVariantChange: (color: string, memory: string) => void
+  handleVariantChange: (memory: string, size: string, color: string) => void
 };
 
 
@@ -24,7 +24,7 @@ export const ProductColorSelector = ({ colors, variant, handleVariantChange }: P
           <li 
             key={i} 
             className={`color-selector__color-li ${color === variant?.color ? 'color-selector__color-li--active' : ''}`}
-            onClick={()=>handleVariantChange(variant?.memory, color)}
+            onClick={()=>handleVariantChange(variant?.memory, variant?.size, color)}
           >
             <div className='color-selector__color-btn'> 
               <div 

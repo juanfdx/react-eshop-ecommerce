@@ -15,7 +15,7 @@ interface ProductLoaderData {
 
 export const productLoader = async ({ params }: LoaderFunctionArgs) => {
   
-  const { slug, memory, color } = params;
+  const { slug, color, memory, size } = params;
 
   if (!slug || !color) {
     throw new Response('Missing parameters', { status: 400 });
@@ -34,16 +34,21 @@ export const productLoader = async ({ params }: LoaderFunctionArgs) => {
     const product: Product = productResponse.data.product;
 
     // Find matching variant from URL params (update url if invalid)
-    const hasMemoryVariants = product.variations.some(v => !!v.memory);
+    const hasMemoryVariants = product.variations.some(v => !!v.memory?.trim());
+    const hasSizeVariants = product.variations.some(v => !!v.size?.trim());
     
     const matchedVariant = product.variations.find(v => {
       const colorMatch = slugify(v.color) === slugify(color || '');
 
-      if (hasMemoryVariants) {
-        return colorMatch && slugify(v.memory) === slugify(memory || '');
-      } else {
-        return colorMatch; // Only check color if no memory variants
-      }
+      const memoryMatch = hasMemoryVariants
+        ? slugify(v.memory || '') === slugify(memory || '')
+        : true;
+
+      const sizeMatch = hasSizeVariants
+        ? slugify(v.size || '') === slugify(size || '')
+        : true;
+
+      return colorMatch && memoryMatch && sizeMatch;
     });
 
     // If no valid variant is found, redirect to the first one with the correct params
@@ -51,9 +56,13 @@ export const productLoader = async ({ params }: LoaderFunctionArgs) => {
       const defaultVariant = product.variations[0];
       const safeColor = slugify(defaultVariant.color);
       const safeMemory = defaultVariant.memory ? slugify(defaultVariant.memory) : undefined;
+      const safeSize = defaultVariant.size ? slugify(defaultVariant.size) : undefined;
 
-      const url = safeMemory
-        ? `/product/${slug}/${safeMemory}/${safeColor}`
+      const url = 
+        safeMemory
+        ? `/product/${slug}/memory/${safeMemory}/${safeColor}`
+        : safeSize
+        ? `/product/${slug}/size/${safeSize}/${safeColor}`
         : `/product/${slug}/${safeColor}`;
 
       return redirect(url);

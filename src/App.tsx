@@ -37,10 +37,16 @@ const router = createBrowserRouter([
         errorElement: <ErrorElement />
       },
       {
-        path: 'product/:slug/:memory/:color',
+        path: 'product/:slug/memory/:memory/:color',
         element: <Product />,
         errorElement: <ErrorElement />,
         loader: productLoader
+      },
+      {
+        path: 'product/:slug/size/:size/:color',
+        element: <Product />,
+        loader: productLoader,
+        errorElement: <ErrorElement />
       },
       {
         path: 'product/:slug/:color',

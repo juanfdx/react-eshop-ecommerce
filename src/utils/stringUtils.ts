@@ -22,3 +22,13 @@ export const slugify = (text: string): string => {
 export const deslugify = (text: string): string => {
   return text.trim().replace(/-/g, ' ').toLowerCase();
 };
+
+
+/*========================================================
+  FORMAT MEMORY
+========================================================*/
+export const  formatMemory =(str: string): string => {
+  if (str.length <= 2) return str; // no need to format
+
+  return str.slice(0, -2) + ' ' + str.slice(-2);
+}

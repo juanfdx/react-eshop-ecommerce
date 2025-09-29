@@ -8,38 +8,50 @@ import { deslugify, slugify } from './stringUtils';
   GET HIGHEST PRICED VARIATION FOR EACH UNIQUE COLOR
 ========================================================*/
 export function getTopColorVariants(variations: ProductVariation[]): ProductVariation[] {
-  const colorMap = variations.reduce<Record<string, ProductVariation>>((acc, variation) => {
-    const existing = acc[variation.color];
-    if (!existing || variation.price > existing.price) {
-      acc[variation.color] = variation;
-    }
-    return acc;
-  }, {});
+  const colorMap = new Map<string, ProductVariation>();
 
-  return Object.values(colorMap);
+  for (const variation of variations) {
+    const existing = colorMap.get(variation.color);
+    if (!existing || variation.price > existing.price) {
+      colorMap.set(variation.color, variation);
+    }
+  }
+
+  return Array.from(colorMap.values());
 }
 
 
 /*========================================================
   GET VARIANT FROM PARAMS
 ========================================================*/
-export function getVariantFromParams(product: Product, memory?: string, color?: string): ProductVariation | undefined {
+export function getVariantFromParams(product: Product, memory?: string, size?: string, color?: string): ProductVariation | undefined {
   if (!color || !product ) return undefined;
 
   const normalizedColor = deslugify(color.toLowerCase());
   const normalizedMemory = memory ? deslugify(memory.toLowerCase()) : undefined;
+  const normalizedSize = size ? deslugify(size.toLowerCase()) : undefined;
 
   const hasMemoryVariants = product.variations.some(v => !!v.memory?.trim());
+  const hasSizeVariants = product.variations.some(v => !!v.size?.trim());
 
   return product.variations.find((v) => {
     const variantColor = v.color.toLowerCase();
     const variantMemory = v.memory?.toLowerCase();
+    const variantSize = v.size?.toLowerCase();
 
     // If product has memory variants, match both memory and color
     if (hasMemoryVariants) {
       return (
         variantColor === normalizedColor &&
         variantMemory === normalizedMemory
+      );
+    }
+
+    // If product has size variants, match both size and color
+    if (hasSizeVariants) {
+      return (
+        variantColor === normalizedColor &&
+        variantSize === normalizedSize
       );
     }
 
@@ -52,8 +64,8 @@ export function getVariantFromParams(product: Product, memory?: string, color?: 
 /*========================================================
   GET SAFE VARIANT FROM PARAMS
 ========================================================*/
-export function getSafeVariantFromParams(product: Product, memory?: string, color?: string): ProductVariation {
-  return getVariantFromParams(product, memory, color) ?? product?.variations[0];
+export function getSafeVariantFromParams(product: Product, memory?: string, size?: string, color?: string): ProductVariation {
+  return getVariantFromParams(product, memory, size, color) ?? product?.variations[0];
 }
 
 
@@ -64,9 +76,18 @@ export function getProductVariantUrl(
   slug: string,
   variant: ProductVariation
 ): string {
-  // check if variant has memory
-  if (!variant?.memory) return `/product/${slug}/${slugify(variant?.color)}`;
-  return `/product/${slug}/${slugify(variant?.memory)}/${slugify(variant?.color)}`;
+  const base = `/product/${slug}`;
+  
+  // /product/slug/memory/color
+  if (variant?.memory) {
+    return `${base}/memory/${slugify(variant?.memory)}/${slugify(variant?.color)}`;
+  }
+  // /product/slug/size/color
+  if (variant?.size) {
+    return `${base}/size/${slugify(variant?.size)}/${slugify(variant?.color)}`;
+  } 
+  // /product/slug/color
+  return `${base}/${slugify(variant?.color)}`;
 }
 
 

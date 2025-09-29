@@ -5,6 +5,7 @@ import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { formatPrice } from '../../../utils/currencyUtils';
 import { getFirstVariantUrl } from '../../../utils/productUtils';
+import { getUniqueColors } from '../../../utils/colorUtils';
 // COMPONENTS
 import { VariantColorButtons } from '../VariantColorButtons/VariantColorButtons';
 import { RatingBadge } from '../../shared/RatingBadge/RatingBadge';
@@ -16,6 +17,10 @@ type ProductCardProps = {
 
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+
+  const firstVariant = product?.variations[0];
+  const uniqueColors = getUniqueColors(product);
+  const showColorButtons = uniqueColors.length > 1;
   
   return (
     <li className='product-card'>
@@ -24,8 +29,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
           <img 
             className='product-card__img' 
-            src={product?.variations[0]?.images[0]?.url} 
-            alt={product?.variations[0]?.name} 
+            src={firstVariant?.images[0]?.url} 
+            alt={firstVariant?.name} 
           />
 
         </div>
@@ -33,16 +38,16 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
       <div className='product-card__text-wrapper'>
         {/* color buttons */}
-        {product?.variations?.length > 1 &&
+        {showColorButtons &&
           <VariantColorButtons product={product} />
         }
         <Link className='product-card__title' to={getFirstVariantUrl(product)}>
-          {product?.variations[0]?.name}
+          {firstVariant?.name}
         </Link>
         {product?.reviews?.length > 0 &&
           <RatingBadge rating={product?.averageRating} reviews={product?.reviews?.length} small={true} />
         }     
-        <p className='product-card__price'>{formatPrice(product?.variations[0]?.price)}</p>        
+        <p className='product-card__price'>{formatPrice(firstVariant?.price)}</p>        
       </div>
     </li>
   )
