@@ -4,6 +4,8 @@ import { PulseDotsLoader } from '../PulseDotsLoader/PulseDotsLoader';
 
 
 export const Loader = () => {
+
+  window.scrollTo({ top: 0, behavior: 'instant' });
   
   return (
     <div className='loader'>

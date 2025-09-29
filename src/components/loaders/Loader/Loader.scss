@@ -1,12 +1,18 @@
 @use '../../../scss/mixins.scss' as *;
 
 .loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding-bottom: 50px;
+  // opacity: 0;
 
   @include flex(column, nowrap, center, center);
+
+  @include min-768px {
+    height: calc(100vh - 80px);
+    padding-bottom: 70px;
+  }
+
   
   &__title {
     font-size: 28px;

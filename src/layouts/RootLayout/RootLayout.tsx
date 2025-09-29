@@ -1,6 +1,7 @@
 import './RootLayout.scss';
 import { Outlet, useNavigation } from 'react-router';
 // COMPONENTS
+import { ScrollToTop } from '../../components/shared/ScrollToTop/ScrollToTop';
 import { Header } from '../../components/shared/Header/Header';
 import { Footer } from '../../components/shared/Footer/Footer';
 import { Sidebar } from '../../components/shared/Sidebar/Sidebar';
@@ -16,6 +17,7 @@ export const RootLayout = () => {
   return (
     <div className='root-layout'>
       
+      <ScrollToTop />
       <Header />
       <Sidebar />
       <Overlay />
