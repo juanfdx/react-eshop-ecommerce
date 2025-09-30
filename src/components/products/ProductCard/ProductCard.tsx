@@ -32,7 +32,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             src={firstVariant?.images[0]?.url} 
             alt={firstVariant?.name} 
           />
-
+          <div className='product-card__overlay'></div>
+          
         </div>
       </Link>
 
@@ -44,6 +45,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <Link className='product-card__title' to={getFirstVariantUrl(product)}>
           {firstVariant?.name}
         </Link>
+        {/* rating */}
         {product?.reviews?.length > 0 &&
           <RatingBadge rating={product?.averageRating} reviews={product?.reviews?.length} small={true} />
         }     

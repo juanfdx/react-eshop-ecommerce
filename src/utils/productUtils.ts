@@ -113,3 +113,11 @@ export const getRelatedProducts = (product: Product, products: Product[]) => {
 
   return { relatedProducts, isRelated: true }; 
 }
+
+
+/*========================================================
+  GET FEATURED PRODUCTS
+========================================================*/
+export const getFeaturedProducts = (products: Product[]): Product[] => {
+  return products?.toSorted((a, b) => b.averageRating - a.averageRating)?.slice(0, 8);
+}

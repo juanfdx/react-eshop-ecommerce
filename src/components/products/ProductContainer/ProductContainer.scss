@@ -1,0 +1,21 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.product-container {
+  width: 100%;
+  overflow: clip;
+
+  @include min-992px {
+    width: 75%;
+  }
+
+
+  &__h5 {
+    margin: 20px 0 0 15px;
+    font-size: 24px;
+  }
+
+  &__pagination-wrapper {
+    margin-top: 80px;
+  }
+}

@@ -12,7 +12,6 @@ import { categories } from '../../../data/data-categories';
 
 
 
-
 export const CategorySlider = () => {
 
   const [index, setIndex] = useState<number>(1);
@@ -131,7 +130,7 @@ export const CategorySlider = () => {
                 <li 
                   style={{
                     width : `${cardWidth}%`,  
-                    transform : `translateX(${-100 * index}%)`,
+                    transform: ((imgToShow + 2) <= categories?.length ) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
                     transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
                   }}
                   key={cat.id} 
