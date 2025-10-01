@@ -121,3 +121,17 @@ export const getRelatedProducts = (product: Product, products: Product[]) => {
 export const getFeaturedProducts = (products: Product[]): Product[] => {
   return products?.toSorted((a, b) => b.averageRating - a.averageRating)?.slice(0, 8);
 }
+
+
+/*========================================================
+  CATEGORY COUNTS - NO VARIATIONS INCLUDED
+========================================================*/
+export const getCategoryCounts = (products: Product[]) => {
+   const map = new Map<string, number>();
+
+  products.forEach(product => {
+    map.set(product.category, (map.get(product.category) || 0) + 1);
+  });
+
+  return Array.from(map.entries()).map(([name, count]) => ({ name, count })); 
+}

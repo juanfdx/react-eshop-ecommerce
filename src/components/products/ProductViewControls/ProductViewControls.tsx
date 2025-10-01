@@ -23,8 +23,6 @@ export const ProductViewControls = ({ products }: ProductViewControlsProps) => {
     setSortValue(event.target.value);
   };
 
-  console.log(sortValue);
-  
 
   return (
     <div className='sort-controls'>

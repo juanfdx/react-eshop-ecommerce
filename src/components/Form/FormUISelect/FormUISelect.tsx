@@ -1,6 +1,8 @@
 import './FormUISelect.scss';
 // COMPONENTS
 import { FaAngleDown } from 'react-icons/fa6';
+// DATA
+import { sortOptions } from '../../../data/data-selectors';
 
 type FormSelectProps = {
   selectRef?: React.RefObject<HTMLSelectElement | null>;
@@ -9,7 +11,6 @@ type FormSelectProps = {
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
-
 
 
 export const FormUISelect = ({selectRef, id, name, value, onChange}: FormSelectProps) => {
@@ -30,11 +31,9 @@ export const FormUISelect = ({selectRef, id, name, value, onChange}: FormSelectP
           <selectedcontent></selectedcontent>
           <FaAngleDown className='form-ui-select__arrow' />
         </button>
-        <option value="newest">Newest</option>
-        <option value="price-lowest">Price (lowest)</option>
-        <option value="price-highest">Price (highest)</option>
-        <option value="name-a">Name (a-z)</option>
-        <option value="name-z">Name (z-a)</option>
+        {sortOptions?.map((option) => (
+          <option key={option._id} value={option.value}>{option.key}</option>
+        ))}
       </select>
 
     </div>

@@ -1,13 +1,13 @@
 @use '../../../scss/mixins.scss' as *;
 
 
-.product-filter-sidebar {
+.product-filter {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: var(--bg-principal-color);
+  background-color: var(--color-secondary);
   transform: translateX(-100%);
   z-index: 10;
 
@@ -25,7 +25,7 @@
   }
 
   &--transition {
-    transition: all .5s ease;
+    transition: all .4s ease;
   }
 
   &--active {
@@ -52,6 +52,7 @@
     }
   }
 
+  /* ----- close button ----- */
   &__close-btn {
     position: absolute;
     top: 15px;
@@ -61,6 +62,12 @@
     border-radius: 50%;
     border: 1px solid var(--border-primary);
     cursor: pointer;
+
+    &:hover {
+      .product-filter__close-icon {
+        transform: rotate(90deg);
+      }
+    }
 
     @include flex(row, nowrap, center, center);
 
@@ -72,27 +79,29 @@
   &__close-icon {
     width: 17px;
     height: 17px;
+    transition: all .3s ease;
   }
 
+  /* ----- filter button ----- */
   &__filter-btn {
     position: absolute;
-    top: 208px;
+    top: 260px;
     right: -40px;
     width: 40px;
     height: 40px;
     border: 1px solid lightgray;
     border-left: none;
-    background-color: var(--bg-principal-color);
+    background-color: var(--color-secondary);
     cursor: pointer;
 
     @include flex(row, nowrap, center, center);
 
-    @include min-576px {
-      top: 211px;
+    @include min-480px {
+      top: 312px;
     }
 
     @include min-768px {
-      top: 270px;
+      top: 336px;
     }
 
     @include min-992px {
@@ -105,7 +114,8 @@
     height: 28px;
   }
 
-  &__arrow-down {
+  /* ----- category button ----- */
+  &__arrow {
     position: absolute;
     top: 39%;
     right: 1px;

@@ -14,7 +14,6 @@ select {
     color: var(--color-primary);
     cursor: pointer;
   }
-
 }
 
 select selectedcontent {
@@ -48,6 +47,7 @@ select:open {
 
 select option {
   padding: 2px 8px;
+  font-size: 17px;
   cursor: pointer;
   
   &:hover {

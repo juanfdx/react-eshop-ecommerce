@@ -1,0 +1,37 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.category-filter {
+  width: 100%;
+
+
+  &__li {
+    margin-bottom: 14px;
+    padding: 0 10px;
+    color: var(--font-text-color);
+
+
+    @include flex(row, nowrap, space-between, center);
+  }
+
+  &__btn {
+    font-size: 16px;
+    transition: all .2s ease;
+    cursor: pointer;
+
+    &--active {
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    color: #999;
+  }
+
+}

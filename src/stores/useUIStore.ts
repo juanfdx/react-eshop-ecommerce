@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 
-type UIType = 'sidebar'| null;
+type UIType = 'sidebar'| 'product_filter'| null;
 
 interface UIStore {
   activeUI: UIType;
