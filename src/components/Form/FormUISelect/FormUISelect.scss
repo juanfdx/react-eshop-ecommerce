@@ -1,0 +1,63 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+select, ::picker(select) {
+  appearance: base-select;
+}
+
+select {
+  position: relative;
+  width: 136px;
+  transition: all .3s ease;
+  
+  &:hover {
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+
+}
+
+select selectedcontent {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+select::picker-icon {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+}
+
+select:open::picker-icon {
+  transform: rotate(180deg);
+}
+
+// selects only the dropdown menu
+::picker(select) {
+  margin-top: 10px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
+}
+
+select option {
+  padding: 2px 8px;
+  cursor: pointer;
+  
+  &:hover {
+    color: var(--color-secondary);
+    background-color: var(--bg-hover-primary-light);
+  }
+}
+
+select option:nth-last-child(1) {
+  padding: 2px 8px 3px 8px;
+}
+
+select option:checked {
+  color: var(--color-secondary);
+  background-color: var(--bg-hover-primary-light);
+}
+
+select option::checkmark {
+  font-weight: 700;
+}

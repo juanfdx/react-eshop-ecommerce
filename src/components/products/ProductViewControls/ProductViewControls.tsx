@@ -1,12 +1,12 @@
 import './ProductViewControls.scss';
+import { useState } from 'react';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // COMPONENTS
 import { TfiLayoutGrid2, TfiLayoutListThumb } from 'react-icons/tfi';
-import { FormSelect } from '../../form/FormSelect/FormSelect';
-import { useState } from 'react';
+import { FormUISelect } from '../../form/FormUISelect/FormUISelect';
 
 type ProductViewControlsProps = {
   products: Product[]
@@ -40,7 +40,7 @@ export const ProductViewControls = ({ products }: ProductViewControlsProps) => {
         {/* sort control */}
         <div className='sort-controls__select-container'>
           <span className='sort-controls__label'>Sort by</span>
-          <FormSelect id={'sort'} name={'sort'} value={sortValue} onChange={handleSortChange} />
+          <FormUISelect id={'sort'} name={'sort'} value={sortValue} onChange={handleSortChange} />
         </div>
       </div>
 
