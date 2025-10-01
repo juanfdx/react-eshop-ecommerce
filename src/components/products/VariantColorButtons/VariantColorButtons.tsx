@@ -9,17 +9,18 @@ import { getProductVariantUrl, getTopColorVariants } from '../../../utils/produc
 
 type VariantColorButtonsProps = {
   product: Product,
+  variant?: 'grid' | 'list'
 }
 
 
-export const VariantColorButtons = ({ product }: VariantColorButtonsProps) => {
+export const VariantColorButtons = ({ product, variant = 'grid' }: VariantColorButtonsProps) => {
 
 
   const topColorVariants = getTopColorVariants(product?.variations);
   
   
   return (
-    <ul className='variant-color-buttons'>
+    <ul className={`variant-color-buttons ${variant === 'list' ? 'variant-color-buttons--list' : ''}`}>
       {topColorVariants?.map((variant, index) => (
         <li 
           key={variant._id} 

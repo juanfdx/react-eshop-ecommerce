@@ -1,8 +1,12 @@
 import './ProductContainer.scss';
+// STORE
+import { useFilterStore } from '../../../stores/useFilterStore';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // COMPONENTS
 import { ProductViewControls } from '../ProductViewControls/ProductViewControls';
+import { ProductsGrid } from '../ProductsGrid/ProductsGrid';
+import { ProductList } from '../ProductList/ProductList';
 
 type ProductContainerProps = {
   products: Product[]
@@ -11,7 +15,8 @@ type ProductContainerProps = {
 
 export const ProductContainer = ({ products }: ProductContainerProps) => {
   
-  const layout = 'grid';
+  const layout = useFilterStore((state) => state.layout)
+  
   
   return (
     <div className='product-container'>
@@ -24,9 +29,9 @@ export const ProductContainer = ({ products }: ProductContainerProps) => {
               No products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <p>Grid View</p>
+          <ProductsGrid products={products} />
         ) : (
-          <p>List View</p>
+          <ProductList products={products} />
         )}
       </>
     

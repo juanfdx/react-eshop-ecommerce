@@ -17,7 +17,7 @@
 
   &__background {
     position: relative;
-    height: 150px;
+    height: 200px;
     padding: 20px 25px;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@
     @include flex(column, nowrap, center, center);
 
     @include min-480px {
-      height: 200px;
+      height: 250px;
     }
 
     @include min-768px {

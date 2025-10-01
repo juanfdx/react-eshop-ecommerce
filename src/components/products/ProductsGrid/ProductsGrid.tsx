@@ -5,15 +5,16 @@ import type { Product } from '../../../interfaces/product.interface';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 type ProductsGridProps = {
-  products: Product[]
+  products: Product[];
+  variant?: 'default' | 'featured';
 }
 
 
-export const ProductsGrid = ({ products }: ProductsGridProps) => {
+export const ProductsGrid = ({ products, variant = "default" }: ProductsGridProps) => {
 
   
   return (
-    <ul className='products-grid'>
+    <ul className={`products-grid ${variant !== 'default' ? 'products-grid--featured' : ''}`}>
       {products?.map(product => (
         <ProductCard key={product._id} product={product} />
       ))}

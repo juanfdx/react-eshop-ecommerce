@@ -1,8 +1,10 @@
 import './Sidebar.scss';
-import { useUIStore } from '../../../stores/useUIStore';
 import { NavLink } from 'react-router';
+// STORE
+import { useUIStore } from '../../../stores/useUIStore';
 // COMPONENTS
 import { RxCross1 } from "react-icons/rx";
+
 
 
 export const Sidebar = () => {

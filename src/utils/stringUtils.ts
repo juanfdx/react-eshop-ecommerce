@@ -27,8 +27,15 @@ export const deslugify = (text: string): string => {
 /*========================================================
   FORMAT MEMORY
 ========================================================*/
-export const  formatMemory =(str: string): string => {
+export const formatMemory =(str: string): string => {
   if (str.length <= 2) return str; // no need to format
-
   return str.slice(0, -2) + ' ' + str.slice(-2);
+}
+
+
+/*========================================================
+  TRUNCATE TEXT
+========================================================*/
+export const truncateText =(text: string, maxLength = 100): string => {
+  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
 }

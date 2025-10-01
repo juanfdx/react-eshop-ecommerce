@@ -42,6 +42,18 @@
     }
   }
 
+  &__label {
+    display: none;
+    margin-right: 8px;
+    font-size: 18px;
+    text-transform: capitalize;
+    white-space: nowrap;
+  
+    @include min-576px {
+      display: block;
+    }
+  }
+
 
   /* - display buttons - */
   &__display-buttons {

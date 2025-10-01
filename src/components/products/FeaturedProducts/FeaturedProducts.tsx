@@ -20,7 +20,7 @@ export const FeaturedProducts = () => {
 
         <Title title={'Featured Products'} />
 
-        <ProductsGrid products={featuredProducts} />
+        <ProductsGrid products={featuredProducts} variant={'featured'} />
 
       </div>
     </section>

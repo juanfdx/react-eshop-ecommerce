@@ -1,0 +1,26 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.form-select {
+  position: relative;
+
+
+  &__select {
+    padding: 5px 30px 5px 11px;
+    font-size: 18px;
+    text-transform: capitalize;
+    border: 1px solid var(--border-form-control);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 52%;
+    transform: translate(0, -50%);
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+}
