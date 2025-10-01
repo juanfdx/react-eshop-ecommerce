@@ -1,4 +1,6 @@
 import './FormUISelect.scss';
+// COMPONENTS
+import { FaAngleDown } from 'react-icons/fa6';
 
 type FormSelectProps = {
   selectRef?: React.RefObject<HTMLSelectElement | null>;
@@ -7,6 +9,7 @@ type FormSelectProps = {
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
+
 
 
 export const FormUISelect = ({selectRef, id, name, value, onChange}: FormSelectProps) => {
@@ -25,6 +28,7 @@ export const FormUISelect = ({selectRef, id, name, value, onChange}: FormSelectP
         <button>
           {/* @ts-expect-error: Non-standard element used for custom UI */}
           <selectedcontent></selectedcontent>
+          <FaAngleDown className='form-ui-select__arrow' />
         </button>
         <option value="newest">Newest</option>
         <option value="price-lowest">Price (lowest)</option>

@@ -23,13 +23,20 @@ select selectedcontent {
 }
 
 select::picker-icon {
-  position: absolute;
-  top: 2px;
-  right: 0px;
+  // position: absolute;
+  // top: 2px;
+  // right: 0px;
+  display: none;
 }
 
-select:open::picker-icon {
-  transform: rotate(180deg);
+// select:open::picker-icon {
+//   transform: rotate(180deg);
+// }
+
+select:open {
+  .form-ui-select__arrow {
+    transform: rotate(180deg);
+  }
 }
 
 // selects only the dropdown menu
@@ -60,4 +67,14 @@ select option:checked {
 
 select option::checkmark {
   font-weight: 700;
+}
+
+
+
+.form-ui-select__arrow {
+  position: absolute;
+  top: 3px;
+  right: 0px;
+  width: 16px;
+  height: 16px;
 }
