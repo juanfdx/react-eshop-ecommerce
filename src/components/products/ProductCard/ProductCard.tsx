@@ -5,7 +5,7 @@ import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { formatPrice } from '../../../utils/currencyUtils';
 import { getFirstVariantUrl } from '../../../utils/productUtils';
-import { getUniqueColors } from '../../../utils/colorUtils';
+import { getUniqueVariantColors } from '../../../utils/colorUtils';
 import { truncateText } from '../../../utils/stringUtils';
 // COMPONENTS
 import { VariantColorButtons } from '../VariantColorButtons/VariantColorButtons';
@@ -21,7 +21,7 @@ type ProductCardProps = {
 export const ProductCard = ({ product, variant = 'grid' }: ProductCardProps) => {
 
   const firstVariant = product?.variations[0];
-  const uniqueColors = getUniqueColors(product);
+  const uniqueColors = getUniqueVariantColors(product);
   const showColorButtons = uniqueColors.length > 1;
   
   return (

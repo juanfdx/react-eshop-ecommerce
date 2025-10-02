@@ -2,12 +2,12 @@
 
 
 .category-filter {
-  width: 100%;
+  overflow: clip;
+  transition: max-height .3s ease;
 
 
   &__li {
-    margin-bottom: 14px;
-    padding: 0 10px;
+    padding: 0px 10px 14px;
     color: var(--font-text-color);
 
 
@@ -25,7 +25,7 @@
     }
 
     &:hover {
-      color: black;
+      color: var(--color-primary);
     }
   }
 

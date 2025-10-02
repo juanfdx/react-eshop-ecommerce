@@ -198,6 +198,9 @@
   }
 
   &__comment-stars-wrapper {
+    position: absolute;
+    top: 0px;
+    right: 0px;
     display: none;
 
     @include min-576px {

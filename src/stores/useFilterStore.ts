@@ -7,6 +7,7 @@ type SortType = 'newest' | 'lowest' | 'highest' | 'a-z' | 'z-a';
 interface FilterStore {
   layout: LayoutType;
   sort: SortType;
+  category: string;
   rating: number,
   memory: string | null,
   size: string | null,
@@ -17,6 +18,7 @@ interface FilterStore {
   //actions
   setLayout: (layout: LayoutType) => void;
   setSort: (sort: SortType) => void;
+  setCategory: (category: string) => void;
   setRating: (rating: number) => void;
   setMemory: (memory: string | null) => void;
   setSize: (size: string | null ) => void;
@@ -29,6 +31,7 @@ interface FilterStore {
 const initialState = {
   layout: 'grid' as LayoutType,
   sort: 'newest' as SortType,
+  category: 'all',
   rating: 0,
   memory: null,
   size: null,
@@ -37,6 +40,7 @@ const initialState = {
   max_price: 1000000,
 }
 
+
 // Store with persist middleware
 export const useFilterStore = create<FilterStore>()(
   persist(
@@ -44,6 +48,7 @@ export const useFilterStore = create<FilterStore>()(
       ...initialState,
       setLayout: (layout) => set({ layout }),
       setSort: (sort) => set({ sort }),
+      setCategory: (category) => set({ category }),
       setRating: (rating) => set({ rating }),
       setMemory: (memory) => set({ memory }),
       setSize: (size) => set({ size }),

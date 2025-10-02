@@ -10,9 +10,11 @@ import { useWindowSize } from '../../../hooks/useWindowSize';
 import { RxCross1 } from 'react-icons/rx';
 import { RiEqualizerLine } from 'react-icons/ri';
 import { FaAngleDown } from 'react-icons/fa6';
+import { CategoryFilter } from '../../filters/CategoryFilter/CategoryFilter';
+import { RatingFilter } from '../../filters/RatingFilter/RatingFilter';
 // DATA
 import { filters } from '../../../data/data-filters';
-import { CategoryFilter } from '../../filters/CategoryFilter/CategoryFilter';
+import { ColorFilter } from '../../filters/ColorFilter/ColorFilter';
 
 
 type ProductFilterSidebarProps = {
@@ -21,14 +23,16 @@ type ProductFilterSidebarProps = {
 
 
 export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) => {
-  console.log(products);
   
   const isOpen = useUIStore((state) => state.isOpen('product_filter'));
   const openUI = useUIStore((state) => state.openUI);
   const closeUI = useUIStore((state) => state.closeUI);
   
-  const [transition, setTransition] = useState(false);
   const {width} = useWindowSize();
+  
+  const [openFilters, setOpenFilters] = useState<Set<number>>(new Set(filters.map((_, idx) => idx))); // all open on load
+  const [transition, setTransition] = useState<boolean>(false);
+
 
   useEffect(() => {
     setTransition(false);
@@ -36,11 +40,16 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
   }, [width, closeUI]);
 
 
-  const handlePosition = (index: number) => {
-    console.log(index);
-  }
+  const handleOpenFilter = (index: number) => {
+    setOpenFilters(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) { newSet.delete(index);} 
+      else {newSet.add(index);}
+      return newSet;
+    });
+  };
 
-  const handleFilter = () => {
+  const handleToggleSidebarFilter = () => {
     setTransition(true);
     if (isOpen) {closeUI()}
     else {openUI('product_filter')}
@@ -54,12 +63,12 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
         <ul className='product-filter__ul'>
 
         {/* CLOSE BUTTON */}
-        <button className='product-filter__close-btn' onClick={()=> handleFilter()}>
+        <button className='product-filter__close-btn' onClick={()=> handleToggleSidebarFilter()}>
           <RxCross1 className='product-filter__close-icon'/>
         </button>
 
         {/* FILTER BUTTON */}
-        <button className='product-filter__filter-btn' onClick={()=> handleFilter()}>
+        <button className='product-filter__filter-btn' onClick={()=> handleToggleSidebarFilter()}>
           <RiEqualizerLine className='product-filter__filter-icon' />
         </button>
 
@@ -67,14 +76,23 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
           {filters.map((filter, index) => (
             <li key={index} className='product-filter__li'>
 
-              <h4 className='product-filter__h4' onClick={()=>handlePosition(index)} >
-                <FaAngleDown className={`product-filter__arrow`} />
+              <h4 className='product-filter__h4' onClick={()=>handleOpenFilter(index)} >
+                <FaAngleDown className={`product-filter__arrow ${openFilters.has(index) ? 'product-filter__arrow--active' : ''}`} />
                 {filter}
               </h4>
 
-              {filter === 'categories' && (           
-                <CategoryFilter products={products}  />
+              {filter === 'category' && (           
+                <CategoryFilter products={products} openIndexes={openFilters} index={index} />
               )}
+
+              {filter === 'rating' && (           
+                <RatingFilter openIndexes={openFilters} index={index} />
+              )}
+
+              {filter === 'color' && (           
+                <ColorFilter products={products} openIndexes={openFilters} index={index} />
+              )}
+
             </li>
           ))}
 

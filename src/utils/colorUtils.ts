@@ -70,10 +70,60 @@ export function getUniqueSizeOptions(product: Product): string[] {
 
 
 /*========================================================
-  GET UNIQUE colors
+  GET UNIQUE VARIANT COLORS
 ========================================================*/
-export function getUniqueColors(product: Product): string[] {
+export function getUniqueVariantColors(product: Product): string[] {
   const colors = product?.variations?.map(v => v.color?.toLowerCase()?.trim());
   const unique = Array.from(new Set(colors));
   return unique;
+}
+
+
+/*========================================================
+  GET UNIQUE ALL PRODUCTS COLORS NAMES
+========================================================*/
+export function getUniqueColors(products: Product[]): string[] {
+  const colors = products?.flatMap(p => p?.variations?.map(v => v.color?.toLowerCase()?.trim()));
+  const unique = Array.from(new Set(colors));
+  return unique;
+}
+
+
+/*========================================================
+  GET UNIQUE ALL PRODUCTS COLORS 
+========================================================*/
+type ColorEntry = {
+  name: string;
+  code: string;
+  quantity: number;
+};
+
+export function getUniqueColorsWithHexCode(products: Product[]): ColorEntry[] {
+  const uniqueColors: ColorEntry[] = products?.reduce((acc: ColorEntry[], product) => {
+
+    product?.variations?.forEach(({ color, hexCode }) => {
+      if (!color || !hexCode) return;
+
+      const normalizedColor = color.toLowerCase().trim();
+      const normalizedHex = hexCode.trim();
+
+      const existingColor = acc.find(
+        (c) => c.name === normalizedColor && c.code === normalizedHex
+      );
+
+      if (existingColor) {
+        existingColor.quantity += 1;
+      } else {
+        acc.push({
+          name: normalizedColor,
+          code: normalizedHex,
+          quantity: 1
+        });
+      }
+    });
+
+    return acc;
+  }, []);
+
+  return uniqueColors;
 }

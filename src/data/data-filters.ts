@@ -1,9 +1,10 @@
 
 
 export const filters: string[] = [ 
-  'categories', 
-  'ratings', 
+  'category', 
+  'rating', 
   'price', 
   'memory',
+  'size',
   'color' 
 ]

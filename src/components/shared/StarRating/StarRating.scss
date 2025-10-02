@@ -2,9 +2,6 @@
 
 
 .star-rating{
-  position: absolute;
-  top: 0px;
-  right: 0px;
 
   @include flex(row, nowrap, flex-start, center);
 }
