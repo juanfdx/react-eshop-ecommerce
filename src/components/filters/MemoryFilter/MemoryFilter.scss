@@ -29,7 +29,7 @@
     &--checked {
       background-image: url('../../../assets/images/checkmark/checkmark.svg');
       background-color: var(--color-primary);
-      background-size: 24px 24px;
+      background-size: 22px 22px;
       background-repeat: no-repeat;
       background-position: center;
       border-color: var(--color-primary);
@@ -39,6 +39,11 @@
   &__label {
     text-transform: uppercase;
     cursor: pointer;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: #999;
   }
 
 }

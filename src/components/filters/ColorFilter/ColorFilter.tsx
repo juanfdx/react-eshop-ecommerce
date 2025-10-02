@@ -44,12 +44,12 @@ export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) 
 
             <div className='color-filter__box-color' style={{ backgroundColor: c?.code}}> </div>
 
-            <span className={`color-filter__span-name ${(color === c?.name) ? 'color-filter__span-name--active' : ''}`}>
+            <span className={`color-filter__name ${(color === c?.name) ? 'color-filter__span-name--active' : ''}`}>
               {c?.name}
             </span>
           </button>
 
-          <span className='color-filter__span-count'>({c?.quantity})</span>
+          <span className='color-filter__count'>({c?.quantity})</span>
         </li>
       ))}
     </ul>

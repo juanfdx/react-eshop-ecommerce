@@ -151,3 +151,32 @@ export function getUniqueMemories(products: Product[]): string[] {
 
   return Array.from(new Set(memories));
 }
+
+
+/*========================================================
+  GET MEMORIES COUNT
+========================================================*/
+type MemoryCount = {
+  memory: string;
+  quantity: number;
+};
+
+export function getMemoryCounts(products: Product[]): MemoryCount[] {
+  const memoryMap = new Map<string, number>();
+
+  for (const product of products) {
+    for (const variation of product.variations) {
+      const mem = variation.memory?.toLowerCase().trim();
+      if (!mem) continue; // Skip empty or undefined values
+
+      memoryMap.set(mem, (memoryMap.get(mem) || 0) + 1);
+    }
+  }
+
+  // Convert Map to array of objects
+  const memoryCounts: MemoryCount[] = Array.from(memoryMap.entries()).map(
+    ([memory, quantity]) => ({ memory, quantity })
+  );
+
+  return memoryCounts;
+}

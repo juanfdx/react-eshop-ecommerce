@@ -33,7 +33,7 @@
     cursor: pointer;
   }
 
-  &__span-name {
+  &__name {
     transition: all .3s ease;
 
     &--active {
@@ -42,7 +42,7 @@
     }
   }
 
-  &__span-count {
+  &__count {
     font-size: 14px;
     color: #999;
   }

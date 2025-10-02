@@ -17,10 +17,11 @@ export const RatingFilter = ({ openIndexes, index }: RatingFilterProps) => {
   const ulRef = useRef<HTMLUListElement>(null);
 
 
-  const handleRating = (r: number) => {
-    if (rating === r) setRating(0);
-    else setRating(r);
-  }
+  const handleRating = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selected = parseFloat(e.target.value); // Convert string to number
+    if (rating === selected) setRating(0); // Deselect if same
+    else setRating(selected);
+  };
 
 
   return (
@@ -40,7 +41,8 @@ export const RatingFilter = ({ openIndexes, index }: RatingFilterProps) => {
               type="radio" 
               name='rating' 
               value={r} 
-              onClick={() =>handleRating(r)} 
+              checked={rating === r}
+              onChange={handleRating} 
             />
             <StarRating rating={r} size='17px' /> 
           </div>
