@@ -12,9 +12,10 @@ import { RiEqualizerLine } from 'react-icons/ri';
 import { FaAngleDown } from 'react-icons/fa6';
 import { CategoryFilter } from '../../filters/CategoryFilter/CategoryFilter';
 import { RatingFilter } from '../../filters/RatingFilter/RatingFilter';
+import { MemoryFilter } from '../../filters/MemoryFilter/MemoryFilter';
+import { ColorFilter } from '../../filters/ColorFilter/ColorFilter';
 // DATA
 import { filters } from '../../../data/data-filters';
-import { ColorFilter } from '../../filters/ColorFilter/ColorFilter';
 
 
 type ProductFilterSidebarProps = {
@@ -87,6 +88,10 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
 
               {filter === 'rating' && (           
                 <RatingFilter openIndexes={openFilters} index={index} />
+              )}
+
+              {filter === 'memory' && (           
+                <MemoryFilter products={products} openIndexes={openFilters} index={index} />
               )}
 
               {filter === 'color' && (           

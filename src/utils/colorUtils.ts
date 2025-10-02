@@ -127,3 +127,27 @@ export function getUniqueColorsWithHexCode(products: Product[]): ColorEntry[] {
 
   return uniqueColors;
 }
+
+
+/*========================================================
+  GET UNIQUE ALL PRODUCTS SIZES 
+========================================================*/
+export function getUniqueSizes(products: Product[]): string[] {
+  const sizes = products?.flatMap(p => p?.variations?.map(v => v.size?.toLowerCase()?.trim()));
+  const unique = Array.from(new Set(sizes));
+  return unique;
+}
+
+
+/*========================================================
+  GET UNIQUE ALL PRODUCTS MEMORIES 
+========================================================*/
+export function getUniqueMemories(products: Product[]): string[] {
+  const memories = products?.flatMap(p =>
+    p?.variations
+      ?.map(v => v.memory?.toLowerCase()?.trim())
+      .filter((m): m is string => !!m && m !== '')
+  );
+
+  return Array.from(new Set(memories));
+}

@@ -32,7 +32,7 @@ export const RatingFilter = ({ openIndexes, index }: RatingFilterProps) => {
 
       {[ 4.5, 4.0, 3.5, 3.0 ].map(r =>
 
-        <li key={r} className='rating-filter__li-item'>
+        <li key={r} className='rating-filter__li'>
 
           <div className='rating-filter__wrapper'>
             <input 

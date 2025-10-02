@@ -1,7 +1,7 @@
 @use '../../../scss/mixins.scss' as *;
 
 
-.rating-filter {
+.memory-filter {
   overflow: clip;
   transition: max-height .3s ease;
 
@@ -18,39 +18,27 @@
     gap: 8px;
   }
 
-  &__input-radio {
+  &__input-checkbox {
     position: relative;
     width: 16px;
     height: 16px;
-    margin-top: 1px;
-    border-radius: 50%;
     border: 1px solid var(--font-text-color);
     cursor: pointer;
-
+    
     /* ---- when input is checked ---- */
     &--checked {
-
-      &::before {
-        content: "";
-        width: 10px;
-        height: 10px;
-        background-color: var(--color-primary);
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
+      background-image: url('../../../assets/images/checkmark/checkmark.svg');
+      background-color: var(--color-primary);
+      background-size: 24px 24px;
+      background-repeat: no-repeat;
+      background-position: center;
       border-color: var(--color-primary);
     }
-
   }
 
-
-  &__span {
-    font-size: 14px;
-    line-height: 1.1;
-    color: var(--font-text-color);
+  &__label {
+    text-transform: uppercase;
+    cursor: pointer;
   }
+
 }
