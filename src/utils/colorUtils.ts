@@ -34,6 +34,16 @@ export const isWhiteSpectrum = (hexColor: string, tolerance = 20) => {
 
 
 /*========================================================
+  GET UNIQUE VARIANT COLORS
+========================================================*/
+export function getUniqueVariantColors(product: Product): string[] {
+  const colors = product?.variations?.map(v => v.color?.toLowerCase()?.trim());
+  const unique = Array.from(new Set(colors));
+  return unique;
+}
+
+
+/*========================================================
   GET UNIQUE COLOR OPTIONS
 ========================================================*/
 export function getUniqueColorOptions(product: Product): [string, string][] {
@@ -69,24 +79,8 @@ export function getUniqueSizeOptions(product: Product): string[] {
 }
 
 
-/*========================================================
-  GET UNIQUE VARIANT COLORS
-========================================================*/
-export function getUniqueVariantColors(product: Product): string[] {
-  const colors = product?.variations?.map(v => v.color?.toLowerCase()?.trim());
-  const unique = Array.from(new Set(colors));
-  return unique;
-}
 
 
-/*========================================================
-  GET UNIQUE ALL PRODUCTS COLORS NAMES
-========================================================*/
-export function getUniqueColors(products: Product[]): string[] {
-  const colors = products?.flatMap(p => p?.variations?.map(v => v.color?.toLowerCase()?.trim()));
-  const unique = Array.from(new Set(colors));
-  return unique;
-}
 
 
 

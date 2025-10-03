@@ -34,6 +34,14 @@ export const formatMemory =(str: string): string => {
 
 
 /*========================================================
+  FORMAT SIZE
+========================================================*/
+export const formatInches = (value: string): string => {
+  return value.trim().replace(/"$/, ' inches');
+}
+
+
+/*========================================================
   TRUNCATE TEXT
 ========================================================*/
 export const truncateText =(text: string, maxLength = 100): string => {

@@ -1,6 +1,8 @@
 import './ProductSizeSelector.scss';
 // INTERFACES
 import type { ProductVariation } from '../../../interfaces/product.interface';
+// UTILS
+import { formatInches } from '../../../utils/stringUtils';
 
 type ProductSizeSelectorProps = {
   sizes: string[];
@@ -15,7 +17,7 @@ export const ProductSizeSelector = ({ sizes, variant, handleVariantChange }: Pro
     <div className='size-selector'>
       
       <p className='size-selector__label'>
-        Size: <span className='memory-selector__color-span'>{variant?.size} Inches</span>
+        Size: <span className='memory-selector__color-span'>{formatInches(variant?.size)}</span>
       </p>
 
       <ul className='size-selector__color-ul'>
@@ -29,7 +31,7 @@ export const ProductSizeSelector = ({ sizes, variant, handleVariantChange }: Pro
               className='size-selector__color-btn'
               onClick={() => handleVariantChange(variant?.memory, size, variant?.color)}
             >
-              {size}"
+              {size}
             </button>
           </li>
         ))}

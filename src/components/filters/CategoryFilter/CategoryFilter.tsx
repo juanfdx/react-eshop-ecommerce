@@ -5,7 +5,7 @@ import { useFilterStore } from '../../../stores/useFilterStore';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
-import { getCategoryCounts } from '../../../utils/productUtils';
+import { getCategoryCounts } from '../../../utils/filterUtils';
 
 type CategoryFilterProps = {
   products: Product[];

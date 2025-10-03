@@ -2,6 +2,29 @@
 import type { Product } from '../interfaces/product.interface';
 
 
+/*========================================================
+  CATEGORY COUNTS - NO VARIATIONS INCLUDED
+========================================================*/
+type CategoryCount = {
+  name: string;
+  count: number;
+};
+
+export const getCategoryCounts = (products: Product[]): CategoryCount[] => {
+  const map = new Map<string, number>();
+
+  products.forEach(product => {
+    const category = product.category?.trim().toLowerCase();
+    if (!category) return;
+
+    map.set(category, (map.get(category) || 0) + 1);
+  });
+
+  return Array.from(map.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+};
+
 
 /*========================================================
   GET MEMORIES COUNTS
