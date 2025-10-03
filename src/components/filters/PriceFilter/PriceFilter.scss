@@ -1,0 +1,7 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.price-filter {
+  overflow: clip;
+  transition: max-height .3s ease;
+}

@@ -4,9 +4,9 @@ import { useMemo, useRef } from 'react';
 import type { Product } from '../../../interfaces/product.interface';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
-import { getMemoryCounts } from '../../../utils/colorUtils';
-import { formatMemory } from '../../../utils/stringUtils';
 // UTILS
+import { getMemoryCounts } from '../../../utils/filterUtils';
+import { formatMemory } from '../../../utils/stringUtils';
 
 
 type MemoryFilterProps = {

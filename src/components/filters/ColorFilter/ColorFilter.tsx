@@ -5,7 +5,7 @@ import type { Product } from '../../../interfaces/product.interface';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
 // UTILS
-import { getUniqueColorsWithHexCode } from '../../../utils/colorUtils';
+import { getColorCountsWithHexCode } from '../../../utils/filterUtils';
 
 type ColorFilterProps = {
   products: Product[];
@@ -19,7 +19,7 @@ export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) 
   const { color, setColor } = useFilterStore();
   const ulRef = useRef<HTMLUListElement>(null);
 
-  const uniqueColors = useMemo(() => getUniqueColorsWithHexCode(products), [products]);
+  const uniqueColors = useMemo(() => getColorCountsWithHexCode(products), [products]);
 
 
   const handleColor = (c: string) => {

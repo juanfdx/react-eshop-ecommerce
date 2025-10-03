@@ -16,6 +16,7 @@ import { MemoryFilter } from '../../filters/MemoryFilter/MemoryFilter';
 import { ColorFilter } from '../../filters/ColorFilter/ColorFilter';
 // DATA
 import { filters } from '../../../data/data-filters';
+import { SizeFilter } from '../../filters/SizeFilter/SizeFilter';
 
 
 type ProductFilterSidebarProps = {
@@ -92,6 +93,10 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
 
               {filter === 'memory' && (           
                 <MemoryFilter products={products} openIndexes={openFilters} index={index} />
+              )}
+
+              {filter === 'size' && (           
+                <SizeFilter products={products} openIndexes={openFilters} index={index} />
               )}
 
               {filter === 'color' && (           

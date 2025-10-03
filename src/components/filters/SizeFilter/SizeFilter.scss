@@ -1,0 +1,49 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.size-filter {
+  overflow: clip;
+  transition: max-height .3s ease;
+
+
+  &__li {
+    padding: 0px 10px 14px;
+    color: var(--font-text-color);
+
+    @include flex(row, nowrap, space-between, center);
+  }
+
+  &__wrapper {
+    @include flex(row, nowrap, space-between, center);
+    gap: 8px;
+  }
+
+  &__input-checkbox {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--font-text-color);
+    cursor: pointer;
+
+    /* ---- when input is checked ---- */
+    &--checked {
+      background-image: url('../../../assets/images/checkmark/checkmark.svg');
+      background-color: var(--color-primary);
+      background-size: 22px 22px;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__label {
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: #999;
+  }
+
+}
