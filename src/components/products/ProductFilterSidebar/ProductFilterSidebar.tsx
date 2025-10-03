@@ -93,7 +93,7 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
               )}
 
               {filter === 'price' && (           
-                <PriceFilter products={products} />
+                <PriceFilter products={products} openIndexes={openFilters} index={index} />
               )}
 
               {filter === 'memory' && (           

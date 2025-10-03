@@ -1,5 +1,5 @@
 import './PriceFilter.scss';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
@@ -9,40 +9,37 @@ import { getMinMaxPrice, getPriceSteps } from '../../../utils/productUtils';
 
 type PriceFilterProps = {
   products: Product[];
+  openIndexes: Set<number>;
+  index: number
 };
 
 
-export const PriceFilter = ({ products }: PriceFilterProps) => {
+export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const filterPriceRef = useRef<HTMLDivElement>(null);
+  
 
   // Calculate min and max prices from all variations
   const { maxPrice } = useMemo(() => getMinMaxPrice(products), [products]);
   
   // Common breakpoints in cents
-  const priceSteps = useMemo(() => getPriceSteps(maxPrice), [maxPrice]);
+  const priceSteps = getPriceSteps(maxPrice);
 
-  const [minSelected, setMinSelected] = useState<number>(0);
-  const [maxSelected, setMaxSelected] = useState<number>(0);
+  const [minSelected, setMinSelected] = useState<number | null>(null);
+  const [maxSelected, setMaxSelected] = useState<number | null>(null);
 
-  // the last breakpoint is the highest available price, update maxSelected
-  useEffect(() => {
-    if (priceSteps.length > 0 ) {
-      const lastStep = priceSteps[priceSteps.length - 1];
-      setMaxSelected(lastStep);
-    }
-  }, [priceSteps]);
 
   const handleMinChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = parseInt(e.target.value, 10);
     setMinSelected(value);
-    updateQuery(value, maxSelected);
+     if (maxSelected !== null) updateQuery(value, maxSelected);
   };
 
   const handleMaxChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = parseInt(e.target.value, 10);
     setMaxSelected(value);
-    updateQuery(minSelected, value);
+    if (minSelected !== null) updateQuery(minSelected, value);
   };
 
   const updateQuery = (min: number, max: number) => {
@@ -53,24 +50,47 @@ export const PriceFilter = ({ products }: PriceFilterProps) => {
 
 
 
-
   return (
-    <div className="price-filter">
-      <label htmlFor="minPrice">Min Price:</label>
-      <select id="minPrice" value={minSelected} onChange={handleMinChange}>
-        {priceSteps.map((step, i) => (
-          <option key={i} value={step}>{formatPriceNoFraction(step)}</option>
-        ))}
-      </select>
-
-      <label htmlFor="maxPrice">Max Price:</label>
-      <select id="maxPrice" value={maxSelected} onChange={handleMaxChange}>
-        {priceSteps
-          .filter(step => step >= minSelected)
-          .map((step, i) => (
+    <div 
+      ref={filterPriceRef} 
+      className="price-filter"
+      style={(openIndexes.has(index)) ? { maxHeight: filterPriceRef.current?.scrollHeight } : { maxHeight: 0 }}
+    >
+  
+      <div className='price-filter__container'>
+        {/* MIN PRICE */}
+        <select 
+          id="minPrice"
+          className='price-filter__select' 
+          value={minSelected ?? ''} 
+          onChange={handleMinChange}
+        >
+          <option value="" disabled hidden>
+            Min
+          </option>
+          {priceSteps.map((step, i) => (
             <option key={i} value={step}>{formatPriceNoFraction(step)}</option>
           ))}
-      </select>
+        </select>
+
+        {/* MAX PRICE */}
+        <select 
+          id="maxPrice" 
+          className='price-filter__select'
+          value={maxSelected ?? ''} 
+          onChange={handleMaxChange}
+        >
+          <option value="" disabled hidden>
+            Max
+          </option>
+          {priceSteps
+            .filter(step => minSelected === null || step >= minSelected)
+            .map((step, i) => (
+              <option key={i} value={step}>{formatPriceNoFraction(step)}</option>
+            ))}
+        </select>
+      </div>
+
     </div>
   );
 };
