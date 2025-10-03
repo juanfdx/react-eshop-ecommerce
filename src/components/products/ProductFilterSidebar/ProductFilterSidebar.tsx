@@ -17,6 +17,7 @@ import { ColorFilter } from '../../filters/ColorFilter/ColorFilter';
 // DATA
 import { filters } from '../../../data/data-filters';
 import { SizeFilter } from '../../filters/SizeFilter/SizeFilter';
+import { PriceFilter } from '../../filters/PriceFilter/PriceFilter';
 
 
 type ProductFilterSidebarProps = {
@@ -89,6 +90,10 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
 
               {filter === 'rating' && (           
                 <RatingFilter openIndexes={openFilters} index={index} />
+              )}
+
+              {filter === 'price' && (           
+                <PriceFilter products={products} />
               )}
 
               {filter === 'memory' && (           

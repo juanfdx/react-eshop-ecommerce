@@ -121,3 +121,42 @@ export const getRelatedProducts = (product: Product, products: Product[]) => {
 export const getFeaturedProducts = (products: Product[]): Product[] => {
   return products?.toSorted((a, b) => b.averageRating - a.averageRating)?.slice(0, 8);
 }
+
+
+/*========================================================
+  GET MIN AND MAX PRICE FROM PRODUCTS
+========================================================*/
+export const getMinMaxPrice = (products: Product[]): { minPrice: number, maxPrice: number } => {
+  const allPrices = products.flatMap(product =>
+    product.variations.map(variation => variation.price ?? 0)
+  );
+  const min = Math.min(...allPrices);
+  const max = Math.max(...allPrices);
+  return { minPrice: min, maxPrice: max };
+}
+
+
+/*========================================================
+  GET PRICE STEPS
+========================================================*/
+export const getPriceSteps = (maxPrice: number): number[] => {
+  // Predefined breakpoints in cents (you can adjust if needed)
+  const predefinedSteps = [0, 10000, 20000, 50000, 100000, 150000, 200000, 300000];
+
+  // If maxPrice is within predefined range, find the next step >= maxPrice
+  const nextBreakpoint = predefinedSteps.find(step => step >= maxPrice);
+
+  let upperLimit = nextBreakpoint;
+
+  // If no predefined step is large enough, calculate a dynamic upper limit
+  if (!upperLimit) {
+    const stepSize = 50000; // Or use another logic depending on your products
+    upperLimit = Math.ceil(maxPrice / stepSize) * stepSize;
+    predefinedSteps.push(upperLimit); // Add the dynamic step to the list
+  }
+
+  // Filter steps up to the upper limit
+  const fullRange = predefinedSteps.filter(step => step <= upperLimit);
+
+  return fullRange;
+}
