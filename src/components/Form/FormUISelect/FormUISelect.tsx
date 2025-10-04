@@ -22,6 +22,7 @@ export const FormUISelect = ({selectRef, id, name, value, onChange}: FormSelectP
       <select 
         ref={selectRef}
         id={id}
+        className='my-custom-select'
         name={name} 
         value={value}
         onChange={onChange}

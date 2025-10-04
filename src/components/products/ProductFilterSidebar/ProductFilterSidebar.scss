@@ -14,14 +14,12 @@
 
   @include min-576px {
     width: 400px;
-    transform: translateX(-400px);
   }
 
   @include min-992px {
     position: static;
     transform: translateX(0px);
     width: 25%;
-    z-index: 1;
   }
 
   &--transition {
@@ -36,19 +34,10 @@
   &__container {
     position: relative;
     padding: 60px 30px 30px 30px;
-    // margin-top: 12.4px;
 
     @include min-992px {
       padding: 0px 30px 0px 0px;
       margin-top: 12.4px;
-    }
-
-    @include min-1200px {
-      padding: 0px 40px 0px 0px;
-    }
-
-    @include min-1400px {
-      padding: 0px 50px 0px 0px;
     }
   }
 

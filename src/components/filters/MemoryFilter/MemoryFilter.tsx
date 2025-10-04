@@ -1,5 +1,6 @@
 import './MemoryFilter.scss';
 import { useMemo, useRef } from 'react';
+import { useSearchParams } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // STORE
@@ -18,6 +19,7 @@ type MemoryFilterProps = {
 export const MemoryFilter = ({ products, openIndexes, index }: MemoryFilterProps) => {
 
   const { memory, setMemory } = useFilterStore();
+  const [searchParams, setSearchParams] = useSearchParams();
   const ulRef = useRef<HTMLUListElement>(null);
   
   const uniqueMemories = useMemo(() => getMemoryCounts(products), [products]);
@@ -25,7 +27,26 @@ export const MemoryFilter = ({ products, openIndexes, index }: MemoryFilterProps
 
   const handleMemory = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setMemory(memory === value ? null : value);
+
+    if (memory === value) {
+      setMemory(null);
+      updateQuery(null); // Remove from URL
+    } else {
+      setMemory(value);
+      updateQuery(value); // Set in URL
+    }
+  };
+
+  // Update the memory query param
+  const updateQuery = (selected: string | null) => {
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    if (!selected) {
+      newParams.delete('memory');
+    } else {
+      newParams.set('memory', selected);
+    }
+    setSearchParams(newParams);
   };
 
 

@@ -12,8 +12,8 @@ interface FilterStore {
   memory: string | null,
   size: string | null,
   color: string | null,
-  min_price: number,
-  max_price: number,
+  min_price: number | null,
+  max_price: number | null,
 
   //actions
   setLayout: (layout: LayoutType) => void;
@@ -23,8 +23,8 @@ interface FilterStore {
   setMemory: (memory: string | null) => void;
   setSize: (size: string | null ) => void;
   setColor: (color: string | null) => void;
-  setMinPrice: (min_price: number) => void;
-  setMaxPrice: (max_price: number) => void;
+  setMinPrice: (min_price: number | null) => void;
+  setMaxPrice: (max_price: number | null) => void;
   resetFilters: () => void;
 }
 

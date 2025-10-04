@@ -1,6 +1,7 @@
 import './ColorFilter.scss';
-// INTERFACES
 import { useMemo, useRef } from 'react';
+import { useSearchParams } from 'react-router';
+// INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
@@ -17,15 +18,34 @@ type ColorFilterProps = {
 export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) => {
   
   const { color, setColor } = useFilterStore();
+  const [searchParams, setSearchParams] = useSearchParams(); 
   const ulRef = useRef<HTMLUListElement>(null);
 
   const uniqueColors = useMemo(() => getColorCountsWithHexCode(products), [products]);
 
 
   const handleColor = (c: string) => {
-    if (color === c) setColor(null);
-    else setColor(c);
-  }
+    if (color === c) {
+      setColor(null);
+      updateQuery(null); // Remove from URL
+    } else {
+      setColor(c);
+      updateQuery(c); // Set in URL
+    }
+  };
+
+  // Update the color query param
+  const updateQuery = (selected: string | null) => {
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    if (!selected) {
+      newParams.delete('color');
+    } else {
+      newParams.set('color', selected);
+    }
+
+    setSearchParams(newParams);
+  };
 
 
   return (

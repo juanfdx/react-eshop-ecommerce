@@ -11,11 +11,13 @@
     color: var(--font-text-color);
   
     @include flex(row, nowrap, space-between, center);
+    gap: 20px;
   }
 
-  select {
+  &__select {
     padding: 0.4rem;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
 }

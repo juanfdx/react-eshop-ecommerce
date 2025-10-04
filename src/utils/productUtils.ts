@@ -141,7 +141,7 @@ export const getMinMaxPrice = (products: Product[]): { minPrice: number, maxPric
 ========================================================*/
 export const getPriceSteps = (maxPrice: number): number[] => {
   // Predefined breakpoints in cents (you can adjust if needed)
-  const predefinedSteps = [0, 10000, 20000, 50000, 100000, 150000, 200000, 300000];
+  const predefinedSteps = [0, 10000, 20000, 50000, 100000, 150000, 200000, 300000, 500000, 1000000];
 
   // If maxPrice is within predefined range, find the next step >= maxPrice
   const nextBreakpoint = predefinedSteps.find(step => step >= maxPrice);
