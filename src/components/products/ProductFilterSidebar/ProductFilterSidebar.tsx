@@ -10,14 +10,15 @@ import { useWindowSize } from '../../../hooks/useWindowSize';
 import { RxCross1 } from 'react-icons/rx';
 import { RiEqualizerLine } from 'react-icons/ri';
 import { FaAngleDown } from 'react-icons/fa6';
+import { ActiveFilters } from '../../filters/ActiveFilters/ActiveFilters';
 import { CategoryFilter } from '../../filters/CategoryFilter/CategoryFilter';
 import { RatingFilter } from '../../filters/RatingFilter/RatingFilter';
+import { PriceFilter } from '../../filters/PriceFilter/PriceFilter';
 import { MemoryFilter } from '../../filters/MemoryFilter/MemoryFilter';
+import { SizeFilter } from '../../filters/SizeFilter/SizeFilter';
 import { ColorFilter } from '../../filters/ColorFilter/ColorFilter';
 // DATA
 import { filters } from '../../../data/data-filters';
-import { SizeFilter } from '../../filters/SizeFilter/SizeFilter';
-import { PriceFilter } from '../../filters/PriceFilter/PriceFilter';
 
 
 type ProductFilterSidebarProps = {
@@ -63,19 +64,22 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
   return (
     <aside className={`product-filter ${isOpen ? 'product-filter--active' : ''} ${transition ? 'product-filter--transition' : ''}`}>
       <div className='product-filter__container'>
-        <ul className='product-filter__ul'>
 
         {/* CLOSE BUTTON */}
         <button className='product-filter__close-btn' onClick={()=> handleToggleSidebarFilter()}>
           <RxCross1 className='product-filter__close-icon'/>
         </button>
 
-        {/* FILTER BUTTON */}
+        {/* TOGGLE SIDEBAR BUTTON */}
         <button className='product-filter__filter-btn' onClick={()=> handleToggleSidebarFilter()}>
           <RiEqualizerLine className='product-filter__filter-icon' />
         </button>
 
-          {/* FILTERS LIST */}
+        {/* FILTERS LIST */}
+        <ul className='product-filter__ul'>
+
+          <ActiveFilters />
+
           {filters.map((filter, index) => (
             <li key={index} className='product-filter__li'>
 

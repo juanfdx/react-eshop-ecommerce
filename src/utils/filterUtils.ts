@@ -1,5 +1,7 @@
 // INTERFACES
 import type { Product } from '../interfaces/product.interface';
+import { formatPrice } from './currencyUtils';
+
 
 
 /*========================================================
@@ -114,3 +116,28 @@ export function getColorCountsWithHexCode(products: Product[]): ColorEntry[] {
 }
 
 
+/*========================================================
+  GET FILTER LABELS
+========================================================*/
+export const getFilterLabels = (param: { key: string; value: string }) => {
+  
+  if (param?.key === 'max_price') {
+    return `${formatPrice(Number(param?.value))} max`;
+  } else if (param?.key === 'rating') {
+    return `rating ${param?.value}`;
+  } else if (param?.key === 'sort' && param?.value === 'top_rated') {
+    return `top rated`;
+  } else if (param?.key === 'sort' && param?.value === 'name_asc') {
+    return `name A-Z`;
+  } else if (param?.key === 'sort' && param?.value === 'name_desc') {
+    return `name Z-A`;
+  } else if (param?.key === 'sort' && param?.value === 'price_highest') {
+    return `price highest`;
+  } else if (param?.key === 'sort' &&  param?.value === 'price_lowest') {
+    return `price lowest`;
+  } else if (param?.key === 'page') {
+    return `page ${param?.value}`;
+  } else {
+    return param?.value;
+  }
+}

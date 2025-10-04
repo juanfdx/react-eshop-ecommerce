@@ -1,0 +1,88 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.active-filters {
+  
+
+  /* ----- toggle filter button ----- */
+  &__h4 {
+    position: relative;
+    margin-bottom: 24px;
+    padding: 14px 0;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-bottom: 1px solid var(--border-primary);
+    cursor: pointer;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 39%;
+    right: 1px;
+    width: 14px;
+    height: 14px;
+    z-index: -1;
+    transform: rotate(0deg);
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+
+
+  /* ----- active filters list ----- */
+  &__ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .3s ease;
+  
+    &--active {
+      max-height: 800px;
+    }
+  }
+
+  &__li {
+    position: relative;
+    padding: 0px 10px 14px;
+    color: var(--font-text-color);
+
+    &:last-child {
+      @include flex(row, nowrap, flex-end, center);
+    }
+  }
+
+  &__close-btn {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 4px;
+    background-color: #EBEBEB;
+    cursor: pointer;
+    transition: all .2s ease;
+
+    @include flex(row, nowrap, space-between, flex-start);
+
+    &:hover {
+      background-color: #dedede;
+    }
+  }
+
+  &__value {
+    line-height: 1;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__reset {
+    padding: 0 2px;
+    line-height: .9;
+    cursor: pointer;
+  }
+}

@@ -36,8 +36,8 @@ const initialState = {
   memory: null,
   size: null,
   color: null,
-  min_price: 0,
-  max_price: 1000000,
+  min_price: null,
+  max_price: null,
 }
 
 

@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   background-color: var(--color-secondary);
   transform: translateX(-100%);
   z-index: 10;
@@ -71,7 +71,7 @@
     transition: all .3s ease;
   }
 
-  /* ----- filter button ----- */
+  /* ----- toggle sidebar button ----- */
   &__filter-btn {
     position: absolute;
     top: 260px;
@@ -103,21 +103,7 @@
     height: 28px;
   }
 
-  /* ----- category button ----- */
-  &__arrow {
-    position: absolute;
-    top: 39%;
-    right: 1px;
-    width: 14px;
-    height: 14px;
-    z-index: -1;
-    transform: rotate(0deg);
-
-    &--active {
-      transform: rotate(180deg);
-    }
-  }
-
+  /* ----- toggle filter button ----- */
   &__h4 {
     position: relative;
     margin-bottom: 24px;
@@ -130,6 +116,20 @@
 
     &--hidden {
       display: none;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 39%;
+    right: 1px;
+    width: 14px;
+    height: 14px;
+    z-index: -1;
+    transform: rotate(0deg);
+
+    &--active {
+      transform: rotate(180deg);
     }
   }
 }
