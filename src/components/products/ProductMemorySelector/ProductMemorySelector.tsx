@@ -2,7 +2,7 @@ import './ProductMemorySelector.scss';
 // INTERFACES
 import type { ProductVariation } from '../../../interfaces/product.interface';
 // UTILS
-import { formatMemory } from '../../../utils/stringUtils';
+import { formatStorageSize } from '../../../utils/stringUtils';
 
 type ProductMemorySelectorProps = {
   memories: string[];
@@ -17,7 +17,7 @@ export const ProductMemorySelector = ({ memories, variant, handleVariantChange }
     <div className='memory-selector'>
       
       <p className='memory-selector__label'>
-        Memory: <span className='memory-selector__color-span'>{formatMemory(variant?.memory)}</span>
+        Memory: <span className='memory-selector__color-span'>{formatStorageSize(variant?.memory)}</span>
       </p>
 
       <ul className='memory-selector__color-ul'>
