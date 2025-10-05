@@ -1,7 +1,7 @@
 // INTERFACES
 import type { Product } from '../interfaces/product.interface';
 // UTILS
-import { formatPrice } from './currencyUtils';
+import { formatPriceNoFraction } from './currencyUtils';
 import { formatInches, formatStorageSize } from './stringUtils';
 
 
@@ -148,9 +148,9 @@ export function getColorCountsWithHexCode(products: Product[]): ColorEntry[] {
 export const getFilterLabels = (param: { key: string; value: string }) => {
   
   if (param?.key === 'max_price') {
-    return `${formatPrice(Number(param?.value))} max`;
+    return `${formatPriceNoFraction(Number(param?.value))} max`;
   } else if (param?.key === 'min_price') {
-    return `${formatPrice(Number(param?.value))} min`;
+    return `${formatPriceNoFraction(Number(param?.value))} min`;
   } else if (param?.key === 'rating') {
     return `rating ${param?.value}`;
   } else if (param?.key === 'memory') {
