@@ -1,7 +1,8 @@
 
 
 export const filters: string[] = [ 
-  'category', 
+  'category',
+  'brand', 
   'rating', 
   'price', 
   'memory',

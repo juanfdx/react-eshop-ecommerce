@@ -8,6 +8,7 @@ interface FilterStore {
   layout: LayoutType;
   sort: SortType;
   category: string;
+  brand: string;
   rating: number,
   memory: string | null,
   size: string | null,
@@ -19,6 +20,7 @@ interface FilterStore {
   setLayout: (layout: LayoutType) => void;
   setSort: (sort: SortType) => void;
   setCategory: (category: string) => void;
+  setBrand: (brand: string) => void;
   setRating: (rating: number) => void;
   setMemory: (memory: string | null) => void;
   setSize: (size: string | null ) => void;
@@ -32,6 +34,7 @@ const initialState = {
   layout: 'grid' as LayoutType,
   sort: 'newest' as SortType,
   category: 'all',
+  brand: 'all',
   rating: 0,
   memory: null,
   size: null,
@@ -49,6 +52,7 @@ export const useFilterStore = create<FilterStore>()(
       setLayout: (layout) => set({ layout }),
       setSort: (sort) => set({ sort }),
       setCategory: (category) => set({ category }),
+      setBrand: (brand) => set({ brand }),
       setRating: (rating) => set({ rating }),
       setMemory: (memory) => set({ memory }),
       setSize: (size) => set({ size }),

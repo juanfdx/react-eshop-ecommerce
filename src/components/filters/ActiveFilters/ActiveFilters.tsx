@@ -6,32 +6,44 @@ import { useFilterStore } from '../../../stores/useFilterStore';
 // COMPONENTS
 import { FaAngleDown } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
+import { getFilterLabels } from '../../../utils/filterUtils';
 
 
 
 export const ActiveFilters = () => {
-
+  
   const [searchParams, setSearchParams] = useSearchParams();
   const [active, setActive] = useState(true);
   const ulRef = useRef<HTMLUListElement>(null);
+  const {
+  setCategory,
+  setMinPrice,
+  setMaxPrice,
+  setColor,
+  setMemory,
+  setSize,
+  setRating,
+  resetFilters
+} = useFilterStore();
 
-    const {
-    setCategory,
-    setColor,
-    setMemory,
-    setSize,
-    setRating,
-    resetFilters
-  } = useFilterStore();
+  // create an array of active filters with params
+  const activeFilters = Array.from(searchParams.entries())
+      .map(([key, value]) => ({ key, value }))
 
-  
+      
   const resetStoreValue = (param: string) => {
     switch (param) {
       case 'category':
         setCategory('all');
         break;
-      case 'color':
-        setColor(null);
+      case 'rating':
+        setRating(0);
+        break;
+      case 'min_price':
+        setMinPrice(null);
+        break;
+      case 'max_price':
+        setMaxPrice(null);
         break;
       case 'memory':
         setMemory(null);
@@ -39,17 +51,12 @@ export const ActiveFilters = () => {
       case 'size':
         setSize(null);
         break;
-      case 'rating':
-        setRating(0);
+      case 'color':
+        setColor(null);
         break;
     }
   };
-
-  // create an array of active filters with params
-  const activeFilters = Array.from(searchParams.entries())
-      .map(([key, value]) => ({ key, value }))
-
-      
+  
       
   const handleDelete = (param: string) => {
     const newParams = new URLSearchParams(searchParams.toString());
@@ -88,7 +95,7 @@ export const ActiveFilters = () => {
               onClick={() => handleDelete(param?.key)}
             >
               <span className='active-filters__value'>
-                {param?.value}
+                {getFilterLabels(param)}
               </span>
               <IoClose className='active-filters__icon' />
             </button>

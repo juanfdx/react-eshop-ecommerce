@@ -49,15 +49,15 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
     const newParams = new URLSearchParams(searchParams.toString());
 
     if (min !== null) {
-      newParams.set('minPrice', String(min));
+      newParams.set('min_price', String(min));
     } else {
-      newParams.delete('minPrice');
+      newParams.delete('min_price');
     }
 
     if (max !== null) {
-      newParams.set('maxPrice', String(max));
+      newParams.set('max_price', String(max));
     } else {
-      newParams.delete('maxPrice');
+      newParams.delete('max_price');
     }
 
     setSearchParams(newParams);

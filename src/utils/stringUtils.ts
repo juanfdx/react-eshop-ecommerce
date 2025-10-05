@@ -25,11 +25,12 @@ export const deslugify = (text: string): string => {
 
 
 /*========================================================
-  FORMAT MEMORY
+  FORMAT STORAGE SIZE
 ========================================================*/
-export const formatMemory =(str: string): string => {
-  if (str.length <= 2) return str; // no need to format
-  return str.slice(0, -2) + ' ' + str.slice(-2);
+export const formatStorageSize = (input: string): string => {
+  return input.replace(/^(\d+)\s*(gb|mb|tb|kb)$/i, (_, num, unit) => {
+    return `${num} ${unit.toUpperCase()}`;
+  });
 }
 
 
@@ -47,3 +48,5 @@ export const formatInches = (value: string): string => {
 export const truncateText =(text: string, maxLength = 100): string => {
   return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
 }
+
+

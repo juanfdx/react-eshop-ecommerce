@@ -12,6 +12,7 @@ import { RiEqualizerLine } from 'react-icons/ri';
 import { FaAngleDown } from 'react-icons/fa6';
 import { ActiveFilters } from '../../filters/ActiveFilters/ActiveFilters';
 import { CategoryFilter } from '../../filters/CategoryFilter/CategoryFilter';
+import { BrandFilter } from '../../filters/BrandFilter/BrandFilter';
 import { RatingFilter } from '../../filters/RatingFilter/RatingFilter';
 import { PriceFilter } from '../../filters/PriceFilter/PriceFilter';
 import { MemoryFilter } from '../../filters/MemoryFilter/MemoryFilter';
@@ -80,7 +81,7 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
 
           <ActiveFilters />
 
-          {filters.map((filter, index) => (
+          {filters?.map((filter, index) => (
             <li key={index} className='product-filter__li'>
 
               <h4 className='product-filter__h4' onClick={()=>handleOpenFilter(index)} >
@@ -90,6 +91,10 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
 
               {filter === 'category' && (           
                 <CategoryFilter products={products} openIndexes={openFilters} index={index} />
+              )}
+
+              {filter === 'brand' && (           
+                <BrandFilter products={products} openIndexes={openFilters} index={index} />
               )}
 
               {filter === 'rating' && (           

@@ -7,7 +7,7 @@ import type { Product } from '../../../interfaces/product.interface';
 import { useFilterStore } from '../../../stores/useFilterStore';
 // UTILS
 import { getMemoryCounts } from '../../../utils/filterUtils';
-import { formatMemory } from '../../../utils/stringUtils';
+import { formatStorageSize } from '../../../utils/stringUtils';
 
 
 type MemoryFilterProps = {
@@ -71,7 +71,7 @@ export const MemoryFilter = ({ products, openIndexes, index }: MemoryFilterProps
             />
 
             <label htmlFor={`memory-${m.memory}`} className='memory-filter__label'>
-              {formatMemory(m.memory)}
+              {formatStorageSize(m.memory)}
             </label>
           </div>
 

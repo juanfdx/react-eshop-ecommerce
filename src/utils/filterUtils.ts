@@ -1,6 +1,8 @@
 // INTERFACES
 import type { Product } from '../interfaces/product.interface';
+// UTILS
 import { formatPrice } from './currencyUtils';
+import { formatInches, formatStorageSize } from './stringUtils';
 
 
 
@@ -20,6 +22,30 @@ export const getCategoryCounts = (products: Product[]): CategoryCount[] => {
     if (!category) return;
 
     map.set(category, (map.get(category) || 0) + 1);
+  });
+
+  return Array.from(map.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+};
+
+
+/*========================================================
+  BRAND COUNTS - NO VARIATIONS INCLUDED
+========================================================*/
+type BrandCount = {
+  name: string;
+  count: number;
+};
+
+export const getBrandCounts = (products: Product[]): BrandCount[] => {
+  const map = new Map<string, number>();
+
+  products.forEach(product => {
+    const brand = product.brand?.trim().toLowerCase();
+    if (!brand) return;
+
+    map.set(brand, (map.get(brand) || 0) + 1);
   });
 
   return Array.from(map.entries())
@@ -123,8 +149,15 @@ export const getFilterLabels = (param: { key: string; value: string }) => {
   
   if (param?.key === 'max_price') {
     return `${formatPrice(Number(param?.value))} max`;
+  } else if (param?.key === 'min_price') {
+    return `${formatPrice(Number(param?.value))} min`;
   } else if (param?.key === 'rating') {
     return `rating ${param?.value}`;
+  } else if (param?.key === 'memory') {
+    return `${formatStorageSize(param?.value)}`;
+  } else if (param?.key === 'size') {
+    return `${formatInches(param?.value)}`;
+
   } else if (param?.key === 'sort' && param?.value === 'top_rated') {
     return `top rated`;
   } else if (param?.key === 'sort' && param?.value === 'name_asc') {
