@@ -7,6 +7,8 @@ import type { Product } from '../../../interfaces/product.interface';
 import { ProductViewControls } from '../ProductViewControls/ProductViewControls';
 import { ProductsGrid } from '../ProductsGrid/ProductsGrid';
 import { ProductList } from '../ProductList/ProductList';
+import { Pagination } from '../../shared/Pagination/Pagination';
+import { PaginationSelect } from '../../shared/PaginationSelect/PaginationSelect';
 
 type ProductContainerProps = {
   products: Product[];
@@ -34,6 +36,21 @@ export const ProductContainer = ({ products, filteredProducts }: ProductContaine
         ) : (
           <ProductList products={filteredProducts} />
         )}
+      </>
+
+      <>
+        <Pagination
+          currentPage={1}
+          numOfPages={Math.ceil(filteredProducts.length / 3)}
+          small
+          marginTop='80px'
+        />
+        <PaginationSelect
+          currentPage={1}
+          numOfPages={Math.ceil(filteredProducts.length / 3)}
+          small
+          marginTop='80px'
+        />
       </>
     
     </div>

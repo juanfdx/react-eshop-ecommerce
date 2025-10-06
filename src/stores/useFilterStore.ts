@@ -15,6 +15,7 @@ interface FilterStore {
   color: string | null,
   min_price: number | null,
   max_price: number | null,
+  page: number,
 
   //actions
   setLayout: (layout: LayoutType) => void;
@@ -27,6 +28,7 @@ interface FilterStore {
   setColor: (color: string | null) => void;
   setMinPrice: (min_price: number | null) => void;
   setMaxPrice: (max_price: number | null) => void;
+  setPage: (page: number) => void;
   resetFilters: () => void;
 }
 
@@ -41,6 +43,7 @@ const initialState = {
   color: null,
   min_price: null,
   max_price: null,
+  page: 1,
 }
 
 
@@ -59,6 +62,7 @@ export const useFilterStore = create<FilterStore>()(
       setColor: (color) => set({ color }),
       setMinPrice: (min_price) => set({ min_price }),
       setMaxPrice: (max_price) => set({ max_price }),
+      setPage: (page) => set({ page }),
       resetFilters: () => set({ ...initialState }),
     }),
     {

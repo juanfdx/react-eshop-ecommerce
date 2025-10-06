@@ -1,0 +1,119 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.pagination-select {
+  /* - only appears in small screens - */
+  display: block;
+
+  @include min-576px {
+    display: none;
+  }
+
+
+  &__container {
+    @include flex(row, nowrap, center, center);
+  }
+
+
+  /* ---- select ---- */
+  &__select-container {
+    position: relative;
+  }
+
+  &__select {
+    border: none;
+    outline: none;
+
+    padding: 0px 15px 0px 0px;
+    min-width: 48px;
+    height: 48px;
+    border-top: 1px solid #d5d9d9;
+    border-bottom: 1px solid #d5d9d9;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__arrow-down {
+    position: absolute;
+    top: 52%;
+    transform: translate(0, -50%);
+    right: 7px;
+    width: 14px;
+    height: 14px;
+    z-index: -1;
+  }
+
+
+  /* ---- buttons ---- */
+  &__btn {
+    padding: 0 12px;
+    min-width: 48px;
+    height: 48px;
+    font-size: 16px;
+    border-top: 1px solid #d5d9d9;
+    border-bottom: 1px solid #d5d9d9;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f5f6f6;
+      ;
+    }
+
+    &--prev {
+      position: relative;
+      min-width: 80px;
+      border-left: 1px solid #d5d9d9;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      padding-bottom: 2px !important;
+
+      &::before {
+        content: '';
+        width: 1px;
+        height: 32px;
+        position: absolute;
+        top: 7px;
+        right: -1px;
+        background: #d5d9d9;
+        z-index: -1;
+      }
+    }
+
+    &--next {
+      position: relative;
+      min-width: 80px;
+      border-right: 1px solid #d5d9d9;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      padding-bottom: 2px !important;
+
+      &::before {
+        content: '';
+        width: 1px;
+        height: 32px;
+        position: absolute;
+        top: 7px;
+        left: -1px;
+        background: #d5d9d9;
+        z-index: -1;
+      }
+    }
+
+    &--active {
+      color: #0f1111;
+      font-weight: 700;
+      border: 1px solid #0f1111;
+      padding-left: 11px;
+      padding-right: 11px;
+      pointer-events: none;
+    }
+
+    &--disabled {
+      color: #6f7373;
+      ;
+      pointer-events: none;
+
+    }
+  }
+}

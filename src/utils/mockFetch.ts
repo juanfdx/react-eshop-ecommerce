@@ -22,6 +22,7 @@ mock.onGet('/api/products').reply(config => {
     size,
     min_price,
     max_price,
+    sort
   } = params;
 
   const parsedMinPrice = min_price ? parseFloat(min_price.toString().trim()) : null;
@@ -30,7 +31,8 @@ mock.onGet('/api/products').reply(config => {
 
 
   const filteredProducts = products.filter(product => {
-    // --- Product-level filters ---
+    
+    /* --- Product-level filters --- */
     if (category && product.category.toLowerCase() !== category.toLowerCase()) {
       return false;
     }
@@ -43,7 +45,7 @@ mock.onGet('/api/products').reply(config => {
       return false;
     }
 
-    // --- Variant-level filters ---
+    /* --- Variant-level filters --- */
     const hasMatchingVariant = product.variations.some(variant => {
       if (color && variant.color.toLowerCase() !== color.toLowerCase()) {
         return false;
@@ -68,9 +70,50 @@ mock.onGet('/api/products').reply(config => {
       return true; // passes all filters
     });
 
-    return hasMatchingVariant;
+    return hasMatchingVariant; 
   });
 
+
+  /* --- SORT --- */
+  switch (sort) {
+    case 'top_rated':
+      filteredProducts.sort((a, b) => b.averageRating - a.averageRating);
+      break;
+
+    case 'price_lowest':
+      filteredProducts.sort((a, b) => {
+        const aMin = Math.min(...a.variations.map(v => v.price));
+        const bMin = Math.min(...b.variations.map(v => v.price));
+        return aMin - bMin;
+      });
+      break;
+
+    case 'price_highest':
+      filteredProducts.sort((a, b) => {
+        const aMax = Math.max(...a.variations.map(v => v.price));
+        const bMax = Math.max(...b.variations.map(v => v.price));
+        return bMax - aMax;
+      });
+      break;
+
+    case 'name_asc':
+      filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+
+    case 'name_desc':
+      filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+
+    case 'newest':
+    default:
+      filteredProducts.sort((a, b) => {
+        const aDate = new Date(a.createdAt).getTime();
+        const bDate = new Date(b.createdAt).getTime();
+        return bDate - aDate; // newest first
+      });
+      break;
+  }
+  
   return [200, { products: filteredProducts }];
 });
 
