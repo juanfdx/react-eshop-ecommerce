@@ -1,5 +1,5 @@
 import './ColorFilter.scss';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
@@ -22,6 +22,18 @@ export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) 
   const ulRef = useRef<HTMLUListElement>(null);
 
   const uniqueColors = useMemo(() => getColorCountsWithHexCode(products), [products]);
+
+
+  // Sync store state with URL param
+  useEffect(() => {
+    const urlColor = searchParams.get('color');
+
+    if (!urlColor) {
+      setColor(null); // Reset to 'all' if no Color in URL
+    } else {
+      setColor(urlColor);
+    }
+  }, [searchParams, setColor]);
 
 
   const handleColor = (c: string) => {

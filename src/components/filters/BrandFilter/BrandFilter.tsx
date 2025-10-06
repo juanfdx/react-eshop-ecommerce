@@ -1,5 +1,5 @@
 import './BrandFilter.scss';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
@@ -22,6 +22,18 @@ export const BrandFilter = ({ products, openIndexes, index }: BrandFilterProps) 
 
   // add "all" to the brand count
   const brandsList = [{ name: 'all', count: products?.length }, ...brandCounts];
+
+  // Sync store state with URL param
+  useEffect(() => {
+    const urlBrand = searchParams.get('brand');
+
+    if (!urlBrand) {
+      setBrand('all'); // Reset to 'all' if no category in URL
+    } else {
+      setBrand(urlBrand);
+    }
+  }, [searchParams, setBrand]);
+  
 
   const handleBrand = (b: string) => {
     setBrand(b);

@@ -147,6 +147,7 @@ export function getColorCountsWithHexCode(products: Product[]): ColorEntry[] {
 ========================================================*/
 export const getFilterLabels = (param: { key: string; value: string }) => {
   
+  // filters
   if (param?.key === 'max_price') {
     return `${formatPriceNoFraction(Number(param?.value))} max`;
   } else if (param?.key === 'min_price') {
@@ -157,7 +158,7 @@ export const getFilterLabels = (param: { key: string; value: string }) => {
     return `${formatStorageSize(param?.value)}`;
   } else if (param?.key === 'size') {
     return `${formatInches(param?.value)}`;
-
+  // sort
   } else if (param?.key === 'sort' && param?.value === 'top_rated') {
     return `top rated`;
   } else if (param?.key === 'sort' && param?.value === 'name_asc') {
@@ -168,8 +169,10 @@ export const getFilterLabels = (param: { key: string; value: string }) => {
     return `price highest`;
   } else if (param?.key === 'sort' &&  param?.value === 'price_lowest') {
     return `price lowest`;
+  // page
   } else if (param?.key === 'page') {
     return `page ${param?.value}`;
+  // rest
   } else {
     return param?.value;
   }

@@ -7,12 +7,13 @@ type FormSelectProps = {
   selectRef?: React.RefObject<HTMLSelectElement | null>;
   id: string;
   name: string;
-  value?: string;
+  value: string;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: {key: string , value: string}[]
 }
 
 
-export const FormSelect = ({selectRef, id, name, value, onChange}: FormSelectProps) => {
+export const FormSelect = ({selectRef, id, name, value, onChange, options}: FormSelectProps) => {
   
 
   return (
@@ -26,11 +27,9 @@ export const FormSelect = ({selectRef, id, name, value, onChange}: FormSelectPro
         value={value}
         onChange={onChange}
       >
-        <option value="newest">Newest</option>
-        <option value="price-lowest">Price (lowest)</option>
-        <option value="price-highest">Price (highest)</option>
-        <option value="name-a">Name (a-z)</option>
-        <option value="name-z">Name (z-a)</option>
+        {options?.map((option) => (
+          <option key={option.value} value={option.value}>{option.key}</option>
+        ))}
       </select>
 
       <FaAngleDown className='form-select__arrow' />

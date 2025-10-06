@@ -1,5 +1,5 @@
 import './CategoryFilter.scss';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
@@ -25,6 +25,18 @@ export const CategoryFilter = ({ products, openIndexes, index }: CategoryFilterP
   // add "all" to the category count
   const categoriesList = [ { name: 'all', count: products?.length }, ...categoryCounts ];
 
+  // Sync store state with URL param
+  useEffect(() => {
+    const urlCategory = searchParams.get('category');
+
+    if (!urlCategory) {
+      setCategory('all'); // Reset to 'all' if no category in URL
+    } else {
+      setCategory(urlCategory);
+    }
+  }, [searchParams, setCategory]);
+
+  
   const handleCategory = (c: string) => {
     setCategory(c);
     updateQuery(c);
@@ -39,10 +51,11 @@ export const CategoryFilter = ({ products, openIndexes, index }: CategoryFilterP
     } else {
       newParams.set('category', selected);
     }
-
     setSearchParams(newParams);
   };
   
+
+
   return (
     <ul
       ref={ulRef} 

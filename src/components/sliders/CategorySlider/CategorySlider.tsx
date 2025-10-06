@@ -136,7 +136,7 @@ export const CategorySlider = () => {
                   key={cat.id} 
                   className='categories-slider__card'
                 >
-                  <Link to={'/products'}  className='categories-slider__card-link'>
+                  <Link to={{pathname: '/products', search: `?category=${cat.category}`}}  className='categories-slider__card-link'>
 
                     <div className='categories-slider__img-wrapper'>
                       <img className='categories-slider__img' src={cat.image} alt={cat.alt} />

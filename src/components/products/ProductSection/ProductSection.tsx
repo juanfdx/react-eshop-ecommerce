@@ -1,20 +1,29 @@
 import './ProductSection.scss';
-// DATA
-import { products } from '../../../data/data-products';
+import { useLoaderData } from 'react-router';
+// INTERFACES
+import type { Product } from '../../../interfaces/product.interface';
 // COMPONENTS
-import { ProductContainer } from '../ProductContainer/ProductContainer';
 import { ProductFilterSidebar } from '../ProductFilterSidebar/ProductFilterSidebar';
+import { ProductContainer } from '../ProductContainer/ProductContainer';
+
+type LoaderData = {
+  allProducts: Product[];
+  filteredProducts: Product[];
+};
 
 
 export const ProductSection = () => {
+
+  const { allProducts, filteredProducts } = useLoaderData() as LoaderData;
   
+
   return (
     <section className='product-section'>
       <div className='product-section__container'>
         
-        <ProductFilterSidebar products={products} />
+        <ProductFilterSidebar products={allProducts}  />
        
-        <ProductContainer products={products} />
+        <ProductContainer products={allProducts} filteredProducts={filteredProducts} />
         
       </div>
     </section>

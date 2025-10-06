@@ -1,5 +1,5 @@
 import './MemoryFilter.scss';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
@@ -23,6 +23,18 @@ export const MemoryFilter = ({ products, openIndexes, index }: MemoryFilterProps
   const ulRef = useRef<HTMLUListElement>(null);
   
   const uniqueMemories = useMemo(() => getMemoryCounts(products), [products]);
+
+
+  // Sync memory from URL → store on load / URL change
+  useEffect(() => {
+    const urlMemory = searchParams.get('memory');
+
+    if (!urlMemory) {
+      setMemory(null); // Reset if not in URL
+    } else {
+      setMemory(urlMemory);
+    }
+  }, [searchParams, setMemory]);
 
 
   const handleMemory = (e: React.ChangeEvent<HTMLInputElement>) => {

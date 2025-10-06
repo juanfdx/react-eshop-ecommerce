@@ -9,11 +9,12 @@ import { ProductsGrid } from '../ProductsGrid/ProductsGrid';
 import { ProductList } from '../ProductList/ProductList';
 
 type ProductContainerProps = {
-  products: Product[]
+  products: Product[];
+  filteredProducts: Product[];
 }
 
 
-export const ProductContainer = ({ products }: ProductContainerProps) => {
+export const ProductContainer = ({ products, filteredProducts }: ProductContainerProps) => {
   
   const layout = useFilterStore((state) => state.layout)
   
@@ -21,17 +22,17 @@ export const ProductContainer = ({ products }: ProductContainerProps) => {
   return (
     <div className='product-container'>
 
-      <ProductViewControls products={products} />
+      <ProductViewControls products={products} filteredProducts={filteredProducts} />
 
       <>
-        {products?.length <= 0 ? (
-          <h5 className='products-container__h5'>
+        {filteredProducts?.length <= 0 ? (
+          <h5 className='product-container__h5'>
               No products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid products={products} />
+          <ProductsGrid products={filteredProducts} />
         ) : (
-          <ProductList products={products} />
+          <ProductList products={filteredProducts} />
         )}
       </>
     

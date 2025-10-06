@@ -1,5 +1,5 @@
 import './SizeFilter.scss';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
@@ -23,6 +23,18 @@ export const SizeFilter = ({ products, openIndexes, index }: SizeFilterProps) =>
  
   const uniqueSizes = useMemo(() => getSizeCounts(products), [products]);
   
+
+  // Sync size from URL → store on load / URL change
+  useEffect(() => {
+    const urlSize = searchParams.get('size');
+
+    if (!urlSize) {
+      setSize(null); // Reset if not in URL
+    } else {
+      setSize(urlSize);
+    }
+  }, [searchParams, setSize]);
+
 
   const handleSize = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

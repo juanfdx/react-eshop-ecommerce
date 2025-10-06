@@ -317,8 +317,16 @@ export const products: Product[] = [
         ]
       }
     ],
-    reviews: [],
-    averageRating: 0,
+    reviews: [
+      {
+        _id: "9e31a6f5-f9e7-44dc-9683-dfc1cf3f5ea1",
+        user: "marcus miller",
+        comment: "very good performance, screen quality is good, battery life is good, camera quality is good, price is good, overall is good, i would recommend this product to anyone who is looking for a phone",
+        rating: 4.8,
+        createdAt: "2024-12-09"
+      },
+    ],
+    averageRating: 4.8,
     variations: [
       {
         _id: "340d6509-c98c-4f2f-81f0-218697013911",
@@ -537,12 +545,12 @@ export const products: Product[] = [
       {
         _id: "e4be9a07-b497-41dc-91f2-1e4a6e2466d3",
         user: "mary lopez",
-        comment: "amazing performance and great battery life!",
-        rating: 4.4,
+        comment: "good performance and normal battery life!",
+        rating: 4.2,
         createdAt: "2024-08-21"
       },
     ],
-    averageRating: 4.4,
+    averageRating: 4.2,
     variations: [
       {
         _id: "2f7931b2-b77b-4b56-bc99-c51bb8de07f6",
@@ -671,8 +679,16 @@ export const products: Product[] = [
         ]
       }
     ],
-    reviews: [],
-    averageRating: 0,
+    reviews: [
+      {
+        _id: "6b30d1df-e5a1-4f1a-9136-4a7c98f421cf",
+        user: "willy doe",
+        comment: "amazing laptop and great battery life!",
+        rating: 4.7,
+        createdAt: "2024-08-5"
+      },
+    ],
+    averageRating: 4.7,
     variations: [
       {
         _id: "967b2b7e-06e6-4707-bc53-50ec0b397cbb",
@@ -1055,8 +1071,16 @@ export const products: Product[] = [
         ]
       }
     ],
-    reviews: [],
-    averageRating: 0,
+    reviews: [
+      {
+        _id: "ade906b1-d78f-4e9f-88fd-bc59782a02ef",
+        user: "marcus miller",
+        comment: "normal performance, screen quality is good, but battery life is not good enough, camera quality is normal, price is good, even though the battery life is not good enough, I would recommend this product",
+        rating: 4.4,
+        createdAt: "2023-07-19"
+      },
+    ],
+    averageRating: 4.4,
     variations: [
       {
         _id: "778948db-445b-4b96-a57e-25d8beea3e53",
@@ -1216,8 +1240,16 @@ export const products: Product[] = [
         ]
       }
     ],
-    reviews: [],
-    averageRating: 0,
+    reviews: [
+      {
+        _id: "542fcfe8-e062-4724-8619-32e508bfd2fd",
+        user: "carol vargas",
+        comment: "normal performance, I am not satisfied with the sound quality",
+        rating: 3.7,
+        createdAt: "2024-12-09"
+      },
+    ],
+    averageRating: 3.7,
     variations: [
       {
         _id: "687fdc40-bd9d-4746-83d6-d6f8fd21a240",

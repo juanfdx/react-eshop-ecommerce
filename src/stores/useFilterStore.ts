@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 type LayoutType = 'grid' | 'list';
-type SortType = 'newest' | 'lowest' | 'highest' | 'a-z' | 'z-a';
+export type SortType = 'newest' | 'top_rated' | 'price_lowest' | 'price_highest' | 'name_asc' | 'name_desc';
 
 interface FilterStore {
   layout: LayoutType;

@@ -1,5 +1,5 @@
 import './PriceFilter.scss';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
@@ -21,15 +21,31 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
   const [searchParams, setSearchParams] = useSearchParams();
   const filterPriceRef = useRef<HTMLDivElement>(null);
   
-
   // Calculate min and max prices from all variations
   const { maxPrice } = useMemo(() => getMinMaxPrice(products), [products]);
   
   // Common breakpoints in cents
   const priceSteps = getPriceSteps(maxPrice);
 
-  // const [minSelected, setMinSelected] = useState<number | null>(null);
-  // const [maxSelected, setMaxSelected] = useState<number | null>(null);
+    // Sync state with URL on load or when URL changes
+  useEffect(() => {
+    const urlMin = searchParams.get('min_price');
+    const urlMax = searchParams.get('max_price');
+
+    if (urlMin) {
+      const parsedMin = parseFloat(urlMin);
+      if (!isNaN(parsedMin)) setMinPrice(parsedMin);
+    } else {
+      setMinPrice(null);
+    }
+
+    if (urlMax) {
+      const parsedMax = parseFloat(urlMax);
+      if (!isNaN(parsedMax)) setMaxPrice(parsedMax);
+    } else {
+      setMaxPrice(null);
+    }
+  }, [searchParams, setMinPrice, setMaxPrice]);
 
 
   const handleMinChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

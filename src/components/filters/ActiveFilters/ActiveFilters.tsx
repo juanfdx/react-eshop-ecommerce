@@ -28,6 +28,7 @@ export const ActiveFilters = () => {
 
   // create an array of active filters with params
   const activeFilters = Array.from(searchParams.entries())
+      .filter(([key]) => key !== 'page' && key !== 'sort')
       .map(([key, value]) => ({ key, value }))
 
       

@@ -1,5 +1,5 @@
 import './RatingFilter.scss';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
@@ -19,9 +19,21 @@ export const RatingFilter = ({ openIndexes, index }: RatingFilterProps) => {
   const ulRef = useRef<HTMLUListElement>(null);
 
 
-  const handleRating = (e: React.ChangeEvent<HTMLInputElement>) => {
-    
+  // Sync store state with URL param
+  useEffect(() => {
+    const urlRating = searchParams.get('rating');
+
+    if (!urlRating) {
+      setRating(0); // Reset to 'all' if no category in URL
+    } else {
+      setRating(parseFloat(urlRating));
+    }
+  }, [searchParams, setRating]);
+
+
+  const handleRating = (e: React.ChangeEvent<HTMLInputElement>) => {  
     const selected = parseFloat(e.target.value);
+
     if (rating === selected) {
       setRating(0);
       updateQuery(null); // Remove from URL
