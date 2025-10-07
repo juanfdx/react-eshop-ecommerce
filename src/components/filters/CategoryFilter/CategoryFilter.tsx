@@ -7,6 +7,7 @@ import { useFilterStore } from '../../../stores/useFilterStore';
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { getCategoryCounts } from '../../../utils/filterUtils';
+import { updateFilterQueryParam } from '../../../utils/urlUtils';
 
 type CategoryFilterProps = {
   products: Product[];
@@ -39,20 +40,24 @@ export const CategoryFilter = ({ products, openIndexes, index }: CategoryFilterP
   
   const handleCategory = (c: string) => {
     setCategory(c);
-    updateQuery(c);
+    // updateQuery(c);
+    updateFilterQueryParam('category', c, searchParams, setSearchParams);
   }
 
   // Update category query param in URL
-  const updateQuery = (selected: string) => {
-    const newParams = new URLSearchParams(searchParams.toString());
+  // const updateQuery = (selected: string) => {
+  //   const newParams = new URLSearchParams(searchParams.toString());
 
-    if (selected === 'all') {
-      newParams.delete('category'); // remove if selecting "all"
-    } else {
-      newParams.set('category', selected);
-    }
-    setSearchParams(newParams);
-  };
+  //   if (selected === 'all') {
+  //     newParams.delete('category'); // remove if selecting "all"
+  //   } else {
+  //     newParams.set('category', selected);
+  //   }
+  //   // Reset page on any filter change
+  //   newParams.delete('page');
+    
+  //   setSearchParams(newParams);
+  // };
   
 
 

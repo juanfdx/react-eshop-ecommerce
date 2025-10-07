@@ -49,7 +49,7 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
 
 
   const handleMinChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value === '' ? null : parseInt(e.target.value, 10);
+    const value = e.target.value === '' ? 0 : parseInt(e.target.value, 10);
     setMinPrice(value);
     updateQuery(value, max_price);
   };
@@ -64,7 +64,7 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
   const updateQuery = (min: number | null, max: number | null) => {
     const newParams = new URLSearchParams(searchParams.toString());
 
-    if (min !== null) {
+    if (min !== null && min !== 0) {
       newParams.set('min_price', String(min));
     } else {
       newParams.delete('min_price');
@@ -100,6 +100,7 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
           </option>
           {priceSteps
             .slice(0, -1) // Exclude last item (max price)
+            .filter(step => step !== 0) // Exclude 0, since "Min" already represents it
             .filter(step => max_price === null || step < max_price)
             .map((step, i) => (
               <option key={i} value={step}>{formatPriceNoFraction(step)}</option>

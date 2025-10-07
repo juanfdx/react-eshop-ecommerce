@@ -58,6 +58,9 @@ export const MemoryFilter = ({ products, openIndexes, index }: MemoryFilterProps
     } else {
       newParams.set('memory', selected);
     }
+    // Reset page on any filter change
+    newParams.delete('page');
+    
     setSearchParams(newParams);
   };
 

@@ -49,6 +49,9 @@ export const BrandFilter = ({ products, openIndexes, index }: BrandFilterProps) 
     } else {
       newParams.set('brand', selected);
     }
+    // Reset page on any filter change
+    newParams.delete('page');
+    
     setSearchParams(newParams);
   };
 
