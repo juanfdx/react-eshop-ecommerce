@@ -11,18 +11,20 @@
 
 export const updateFilterQueryParam = (
   key: string,
-  value: string | null,
+  value: string | number | null,
   searchParams: URLSearchParams,
   setSearchParams: (params: URLSearchParams) => void
 ) => {
   const newParams = new URLSearchParams(searchParams.toString());
 
-  if (value === null || value === 'all' || value === '') {
-    newParams.delete(key);
-  } else {
-    newParams.set(key, value);
-  }
+  const isResetValue =
+    value === null ||
+    value === '' ||
+    (typeof value === 'string' && value.toLowerCase() === 'all');
 
+  if (isResetValue) newParams.delete(key);
+  else newParams.set(key, value.toString());
+  
   // Always reset pagination on filter changes
   newParams.delete('page');
 

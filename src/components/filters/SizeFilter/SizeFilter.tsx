@@ -7,6 +7,7 @@ import type { Product } from '../../../interfaces/product.interface';
 import { useFilterStore } from '../../../stores/useFilterStore';
 // UTILS
 import { getSizeCounts } from '../../../utils/filterUtils';
+import { updateFilterQueryParam } from '../../../utils/urlUtils';
 
 type SizeFilterProps = {
   products: Product[];
@@ -41,24 +42,11 @@ export const SizeFilter = ({ products, openIndexes, index }: SizeFilterProps) =>
 
     if (size === value) {
       setSize(null);
-      updateQuery(null); // Remove from URL
+      updateFilterQueryParam('size', null, searchParams, setSearchParams);
     } else {
       setSize(value);
-      updateQuery(value); // Add to URL
+      updateFilterQueryParam('size', value, searchParams, setSearchParams);
     }
-  };
-
-  // Update size query param
-  const updateQuery = (selected: string | null) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-
-    if (!selected) {
-      newParams.delete('size');
-    } else {
-      newParams.set('size', selected);
-    }
-
-    setSearchParams(newParams);
   };
 
 

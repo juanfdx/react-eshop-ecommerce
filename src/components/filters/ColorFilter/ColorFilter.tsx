@@ -7,6 +7,7 @@ import type { Product } from '../../../interfaces/product.interface';
 import { useFilterStore } from '../../../stores/useFilterStore';
 // UTILS
 import { getColorCountsWithHexCode } from '../../../utils/filterUtils';
+import { updateFilterQueryParam } from '../../../utils/urlUtils';
 
 type ColorFilterProps = {
   products: Product[];
@@ -39,25 +40,13 @@ export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) 
   const handleColor = (c: string) => {
     if (color === c) {
       setColor(null);
-      updateQuery(null); // Remove from URL
+      updateFilterQueryParam('color', null, searchParams, setSearchParams);
     } else {
       setColor(c);
-      updateQuery(c); // Set in URL
+      updateFilterQueryParam('color', c, searchParams, setSearchParams);
     }
   };
 
-  // Update the color query param
-  const updateQuery = (selected: string | null) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-
-    if (!selected) {
-      newParams.delete('color');
-    } else {
-      newParams.set('color', selected);
-    }
-
-    setSearchParams(newParams);
-  };
 
 
   return (

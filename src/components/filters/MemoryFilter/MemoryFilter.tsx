@@ -8,6 +8,7 @@ import { useFilterStore } from '../../../stores/useFilterStore';
 // UTILS
 import { getMemoryCounts } from '../../../utils/filterUtils';
 import { formatStorageSize } from '../../../utils/stringUtils';
+import { updateFilterQueryParam } from '../../../utils/urlUtils';
 
 
 type MemoryFilterProps = {
@@ -42,26 +43,11 @@ export const MemoryFilter = ({ products, openIndexes, index }: MemoryFilterProps
 
     if (memory === value) {
       setMemory(null);
-      updateQuery(null); // Remove from URL
+      updateFilterQueryParam('memory', null, searchParams, setSearchParams);
     } else {
       setMemory(value);
-      updateQuery(value); // Set in URL
+      updateFilterQueryParam('memory', value, searchParams, setSearchParams);
     }
-  };
-
-  // Update the memory query param
-  const updateQuery = (selected: string | null) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-
-    if (!selected) {
-      newParams.delete('memory');
-    } else {
-      newParams.set('memory', selected);
-    }
-    // Reset page on any filter change
-    newParams.delete('page');
-    
-    setSearchParams(newParams);
   };
 
 

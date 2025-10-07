@@ -7,6 +7,7 @@ import { useFilterStore } from '../../../stores/useFilterStore';
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { getBrandCounts } from '../../../utils/filterUtils';
+import { updateFilterQueryParam } from '../../../utils/urlUtils';
 
 type BrandFilterProps = {
   products: Product[];
@@ -37,23 +38,9 @@ export const BrandFilter = ({ products, openIndexes, index }: BrandFilterProps) 
 
   const handleBrand = (b: string) => {
     setBrand(b);
-    updateQuery(b);
+    updateFilterQueryParam('brand', b, searchParams, setSearchParams);
   };
 
-  // Update brand query param in URL
-  const updateQuery = (selected: string) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-
-    if (selected === 'all') {
-      newParams.delete('brand');
-    } else {
-      newParams.set('brand', selected);
-    }
-    // Reset page on any filter change
-    newParams.delete('page');
-    
-    setSearchParams(newParams);
-  };
 
 
   return (

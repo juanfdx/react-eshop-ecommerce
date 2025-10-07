@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router';
 import { useFilterStore } from '../../../stores/useFilterStore';
 // COMPONENTS
 import { StarRating } from '../../shared/StarRating/StarRating';
+import { updateFilterQueryParam } from '../../../utils/urlUtils';
 
 
 type RatingFilterProps = {
@@ -36,23 +37,11 @@ export const RatingFilter = ({ openIndexes, index }: RatingFilterProps) => {
 
     if (rating === selected) {
       setRating(0);
-      updateQuery(null); // Remove from URL
+      updateFilterQueryParam('rating', null, searchParams, setSearchParams);
     } else {
       setRating(selected);
-      updateQuery(selected); // Add to URL
+      updateFilterQueryParam('rating', selected, searchParams, setSearchParams);
     }
-  };
-
-  // Add query update helper
-  const updateQuery = (value: number | null) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-
-    if (value === null) {
-      newParams.delete('rating');
-    } else {
-      newParams.set('rating', value.toString());
-    }
-    setSearchParams(newParams);
   };
 
 

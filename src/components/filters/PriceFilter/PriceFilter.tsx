@@ -76,9 +76,13 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
       newParams.delete('max_price');
     }
 
+    // Always reset pagination on filter changes
+    newParams.delete('page');
+
     setSearchParams(newParams);
   };
 
+  
 
   return (
     <div 
