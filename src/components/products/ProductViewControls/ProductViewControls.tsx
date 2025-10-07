@@ -1,16 +1,17 @@
 import './ProductViewControls.scss';
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 // STORE
 import { useFilterStore, type SortType } from '../../../stores/useFilterStore';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
+// UTILS
+import { updateFilterQueryParam } from '../../../utils/urlUtils';
 // COMPONENTS
 import { TfiLayoutGrid2, TfiLayoutListThumb } from 'react-icons/tfi';
 import { FormUISelect } from '../../form/FormUISelect/FormUISelect';
 // DATA
 import { sortOptions } from '../../../data/data-selectors';
-import { useEffect } from 'react';
 
 type ProductViewControlsProps = {
   products: Product[];
@@ -26,7 +27,7 @@ export const ProductViewControls = ({ products, filteredProducts }: ProductViewC
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(event.target.value as SortType);
-    updateQuery(event.target.value);
+    updateFilterQueryParam('sort', event.target.value, searchParams, setSearchParams);
   };
 
   
@@ -44,19 +45,6 @@ export const ProductViewControls = ({ products, filteredProducts }: ProductViewC
       setSort(urlSort);
     }
   }, [searchParams, setSort]);
-
-
-    // Update category query param in URL
-  const updateQuery = (selected: string) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-
-    if (selected === 'newest') {
-      newParams.delete('sort'); 
-    } else {
-      newParams.set('sort', selected);
-    }
-    setSearchParams(newParams);
-  };
 
 
 

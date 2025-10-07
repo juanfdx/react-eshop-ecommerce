@@ -20,6 +20,7 @@ export const updateFilterQueryParam = (
   const isResetValue =
     value === null ||
     value === '' ||
+    (typeof value === 'string' && value.toLowerCase() === 'newest') ||
     (typeof value === 'string' && value.toLowerCase() === 'all');
 
   if (isResetValue) newParams.delete(key);
