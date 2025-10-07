@@ -21,13 +21,13 @@ export const VariantColorButtons = ({ product, variant = 'grid' }: VariantColorB
   
   return (
     <ul className={`variant-color-buttons ${variant === 'list' ? 'variant-color-buttons--list' : ''}`}>
-      {topColorVariants?.map((variant, index) => (
+      {topColorVariants?.map((variant) => (
         <li 
           key={variant._id} 
-          className={`variant-color-buttons__li ${index === 0 ? 'variant-color-buttons__li--active' : ''}`}       
+          className={`variant-color-buttons__li `}       
         >
           <Link 
-            className={`variant-color-buttons__link ${isWhiteSpectrum(variant?.hexCode) ? 'variant-color-buttons__link--active' : ''}`} 
+            className={`variant-color-buttons__link ${isWhiteSpectrum(variant?.hexCode, 50) ? 'variant-color-buttons__link--active' : ''}`} 
             to={getProductVariantUrl(product?.slug, variant)} 
             style={{ backgroundColor: variant?.hexCode }}
           ></Link>

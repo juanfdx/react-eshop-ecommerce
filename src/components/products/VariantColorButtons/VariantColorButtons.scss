@@ -6,11 +6,11 @@
   margin-bottom: 8px;
 
   @include flex(row, nowrap, flex-start, flex-start);
-  gap: 3px;
+  gap: 1px;
 
     &--list {
       @include min-375px {
-        margin-top: 4px;
+        margin-top: 2px;
       }
     }
 

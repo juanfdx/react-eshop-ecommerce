@@ -2,9 +2,11 @@ import './ProductCard.scss';
 import { Link } from 'react-router';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
+// STORE
+import { useFilterStore } from '../../../stores/useFilterStore';
 // UTILS
 import { formatPrice } from '../../../utils/currencyUtils';
-import { getFirstVariantUrl } from '../../../utils/productUtils';
+import { getFirstVariantUrl, getProductVariantUrl } from '../../../utils/productUtils';
 import { getUniqueVariantColors } from '../../../utils/colorUtils';
 import { truncateText } from '../../../utils/stringUtils';
 // COMPONENTS
@@ -19,23 +21,45 @@ type ProductCardProps = {
 
 
 export const ProductCard = ({ product, variant = 'grid' }: ProductCardProps) => {
+  const { color, memory, size, min_price, max_price }  = useFilterStore();
 
-  const firstVariant = product?.variations[0];
   const uniqueColors = getUniqueVariantColors(product);
   const showColorButtons = uniqueColors.length > 1;
+
+  // Try to find a matching variant based on selected color
+  const matchingVariant = product.variations.find(v => {
+    const variantColor = v?.color?.toLowerCase();
+    const matchesColor = color ? variantColor === color.toLowerCase() : true;
+    const matchesMemory = memory ? v.memory === memory : true;
+    const matchesSize = size ? v.size === size : true;
+    const matchesMinPrice = min_price !== null ? v.price >= min_price : true;
+    const matchesMaxPrice = max_price !== null ? v.price <= max_price : true;
+
+    return matchesColor && matchesMemory && matchesSize && matchesMinPrice && matchesMaxPrice;
+  });
   
+  // Fallback to first variant
+  const displayedVariant = matchingVariant || product.variations[0];
+
+  // Use dynamic URL if matched, otherwise default to first variant URL
+  const productUrl = matchingVariant
+    ? getProductVariantUrl(product.slug, matchingVariant)
+    : getFirstVariantUrl(product);
+
+
+
   return (
     <li className={`product-card ${variant === 'list' ? 'product-card--list' : ''}`}>
       <Link 
         className={`product-card__link ${variant === 'list' ? 'product-card__link--list' : ''}`} 
-        to={getFirstVariantUrl(product)}
+        to={productUrl}
       >
         <div className={`product-card__img-wrapper ${variant === 'list' ? 'product-card__img-wrapper--list' : ''}`}>
 
           <img 
             className='product-card__img' 
-            src={firstVariant?.images[0]?.url} 
-            alt={firstVariant?.name} 
+            src={displayedVariant?.images[0]?.url} 
+            alt={displayedVariant?.name} 
           />
           <div className='product-card__overlay'></div>
           
@@ -50,9 +74,9 @@ export const ProductCard = ({ product, variant = 'grid' }: ProductCardProps) => 
         {/* title */}
         <Link 
           className={`product-card__title ${variant === 'list' ? 'product-card__title--list' : ''}`} 
-          to={getFirstVariantUrl(product)}
+          to={productUrl}
         >         
-          {firstVariant?.name}
+          {displayedVariant?.name}
         </Link>
         {/* description */}
         <p className={`product-card__description ${variant === 'list' ? 'product-card__description--list' : ''}`}>
@@ -63,7 +87,7 @@ export const ProductCard = ({ product, variant = 'grid' }: ProductCardProps) => 
           <RatingBadge rating={product?.averageRating} reviews={product?.reviews?.length} small={true} />
         }    
         {/* price */} 
-        <p className='product-card__price'>{formatPrice(firstVariant?.price)}</p>        
+        <p className='product-card__price'>{formatPrice(displayedVariant?.price)}</p>        
       </div>
     </li>
   )
