@@ -6,21 +6,28 @@ import { FaAngleDown } from 'react-icons/fa6';
 type PaginationSelectProps = {
   currentPage: number;
   numOfPages: number;
+  limit: number
+  total: number
   small?: boolean;
   marginTop?: string
 }
 
 
-export const PaginationSelect = ({ currentPage, numOfPages, small, marginTop }: PaginationSelectProps) => {
+export const PaginationSelect = ({ currentPage, numOfPages, limit, total, small, marginTop }: PaginationSelectProps) => {
+
+  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(search);
+  
+  // Skip rendering if there's only one page of results
+  if (total <= limit) return null;
+
 
   const smallButton = {
     minWidth : '42px',
     height : '42px',
   }
 
-  const { search, pathname } = useLocation();
-  const navigate = useNavigate();
-  const searchParams = new URLSearchParams(search);
  
   //page numbers array
   const pageNumbers = Array.from({ length: numOfPages }, (_, index) => index + 1);

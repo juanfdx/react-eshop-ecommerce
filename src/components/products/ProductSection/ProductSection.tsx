@@ -8,7 +8,13 @@ import { ProductContainer } from '../ProductContainer/ProductContainer';
 
 type LoaderData = {
   allProducts: Product[];
-  filteredProducts: Product[];
+  filteredProducts: {
+    products: Product[]
+    total: number
+    currentPage: number
+    numOfPages: number
+    limit: number
+  };
 };
 
 

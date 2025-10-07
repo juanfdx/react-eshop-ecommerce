@@ -15,11 +15,18 @@ export type ProductQueryParams = {
 /*==================================================
   GET ALL PRODUCTS 
 ===================================================*/
-export const getAllProducts = (params?: ProductQueryParams) => {
+export const getAllProducts = () => {
+  return axios.get('/api/products/all');
+};
+
+/*==================================================
+  GET ALL PRODUCTS 
+===================================================*/
+export const getFilteredProducts = (params?: ProductQueryParams) => {
   return axios.get('/api/products', {
     params,
   });
-};
+}
 
 /*========================================================
   GET PRODUCT BY SLUG

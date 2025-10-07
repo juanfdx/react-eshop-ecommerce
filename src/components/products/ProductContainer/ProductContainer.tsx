@@ -12,46 +12,59 @@ import { PaginationSelect } from '../../shared/PaginationSelect/PaginationSelect
 
 type ProductContainerProps = {
   products: Product[];
-  filteredProducts: Product[];
+    filteredProducts: {
+    products: Product[]
+    total: number
+    currentPage: number
+    numOfPages: number
+    limit: number
+  };
 }
 
 
 export const ProductContainer = ({ products, filteredProducts }: ProductContainerProps) => {
   
   const layout = useFilterStore((state) => state.layout)
+  const { products: paginatedProducts, total, currentPage, numOfPages, limit } = filteredProducts;
+
   
   
   return (
     <div className='product-container'>
 
-      <ProductViewControls products={products} filteredProducts={filteredProducts} />
+      <ProductViewControls products={products} filteredProducts={paginatedProducts} />
 
       <>
-        {filteredProducts?.length <= 0 ? (
+        {paginatedProducts?.length <= 0 ? (
           <h5 className='product-container__h5'>
               No products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid products={filteredProducts} />
+          <ProductsGrid products={paginatedProducts} />
         ) : (
-          <ProductList products={filteredProducts} />
+          <ProductList products={paginatedProducts} />
         )}
       </>
+      
+      {/* for large screens only */}
+      <Pagination
+        currentPage={currentPage}
+        numOfPages={numOfPages}
+        limit={limit}
+        total={total}
+        small
+        marginTop='80px'
+      />
 
-      <>
-        <Pagination
-          currentPage={1}
-          numOfPages={Math.ceil(filteredProducts.length / 3)}
-          small
-          marginTop='80px'
-        />
-        <PaginationSelect
-          currentPage={1}
-          numOfPages={Math.ceil(filteredProducts.length / 3)}
-          small
-          marginTop='80px'
-        />
-      </>
+      {/* for small screens only */}
+      <PaginationSelect
+        currentPage={currentPage}
+        numOfPages={numOfPages}
+        limit={limit}
+        total={total}
+        small
+        marginTop='80px'
+      />
     
     </div>
   )

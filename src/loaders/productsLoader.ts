@@ -2,7 +2,7 @@ import type { LoaderFunctionArgs } from 'react-router'
 // INTERFACES
 import type { AxiosError } from 'axios';
 // SERVICES
-import { getAllProducts } from '../services/product.mock.service';
+import { getAllProducts, getFilteredProducts } from '../services/product.mock.service';
 
 
 
@@ -16,13 +16,13 @@ export const productsLoader = async ({ request }: LoaderFunctionArgs) => {
   try {
 
     const [allRes, filteredRes] = await Promise.all([
-      getAllProducts(),         // All products (for filters)
-      getAllProducts(params)   // Filtered products (for product grid)
+      getAllProducts(),            // All products (for filters)
+      getFilteredProducts(params)  // Filtered products (for the grid)
     ]);
 
     return {
       allProducts: allRes.data.products,
-      filteredProducts: filteredRes.data.products,
+      filteredProducts: filteredRes.data,
     };
     
 

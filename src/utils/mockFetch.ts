@@ -10,6 +10,12 @@ const mock = new AxiosMockAdapter(axios, { delayResponse: 300 }); // 300ms delay
 /*==================================================
   GET ALL PRODUCTS 
 ===================================================*/
+mock.onGet('/api/products/all').reply(200, { products });
+
+
+/*==================================================
+  GET FILTERED PRODUCTS 
+===================================================*/
 mock.onGet('/api/products').reply(config => {
   const params = config.params || {};
 
@@ -22,12 +28,17 @@ mock.onGet('/api/products').reply(config => {
     size,
     min_price,
     max_price,
-    sort
+    sort,
+    page = 1,
+    limit = 4, // default limit is 4 products per page
   } = params;
 
   const parsedMinPrice = min_price ? parseFloat(min_price.toString().trim()) : null;
   const parsedMaxPrice = max_price ? parseFloat(max_price.toString().trim()) : null;
   const parsedMinRating = rating ? parseFloat(rating.toString().trim()) : null;
+  const parsedPage = parseInt(page);
+  const parsedLimit = parseInt(limit);
+  const skip = (parsedPage - 1) * parsedLimit;
 
 
   const filteredProducts = products.filter(product => {
@@ -113,8 +124,23 @@ mock.onGet('/api/products').reply(config => {
       });
       break;
   }
+
+  const total = filteredProducts.length;
+  const numOfPages = Math.ceil(total / parsedLimit);
+
+  // Slice for pagination
+  const paginatedProducts = filteredProducts.slice(skip, skip + parsedLimit);
   
-  return [200, { products: filteredProducts }];
+  return [
+    200, 
+    {
+      products: paginatedProducts,
+      total,
+      currentPage: parsedPage,
+      numOfPages,
+      limit: parsedLimit,
+    }
+  ];
 });
 
 

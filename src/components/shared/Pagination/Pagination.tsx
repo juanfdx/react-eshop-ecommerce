@@ -4,22 +4,27 @@ import { useLocation, useNavigate } from 'react-router';
 type PaginationProps = {
   currentPage: number;
   numOfPages: number;
+  limit: number
+  total: number
   small?: boolean;
   marginTop?: string
 }
 
 
-export const Pagination = ({ currentPage, numOfPages, small, marginTop }: PaginationProps) => {
+export const Pagination = ({ currentPage, numOfPages, limit, total, small, marginTop }: PaginationProps) => {
+
+  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(search);
+
+  // Skip rendering if there's only one page of results
+  if (total <= limit) return null;
 
   const smallButton = {
     minWidth : '42px',
     height : '42px',
   }
 
-  const { search, pathname } = useLocation();
-  
-  const navigate = useNavigate();
-  const searchParams = new URLSearchParams(search);
  
   //page numbers array
   const pageNumbers = Array.from({ length: numOfPages }, (_, index) => index + 1);
