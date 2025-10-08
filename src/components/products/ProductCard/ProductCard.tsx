@@ -21,21 +21,21 @@ type ProductCardProps = {
 
 
 export const ProductCard = ({ product, variant = 'grid' }: ProductCardProps) => {
-  const { color, memory, size, min_price, max_price }  = useFilterStore();
+  const { baseColor, memory, size, min_price, max_price }  = useFilterStore();
 
   const uniqueColors = getUniqueVariantColors(product);
   const showColorButtons = uniqueColors.length > 1;
 
-  // Try to find a matching variant based on selected color
+  // Try to find a matching variant based on selected filters
   const matchingVariant = product.variations.find(v => {
-    const variantColor = v?.color?.toLowerCase();
-    const matchesColor = color ? variantColor === color.toLowerCase() : true;
+    const variantBaseColor = v?.baseColor?.toLowerCase();
+    const matchesBaseColor = baseColor ? variantBaseColor === baseColor.toLowerCase() : true;
     const matchesMemory = memory ? v.memory === memory : true;
     const matchesSize = size ? v.size === size : true;
     const matchesMinPrice = min_price !== null ? v.price >= min_price : true;
     const matchesMaxPrice = max_price !== null ? v.price <= max_price : true;
 
-    return matchesColor && matchesMemory && matchesSize && matchesMinPrice && matchesMaxPrice;
+    return matchesBaseColor && matchesMemory && matchesSize && matchesMinPrice && matchesMaxPrice;
   });
   
   // Fallback to first variant

@@ -18,7 +18,7 @@ type ColorFilterProps = {
 
 export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) => {
   
-  const { color, setColor } = useFilterStore();
+  const { baseColor, setBaseColor } = useFilterStore();
   const [searchParams, setSearchParams] = useSearchParams(); 
   const ulRef = useRef<HTMLUListElement>(null);
 
@@ -30,19 +30,19 @@ export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) 
     const urlColor = searchParams.get('color');
 
     if (!urlColor) {
-      setColor(null); // Reset to 'all' if no Color in URL
+      setBaseColor(null); // Reset to 'all' if no Color in URL
     } else {
-      setColor(urlColor);
+      setBaseColor(urlColor);
     }
-  }, [searchParams, setColor]);
+  }, [searchParams, setBaseColor]);
 
 
   const handleColor = (c: string) => {
-    if (color === c) {
-      setColor(null);
+    if (baseColor === c) {
+      setBaseColor(null);
       updateFilterQueryParam('color', null, searchParams, setSearchParams);
     } else {
-      setColor(c);
+      setBaseColor(c);
       updateFilterQueryParam('color', c, searchParams, setSearchParams);
     }
   };
@@ -60,13 +60,13 @@ export const ColorFilter = ({ products, openIndexes, index }: ColorFilterProps) 
           <button 
             type='button' 
             className='color-filter__btn'
-            onClick={() => handleColor(c?.name)} 
+            onClick={() => handleColor(c?.baseColor)} 
           >
 
             <div className='color-filter__box-color' style={{ backgroundColor: c?.code}}> </div>
 
-            <span className={`color-filter__name ${(color === c?.name) ? 'color-filter__name--active' : ''}`}>
-              {c?.name}
+            <span className={`color-filter__name ${(baseColor === c?.baseColor) ? 'color-filter__name--active' : ''}`}>
+              {c?.baseColor}
             </span>
           </button>
 

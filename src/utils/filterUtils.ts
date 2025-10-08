@@ -112,9 +112,10 @@ export function getSizeCounts(products: Product[]): SizeCount[] {
   GET COLORS WITH HEX COUNTS 
 ========================================================*/
 type ColorEntry = {
-  name: string;
-  code: string;
-  quantity: number;
+  name: string;      // full descriptive color (e.g. "titanium black")
+  baseColor: string; // normalized filter color (e.g. "black")
+  code: string;      // hex code (e.g. "#454342")
+  quantity: number;  // number of variants/products
 };
 
 export function getColorCountsWithHexCode(products: Product[]): ColorEntry[] {
@@ -122,17 +123,24 @@ export function getColorCountsWithHexCode(products: Product[]): ColorEntry[] {
 
   for (const product of products) {
     for (const variation of product.variations || []) {
-      const color = variation.color?.toLowerCase().trim();
-      const code = variation.hexCode?.trim();
+      const name = variation.color?.trim() || "";
+      const baseColor = variation.baseColor?.trim().toLowerCase() || "";
+      const code = variation.hexCode?.trim() || "";
 
-      if (!color || !code) continue;
+      if (!name || !baseColor || !code) continue;
 
-      const key = `${color}-${code}`;
+      // Group by baseColor — one entry per filter color
+      const key = baseColor;
 
       if (colorMap.has(key)) {
         colorMap.get(key)!.quantity += 1;
       } else {
-        colorMap.set(key, { name: color, code, quantity: 1 });
+        colorMap.set(key, {
+          name,       // use the first descriptive color found (for optional UI)
+          baseColor,  // normalized color (used for filtering)
+          code,       // representative hex for swatch
+          quantity: 1,
+        });
       }
     }
   }

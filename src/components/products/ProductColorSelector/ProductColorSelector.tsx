@@ -1,6 +1,8 @@
 import './ProductColorSelector.scss';
 // INTERFACES
 import type { ProductVariation } from '../../../interfaces/product.interface';
+// UTILS
+import { isWhiteSpectrum } from '../../../utils/colorUtils';
 
 type ProductColorSelectorProps = {
   colors: [string, string][];
@@ -28,7 +30,7 @@ export const ProductColorSelector = ({ colors, variant, handleVariantChange }: P
           >
             <div className='color-selector__color-btn'> 
               <div 
-                className='color-selector__color-circle' 
+                className={`color-selector__color-circle ${isWhiteSpectrum(hexCode, 30) ? 'color-selector__color-circle--active' : ''}`} 
                 style={{ backgroundColor: hexCode }}
               >
               </div>        

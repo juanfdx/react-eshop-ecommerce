@@ -12,7 +12,7 @@ interface FilterStore {
   rating: number,
   memory: string | null,
   size: string | null,
-  color: string | null,
+  baseColor: string | null,
   min_price: number | null,
   max_price: number | null,
   page: number,
@@ -25,7 +25,7 @@ interface FilterStore {
   setRating: (rating: number) => void;
   setMemory: (memory: string | null) => void;
   setSize: (size: string | null ) => void;
-  setColor: (color: string | null) => void;
+  setBaseColor: (baseColor: string | null) => void;
   setMinPrice: (min_price: number | null) => void;
   setMaxPrice: (max_price: number | null) => void;
   setPage: (page: number) => void;
@@ -40,7 +40,7 @@ const initialState = {
   rating: 0,
   memory: null,
   size: null,
-  color: null,
+  baseColor: null,
   min_price: null,
   max_price: null,
   page: 1,
@@ -59,7 +59,7 @@ export const useFilterStore = create<FilterStore>()(
       setRating: (rating) => set({ rating }),
       setMemory: (memory) => set({ memory }),
       setSize: (size) => set({ size }),
-      setColor: (color) => set({ color }),
+      setBaseColor: (baseColor) => set({ baseColor }),
       setMinPrice: (min_price) => set({ min_price }),
       setMaxPrice: (max_price) => set({ max_price }),
       setPage: (page) => set({ page }),

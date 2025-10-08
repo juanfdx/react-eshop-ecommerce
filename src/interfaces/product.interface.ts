@@ -40,7 +40,8 @@ export interface ProductVariation {
   _id: string;
   name: string;
   slug: string;
-  color: string; // Match with ProductColor.name
+  color: string; // full display name for users
+  baseColor: string; // normalized string for filtering
   hexCode: string;
   memory: string; // e.g., '256GB', '512GB'
   price: number; // In cents or local currency smallest unit

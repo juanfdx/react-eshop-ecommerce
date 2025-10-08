@@ -23,7 +23,7 @@ mock.onGet('/api/products').reply(config => {
     category,
     brand,
     rating,
-    color,
+    color, // baseColor
     memory,
     size,
     min_price,
@@ -32,6 +32,7 @@ mock.onGet('/api/products').reply(config => {
     page = 1,
     limit = 4, // default limit is 4 products per page
   } = params;
+
 
   const parsedMinPrice = min_price ? parseFloat(min_price.toString().trim()) : null;
   const parsedMaxPrice = max_price ? parseFloat(max_price.toString().trim()) : null;
@@ -58,7 +59,7 @@ mock.onGet('/api/products').reply(config => {
 
     /* --- Variant-level filters --- */
     const hasMatchingVariant = product.variations.some(variant => {
-      if (color && variant.color.toLowerCase() !== color.toLowerCase()) {
+      if (color && variant.baseColor.toLowerCase() !== color.toLowerCase()) {
         return false;
       }
 
