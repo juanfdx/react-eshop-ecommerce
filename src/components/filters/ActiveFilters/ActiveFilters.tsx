@@ -19,7 +19,7 @@ export const ActiveFilters = () => {
   setCategory,
   setMinPrice,
   setMaxPrice,
-  setColor,
+  setBaseColor,
   setMemory,
   setSize,
   setRating,
@@ -53,7 +53,7 @@ export const ActiveFilters = () => {
         setSize(null);
         break;
       case 'color':
-        setColor(null);
+        setBaseColor(null);
         break;
     }
   };
@@ -73,7 +73,7 @@ export const ActiveFilters = () => {
 
 
   // if no active filters, don't render
-  if (activeFilters.length === 0) return null;
+  if (activeFilters?.length === 0) return null;
   
 
 

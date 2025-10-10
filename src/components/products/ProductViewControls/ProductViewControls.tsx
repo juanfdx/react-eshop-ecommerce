@@ -3,15 +3,18 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 // STORE
 import { useFilterStore, type SortType } from '../../../stores/useFilterStore';
+import { useUIStore } from '../../../stores/useUIStore';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { updateFilterQueryParam } from '../../../utils/urlUtils';
 // COMPONENTS
+import { RiEqualizerLine } from 'react-icons/ri';
 import { TfiLayoutGrid2, TfiLayoutListThumb } from 'react-icons/tfi';
 import { FormUISelect } from '../../form/FormUISelect/FormUISelect';
 // DATA
 import { sortOptions } from '../../../data/data-selectors';
+import { useTransitionStore } from '../../../stores/useTransitionStore';
 
 type ProductViewControlsProps = {
   products: Product[];
@@ -21,14 +24,13 @@ type ProductViewControlsProps = {
 
 export const ProductViewControls = ({ products, filteredProducts }: ProductViewControlsProps) => {
   
+  const isOpen = useUIStore((state) => state.isOpen('product_filter'));
+  const openUI = useUIStore((state) => state.openUI);
+  const closeUI = useUIStore((state) => state.closeUI);
+
+  const { startTransition } = useTransitionStore();
   const { layout, setLayout, sort, setSort } = useFilterStore();
   const [searchParams, setSearchParams] = useSearchParams(); 
-
-
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSort(event.target.value as SortType);
-    updateFilterQueryParam('sort', event.target.value, searchParams, setSearchParams);
-  };
 
   
   // Sync sort from URL to store
@@ -45,6 +47,18 @@ export const ProductViewControls = ({ products, filteredProducts }: ProductViewC
       setSort(urlSort);
     }
   }, [searchParams, setSort]);
+  
+  
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSort(event.target.value as SortType);
+    updateFilterQueryParam('sort', event.target.value, searchParams, setSearchParams);
+  };
+
+  const handleToggleSidebarFilter = () => {
+    startTransition();
+    if (isOpen) {closeUI()}
+    else {openUI('product_filter')}
+  };
 
 
 
@@ -52,6 +66,12 @@ export const ProductViewControls = ({ products, filteredProducts }: ProductViewC
     <div className='sort-controls'>
 
       <div className='sort-controls__info-box'>
+
+        {/* filters sidebar toggle button */}
+        <button className='sort-controls__filters-sidebar-toggle-btn' onClick={handleToggleSidebarFilter}>
+          <RiEqualizerLine className='sort-controls__filter-icon' />
+        </button>
+
         {/* result count */}
         <h4 className='sort-controls__h4'>
           <span className='sort-controls__span'>{filteredProducts?.length}</span> 

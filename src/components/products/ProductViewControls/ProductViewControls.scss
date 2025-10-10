@@ -16,6 +16,23 @@
     @include flex(row, nowrap, space-between, center);
   }
 
+  &__filters-sidebar-toggle-btn {
+    margin-right: 15px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+
+    @include min-992px {
+      display: none;
+    }
+  }
+
+  &__filter-icon {
+    width: 28px;
+    height: 28px;
+  }
+
   &__h4 {
     display: none;
     font-size: 18px;

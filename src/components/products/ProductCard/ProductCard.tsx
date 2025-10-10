@@ -21,10 +21,11 @@ type ProductCardProps = {
 
 
 export const ProductCard = ({ product, variant = 'grid' }: ProductCardProps) => {
+  
   const { baseColor, memory, size, min_price, max_price }  = useFilterStore();
 
   const uniqueColors = getUniqueVariantColors(product);
-  const showColorButtons = uniqueColors.length > 1;
+  const showColorButtons = uniqueColors?.length > 1;
 
   // Try to find a matching variant based on selected filters
   const matchingVariant = product.variations.find(v => {

@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import type { Product } from '../../../interfaces/product.interface';
 // STORE
 import { useUIStore } from '../../../stores/useUIStore';
+import { useTransitionStore } from '../../../stores/useTransitionStore';
 // UTILS
 import { useWindowSize } from '../../../hooks/useWindowSize';
 // COMPONENTS
 import { RxCross1 } from 'react-icons/rx';
-import { RiEqualizerLine } from 'react-icons/ri';
 import { FaAngleDown } from 'react-icons/fa6';
 import { ActiveFilters } from '../../filters/ActiveFilters/ActiveFilters';
 import { CategoryFilter } from '../../filters/CategoryFilter/CategoryFilter';
@@ -32,17 +32,17 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
   const isOpen = useUIStore((state) => state.isOpen('product_filter'));
   const openUI = useUIStore((state) => state.openUI);
   const closeUI = useUIStore((state) => state.closeUI);
+  const { isTransitioning, startTransition, endTransition } = useTransitionStore();
   
   const {width} = useWindowSize();
   
   const [openFilters, setOpenFilters] = useState<Set<number>>(new Set(filters.map((_, idx) => idx))); // all open on load
-  const [transition, setTransition] = useState<boolean>(false);
 
 
   useEffect(() => {
-    setTransition(false);
+    endTransition();
     closeUI();
-  }, [width, closeUI]);
+  }, [width, closeUI, endTransition]);
 
 
   const handleOpenFilter = (index: number) => {
@@ -54,16 +54,17 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
     });
   };
 
+
   const handleToggleSidebarFilter = () => {
-    setTransition(true);
-    if (isOpen) {closeUI()}
+    startTransition();
+    if (isOpen) { closeUI() }
     else {openUI('product_filter')}
   };
 
 
   
   return (
-    <aside className={`product-filter ${isOpen ? 'product-filter--active' : ''} ${transition ? 'product-filter--transition' : ''}`}>
+    <aside className={`product-filter ${isOpen ? 'product-filter--active' : ''} ${isTransitioning ? 'product-filter--transition' : ''}`}>
       <div className='product-filter__container'>
 
         {/* CLOSE BUTTON */}
@@ -71,10 +72,6 @@ export const ProductFilterSidebar = ({ products }: ProductFilterSidebarProps) =>
           <RxCross1 className='product-filter__close-icon'/>
         </button>
 
-        {/* TOGGLE SIDEBAR BUTTON */}
-        <button className='product-filter__filter-btn' onClick={()=> handleToggleSidebarFilter()}>
-          <RiEqualizerLine className='product-filter__filter-icon' />
-        </button>
 
         {/* FILTERS LIST */}
         <ul className='product-filter__ul'>

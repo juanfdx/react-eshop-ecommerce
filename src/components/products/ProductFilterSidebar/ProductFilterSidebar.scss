@@ -6,7 +6,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  // height: 100vh;
+  height: 100vh;
+  margin-right: 30px;
+  overflow-y: scroll;
   background-color: var(--color-secondary);
   transform: translateX(-100%);
   z-index: 10;
@@ -27,6 +29,7 @@
   }
 
   &--active {
+    transition: all .4s ease;
     transform: translateX(0);
   }
 
@@ -36,7 +39,7 @@
     padding: 60px 30px 30px 30px;
 
     @include min-992px {
-      padding: 0px 30px 0px 0px;
+      padding: 0px 20px 0px 0px;
       margin-top: 12.4px;
     }
   }
@@ -71,37 +74,6 @@
     transition: all .3s ease;
   }
 
-  /* ----- toggle sidebar button ----- */
-  &__filter-btn {
-    position: absolute;
-    top: 260px;
-    right: -40px;
-    width: 40px;
-    height: 40px;
-    border: 1px solid lightgray;
-    border-left: none;
-    background-color: var(--color-secondary);
-    cursor: pointer;
-
-    @include flex(row, nowrap, center, center);
-
-    @include min-480px {
-      top: 312px;
-    }
-
-    @include min-768px {
-      top: 336px;
-    }
-
-    @include min-992px {
-      display: none;
-    }
-  }
-
-  &__filter-icon {
-    width: 28px;
-    height: 28px;
-  }
 
   /* ----- toggle filter button ----- */
   &__h4 {
