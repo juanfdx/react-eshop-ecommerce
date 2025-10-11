@@ -1,7 +1,7 @@
 import './PaginationSelect.scss';
 import { useLocation, useNavigate } from 'react-router';
 // COMPONENTS
-import { FaAngleDown } from 'react-icons/fa6';
+import { CustomSelect } from '../CustomSelect/CustomSelect';
 
 type PaginationSelectProps = {
   currentPage: number;
@@ -67,26 +67,12 @@ export const PaginationSelect = ({ currentPage, numOfPages, limit, total, small,
 
 
         {/* PAGE BUTTONS */}
-        <div className='pagination-select__select-container'>
-          <select 
-            id="pagination-select"
-            style={small ? smallButton : undefined}
-            className='pagination-select__select'
-            name="pagination-select" 
-            value={currentPage}
-            onChange={(e)=> handlePageChange(Number(e.target.value))}
-          >
-            {pageNumbers?.map(pageNumber => (
-
-              <option key={pageNumber} value={pageNumber} >{pageNumber}</option>
-
-            ))}
-
-          </select>
-
-          <FaAngleDown className='pagination-select__arrow-down' />
-
-        </div>
+        <CustomSelect
+          options={pageNumbers}
+          value={currentPage}
+          onChange={handlePageChange}
+          small={small}
+        />
 
 
         {/* NEXT BUTTON */}

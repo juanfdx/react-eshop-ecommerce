@@ -3,7 +3,7 @@
 
 .product-container {
   width: 100%;
-  overflow: clip;
+  overflow-x: clip;
 
   @include min-992px {
     width: 75%;

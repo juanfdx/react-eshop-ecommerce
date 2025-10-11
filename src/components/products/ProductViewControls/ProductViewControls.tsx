@@ -11,7 +11,7 @@ import { updateFilterQueryParam } from '../../../utils/urlUtils';
 // COMPONENTS
 import { RiEqualizerLine } from 'react-icons/ri';
 import { TfiLayoutGrid2, TfiLayoutListThumb } from 'react-icons/tfi';
-import { FormUISelect } from '../../form/FormUISelect/FormUISelect';
+import { CustomSortSelect } from '../../shared/CustomSortSelect/CustomSortSelect';
 // DATA
 import { sortOptions } from '../../../data/data-selectors';
 import { useTransitionStore } from '../../../stores/useTransitionStore';
@@ -32,7 +32,6 @@ export const ProductViewControls = ({ products, filteredProducts }: ProductViewC
   const { layout, setLayout, sort, setSort } = useFilterStore();
   const [searchParams, setSearchParams] = useSearchParams(); 
 
-  
   // Sync sort from URL to store
   useEffect(() => {
     const urlSort = searchParams.get('sort') as SortType | null;
@@ -48,10 +47,10 @@ export const ProductViewControls = ({ products, filteredProducts }: ProductViewC
     }
   }, [searchParams, setSort]);
   
-  
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSort(event.target.value as SortType);
-    updateFilterQueryParam('sort', event.target.value, searchParams, setSearchParams);
+
+  const handleSortChange = (selectedValue: string) => {
+    setSort(selectedValue as SortType);
+    updateFilterQueryParam('sort', selectedValue, searchParams, setSearchParams);
   };
 
   const handleToggleSidebarFilter = () => {
@@ -82,12 +81,11 @@ export const ProductViewControls = ({ products, filteredProducts }: ProductViewC
         {/* sort control */}
         <div className='sort-controls__select-container'>
           <span className='sort-controls__label'>Sort by</span>
-          <FormUISelect 
-            id={'sort'} 
-            name={'sort'} 
-            value={sort} 
-            onChange={handleSortChange} 
+          <CustomSortSelect
             options={sortOptions}
+            value={sort}
+            placeholder='Sort by'
+            onChange={handleSortChange}
           />
         </div>
       </div>

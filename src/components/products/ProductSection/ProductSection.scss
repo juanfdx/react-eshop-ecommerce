@@ -20,7 +20,7 @@
     margin: 0px auto;
     padding: 0 25px;
 
-    @include flex(row, nowrap, center, flex-start);
+    @include flex(row, nowrap, flex-end, flex-start);
 
     @include min-768px {
       padding: 0 40px;
