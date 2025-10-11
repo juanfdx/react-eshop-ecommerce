@@ -32,6 +32,13 @@ export const CustomSortSelect= ({options, value = null, placeholder = 'Select an
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // The dropdown closes immediately on any screen resize
+  useEffect(() => {
+    const handleResize = () => setIsOpen(false);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
 
   const handleSelect = (option: SortOption) => {
     onChange?.(option.value);
