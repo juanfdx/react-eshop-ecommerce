@@ -44,11 +44,11 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
     if (width === undefined) return;
   
     const size =
-      width < 480 ? 2 :
-      width < 576 ? 3 :
-      width < 768 ? 4 :
-      width < 992 ? 5 :
-      6;
+      width < 480 ? 1 :
+      width < 576 ? 2 :
+      width < 768 ? 3 :
+      width < 992 ? 4 :
+      5;
   
     setImgToShow(size);
   }, [width]);
@@ -131,6 +131,8 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
                         src={product?.variations[0]?.images[0]?.url} 
                         alt={product?.variations[0]?.name} 
                       />
+                  
+                      <div className='related__overlay'></div>
                     </div>
                   </Link>
 
