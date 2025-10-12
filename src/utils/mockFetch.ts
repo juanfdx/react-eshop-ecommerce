@@ -2,6 +2,7 @@ import axios from 'axios';
 import AxiosMockAdapter from 'axios-mock-adapter';
 // DATA
 import { products } from '../data/data-products';
+import { categories } from '../data/data-categories';
 
 
 const mock = new AxiosMockAdapter(axios, { delayResponse: 300 }); // 300ms delay
@@ -159,6 +160,15 @@ mock.onGet(/\/api\/products\/[\w-]+$/).reply(config => {
 
   return [200, { product }];
 });
+
+
+/*==================================================
+  GET ALL CATEGORIES 
+===================================================*/
+mock.onGet('/api/categories').reply(() => {
+  return [200, { categories }];
+});
+
 
 
 

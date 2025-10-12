@@ -15,6 +15,7 @@ import { InitialLoader } from '../components/loaders/InitialLoader/InitialLoader
 import { ErrorElement } from '../components/shared/ErrorElement/ErrorElement';
 
 // LOADERS
+import { homeLoader } from '../loaders/homeLoader';
 import { productsLoader } from '../loaders/productsLoader';
 import { productLoader } from '../loaders/productLoader';
 
@@ -30,7 +31,8 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
+        loader: homeLoader
       },
       {
         path: 'products',

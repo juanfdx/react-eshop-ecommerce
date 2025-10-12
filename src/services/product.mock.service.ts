@@ -20,7 +20,7 @@ export const getAllProducts = () => {
 };
 
 /*==================================================
-  GET ALL PRODUCTS 
+  GET ALL FILTERED PRODUCTS 
 ===================================================*/
 export const getFilteredProducts = (params?: ProductQueryParams) => {
   return axios.get('/api/products', {
@@ -35,3 +35,9 @@ export const getProductBySlug = (slug: string) => {
   return axios.get(`/api/products/${slug}`);;
 }
   
+/*==================================================
+  GET CATEGORIES 
+===================================================*/
+export const getCategories = () => {
+  return axios.get('/api/categories');
+};

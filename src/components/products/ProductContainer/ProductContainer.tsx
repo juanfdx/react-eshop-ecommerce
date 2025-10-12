@@ -1,9 +1,10 @@
 import './ProductContainer.scss';
-import { useNavigation } from 'react-router';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
 // INTERFACES
 import type { Product } from '../../../interfaces/product.interface';
+// HOOKS
+import { useLoadingStates } from '../../../hooks/useLoadingStates';
 // COMPONENTS
 import { ProductViewControls } from '../ProductViewControls/ProductViewControls';
 import { ProductsGrid } from '../ProductsGrid/ProductsGrid';
@@ -25,8 +26,7 @@ type ProductContainerProps = {
 
 export const ProductContainer = ({ products, filteredProducts }: ProductContainerProps) => {
   
-  const navigation = useNavigation();
-  const isNavigating = navigation.state === "loading";
+  const { isDataRefetch } = useLoadingStates();
 
   const layout = useFilterStore((state) => state.layout)
   const { products: paginatedProducts, total, currentPage, numOfPages, limit } = filteredProducts;
@@ -44,9 +44,9 @@ export const ProductContainer = ({ products, filteredProducts }: ProductContaine
               No products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid products={paginatedProducts} isLoading={isNavigating} />
+          <ProductsGrid products={paginatedProducts} isLoading={isDataRefetch} />
         ) : (
-          <ProductList products={paginatedProducts} isLoading={isNavigating} />
+          <ProductList products={paginatedProducts} isLoading={isDataRefetch} />
         )}
       </>
       

@@ -1,17 +1,21 @@
 import './FeaturedProducts.scss';
 import { useMemo } from 'react';
+// INTERFACES
+import type { Product } from '../../../interfaces/product.interface';
 // UTILS
 import { getFeaturedProducts } from '../../../utils/productUtils';
 // COMPONENTS
 import { Title } from '../../shared/Title/Title';
 import { ProductsGrid } from '../ProductsGrid/ProductsGrid';
-// DATA
-import { products } from '../../../data/data-products';
+
+type FeaturedProductsProps = {
+  products: Product[]
+};
 
 
-export const FeaturedProducts = () => {
+export const FeaturedProducts = ({ products}: FeaturedProductsProps) => {
 
-  const featuredProducts = useMemo(() => getFeaturedProducts(products), []);
+  const featuredProducts = useMemo(() => getFeaturedProducts(products), [ products ]);
   
   
   return (

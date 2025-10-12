@@ -1,18 +1,21 @@
 import './CategorySlider.scss';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router';
+// INTERFACES
+import type { Category } from '../../../data/data-categories';
 // HOOKS
 import { useWindowSize } from '../../../hooks/useWindowSize';
 // COMPONENTS
 import { Title } from '../../shared/Title/Title';
 import { Icon } from '../../shared/Icon/Icon';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
-// DATA
-import { categories } from '../../../data/data-categories';
+
+type CategorySliderProps = {
+  categories: Category[]
+}
 
 
-
-export const CategorySlider = () => {
+export const CategorySlider = ({ categories }: CategorySliderProps) => {
 
   const [index, setIndex] = useState<number>(1);
   const [imgToShow, setImgToShow] = useState<number>(4);
@@ -127,6 +130,7 @@ export const CategorySlider = () => {
               onMouseLeave={handleMouseLeave}
             >
               {categoriesArray.map(cat =>
+              // SKELETON HERE
                 <li 
                   style={{
                     width : `${cardWidth}%`,  
