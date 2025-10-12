@@ -1,4 +1,5 @@
 import './ProductContainer.scss';
+import { useNavigation } from 'react-router';
 // STORE
 import { useFilterStore } from '../../../stores/useFilterStore';
 // INTERFACES
@@ -24,6 +25,9 @@ type ProductContainerProps = {
 
 export const ProductContainer = ({ products, filteredProducts }: ProductContainerProps) => {
   
+  const navigation = useNavigation();
+  const isNavigating = navigation.state === "loading";
+
   const layout = useFilterStore((state) => state.layout)
   const { products: paginatedProducts, total, currentPage, numOfPages, limit } = filteredProducts;
 
@@ -40,9 +44,9 @@ export const ProductContainer = ({ products, filteredProducts }: ProductContaine
               No products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid products={paginatedProducts} />
+          <ProductsGrid products={paginatedProducts} isLoading={isNavigating} />
         ) : (
-          <ProductList products={paginatedProducts} />
+          <ProductList products={paginatedProducts} isLoading={isNavigating} />
         )}
       </>
       

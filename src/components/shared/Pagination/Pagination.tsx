@@ -1,5 +1,8 @@
 import './Pagination.scss';
-import { useLocation, useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router';
+// STORE
+import { useFilterStore } from '../../../stores/useFilterStore';
 
 type PaginationProps = {
   currentPage: number;
@@ -13,27 +16,36 @@ type PaginationProps = {
 
 export const Pagination = ({ currentPage, numOfPages, limit, total, small, marginTop }: PaginationProps) => {
 
-  const { search, pathname } = useLocation();
-  const navigate = useNavigate();
-  const searchParams = new URLSearchParams(search);
+  const { setPage } = useFilterStore();
+  const [searchParams, setSearchParams] = useSearchParams(); 
 
+  // useEffect here
+  useEffect(() => {
+    const urlPage = searchParams.get('page');
+    
+    if (!urlPage)  setPage(1); 
+    else setPage(Number(urlPage));
+    
+  }, [searchParams, setPage]);
+  
+  
   // Skip rendering if there's only one page of results
   if (total <= limit) return null;
-
+  
   const smallButton = {
     minWidth : '42px',
     height : '42px',
   }
-
  
   //page numbers array
   const pageNumbers = Array.from({ length: numOfPages }, (_, index) => index + 1);
 
 
   const handlePageChange = (page: number) => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
     searchParams.set('page', String(page));
-    navigate(`${pathname}?${searchParams.toString()}`, { replace: true });
+    setSearchParams(searchParams);
+    setPage(page);
   }
   
 
