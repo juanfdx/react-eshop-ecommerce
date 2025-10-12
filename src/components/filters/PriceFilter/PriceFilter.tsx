@@ -27,7 +27,7 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
   // Common breakpoints in cents
   const priceSteps = getPriceSteps(maxPrice);
 
-    // Sync state with URL on load or when URL changes
+  // Sync store state with URL params
   useEffect(() => {
     const urlMin = searchParams.get('min_price');
     const urlMax = searchParams.get('max_price');
@@ -64,17 +64,11 @@ export const PriceFilter = ({ products,openIndexes, index }: PriceFilterProps) =
   const updateQuery = (min: number | null, max: number | null) => {
     const newParams = new URLSearchParams(searchParams.toString());
 
-    if (min !== null && min !== 0) {
-      newParams.set('min_price', String(min));
-    } else {
-      newParams.delete('min_price');
-    }
+    if (min !== null && min !== 0) newParams.set('min_price', String(min));
+    else newParams.delete('min_price');
 
-    if (max !== null) {
-      newParams.set('max_price', String(max));
-    } else {
-      newParams.delete('max_price');
-    }
+    if (max !== null) newParams.set('max_price', String(max));
+    else newParams.delete('max_price');
 
     // Always reset pagination on filter changes
     newParams.delete('page');

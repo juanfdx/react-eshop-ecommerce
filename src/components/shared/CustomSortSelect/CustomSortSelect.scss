@@ -22,6 +22,7 @@
   border: 1px solid #ccc;
   background: #fff;
   cursor: pointer;
+  transition: all .2s ease;
 
   display: flex;
   justify-content: space-between;
@@ -30,6 +31,10 @@
   @media (min-width: 576px) {
     padding: 8px 12px;
   }
+}
+
+.custom-sort-select__selected:hover {
+  border-color: #888;
 }
 
 .custom-sort-select__list {

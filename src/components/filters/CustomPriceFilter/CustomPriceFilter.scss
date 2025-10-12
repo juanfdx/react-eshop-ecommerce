@@ -1,7 +1,7 @@
 @use '../../../scss/mixins.scss' as *;
 
 
-.price-filter {
+.custom-price-filter {
   overflow: clip;
   transition: max-height .3s ease;
 
@@ -9,7 +9,7 @@
   &__container {
     padding: 0px 10px 14px;
     color: var(--font-text-color);
-  
+
     @include flex(row, nowrap, space-between, center);
     gap: 20px;
   }
@@ -21,4 +21,3 @@
   }
 
 }
-
