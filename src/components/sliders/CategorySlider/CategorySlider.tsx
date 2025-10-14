@@ -9,13 +9,15 @@ import { useWindowSize } from '../../../hooks/useWindowSize';
 import { Title } from '../../shared/Title/Title';
 import { Icon } from '../../shared/Icon/Icon';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
+import { CategoryCardSkeleton } from '../../categories/CategoryCardSkeleton/CategoryCardSkeleton';
 
 type CategorySliderProps = {
-  categories: Category[]
+  categories: Category[];
+  isLoading?: boolean
 }
 
 
-export const CategorySlider = ({ categories }: CategorySliderProps) => {
+export const CategorySlider = ({ categories, isLoading }: CategorySliderProps) => {
 
   const [index, setIndex] = useState<number>(1);
   const [imgToShow, setImgToShow] = useState<number>(4);
@@ -25,10 +27,12 @@ export const CategorySlider = ({ categories }: CategorySliderProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false); //optional
   const { width } = useWindowSize();
   
-  const imgAmount = categories?.length
-  const slideMoveX = imgAmount/imgToShow
-  const slideWidth = slideMoveX * 100
-  const cardWidth = 100 / imgAmount 
+  // --- SAFE CALCULATIONS ---
+  const imgAmount = categoriesArray?.length || 0;
+  const validImgAmount = Math.max(imgAmount, imgToShow); // prevent 0-division
+  const slideMoveX = validImgAmount / imgToShow;
+  const slideWidth = slideMoveX * 100;
+  const cardWidth = 100 / validImgAmount;
 
 
   useEffect(() => {
@@ -105,13 +109,15 @@ export const CategorySlider = ({ categories }: CategorySliderProps) => {
 
   // this useEffect must be after handleNextImage function declaration
   useEffect(() => {
-    if (!isHovered) {     
+    if (!isHovered && categoriesArray?.length > 0) {     
       const timer = setInterval(handleNextImage, 6000);
       return () => {clearInterval(timer)}
     }
-  }, [isHovered, index, handleNextImage]) //optional
+  }, [isHovered, index, handleNextImage, categoriesArray?.length]) //optional
   
 
+  const showSkeletons = isLoading || !categoriesArray?.length;
+  const skeletonCount = categoriesArray?.length || 4;
 
 
   return (
@@ -129,53 +135,63 @@ export const CategorySlider = ({ categories }: CategorySliderProps) => {
               onMouseOver={handleMouseOver} 
               onMouseLeave={handleMouseLeave}
             >
-              {categoriesArray.map(cat =>
-              // SKELETON HERE
-                <li 
-                  style={{
-                    width : `${cardWidth}%`,  
-                    transform: ((imgToShow + 2) <= categories?.length ) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
-                    transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
-                  }}
-                  key={cat.id} 
-                  className='categories-slider__card'
-                >
-                  <Link to={{pathname: '/products', search: `?category=${cat.category}`}}  className='categories-slider__card-link'>
 
-                    <div className='categories-slider__img-wrapper'>
-                      <img className='categories-slider__img' src={cat.image} alt={cat.alt} />
-                    </div>
+              {showSkeletons ? (
+                Array.from({ length: skeletonCount }).map((_, i) => (
+                  <CategoryCardSkeleton key={`skeleton-${i}`} />
+                ))
+              ) : (            
+                categoriesArray?.map(cat =>
+                  <li 
+                    style={{
+                      width : `${cardWidth}%`,  
+                      transform: ((imgToShow + 2) <= categories?.length ) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
+                      transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
+                    }}
+                    key={cat.id} 
+                    className='categories-slider__card'
+                  >
+                    <Link to={{pathname: '/products', search: `?category=${cat.category}`}}  className='categories-slider__card-link'>
 
-                    <div className='categories-slider__text-wrapper'>
-                      <h3 className='categories-slider__card-h3'>{cat.category}</h3>
-                    </div>
+                      <div className='categories-slider__img-wrapper'>
+                        <img className='categories-slider__img' src={cat.image} alt={cat.alt} />
+                      </div>
 
-                    <div className='categories-slider__btn-wrapper'>
-                      <button className='categories-slider__btn-link'>
-                        <Icon type={'link'} className='categories-slider__btn-icon' />
-                      </button>
-                    </div>
+                      <div className='categories-slider__text-wrapper'>
+                        <h3 className='categories-slider__card-h3'>{cat.category}</h3>
+                      </div>
 
-                  </Link>
-                </li>
+                      <div className='categories-slider__btn-wrapper'>
+                        <button className='categories-slider__btn-link'>
+                          <Icon type={'link'} className='categories-slider__btn-icon' />
+                        </button>
+                      </div>
+
+                    </Link>
+                  </li>
+                )
               )}
             </ul>
           </div>
 
           {/* PREVIOUS AND NEXT BUTTONS */}
-          <button 
-            className='categories-slider__btn-action categories-slider__btn-action--prev' 
-            onClick={handlePrevImage}
-          >
-            <HiChevronLeft className='categories-slider__icon' />
-          </button>
+          {!showSkeletons && (
+            <>
+              <button 
+                className='categories-slider__btn-action categories-slider__btn-action--prev' 
+                onClick={handlePrevImage}
+              >
+                <HiChevronLeft className='categories-slider__icon' />
+              </button>
 
-          <button 
-            className='categories-slider__btn-action categories-slider__btn-action--next' 
-            onClick={handleNextImage}
-          >
-            <HiChevronRight className='categories-slider__icon' />
-          </button>
+              <button 
+                className='categories-slider__btn-action categories-slider__btn-action--next' 
+                onClick={handleNextImage}
+              >
+                <HiChevronRight className='categories-slider__icon' />
+              </button>
+            </>
+          )}
         </div>
 
       </div>

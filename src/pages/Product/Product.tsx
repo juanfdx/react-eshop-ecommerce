@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate, useParams } from 'react-router';
 // INTERFACES
 import type { Product as ProductType, ProductVariation} from '../../interfaces/product.interface';
+// HOOKS
+import { usePageLoading } from '../../hooks/usePageLoading';
 // UTILS
 import { getUniqueColorOptions, getUniqueMemoryOptions, getUniqueSizeOptions } from '../../utils/colorUtils';
 import { getSafeVariantFromParams } from '../../utils/productUtils';
@@ -19,6 +21,8 @@ export const Product = () => {
   const navigate = useNavigate();
 
   const { product, allProducts }: { product: ProductType, allProducts: ProductType[] } = useLoaderData() || {};
+
+  const isLoading = usePageLoading();
 
   // Try to match variant eagerly || use product?.variations[0]
   const safeVariant = getSafeVariantFromParams(product, memory, size, color);
@@ -82,6 +86,7 @@ export const Product = () => {
       <RelatedProducts 
         product={product} 
         products={allProducts}
+        isLoading={isLoading}
       />
     </>
   )

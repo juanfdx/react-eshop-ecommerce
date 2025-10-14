@@ -21,8 +21,8 @@ export const productsLoader = async ({ request }: LoaderFunctionArgs) => {
     ]);
 
     return {
-      allProducts: allRes.data.products,
-      filteredProducts: filteredRes.data,
+      allProducts: allRes?.data?.products ?? [],
+      filteredRes: filteredRes?.data ,
     };
     
 

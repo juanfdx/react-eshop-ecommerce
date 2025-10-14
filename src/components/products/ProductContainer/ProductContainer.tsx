@@ -14,7 +14,7 @@ import { PaginationSelect } from '../../shared/PaginationSelect/PaginationSelect
 
 type ProductContainerProps = {
   products: Product[];
-    filteredProducts: {
+    filteredRes: {
     products: Product[]
     total: number
     currentPage: number
@@ -24,12 +24,12 @@ type ProductContainerProps = {
 }
 
 
-export const ProductContainer = ({ products, filteredProducts }: ProductContainerProps) => {
+export const ProductContainer = ({ products, filteredRes }: ProductContainerProps) => {
   
   const { isDataRefetch } = useLoadingStates();
 
   const layout = useFilterStore((state) => state.layout)
-  const { products: paginatedProducts, total, currentPage, numOfPages, limit } = filteredProducts;
+  const { products: paginatedProducts, total, currentPage, numOfPages, limit } = filteredRes;
 
   
   

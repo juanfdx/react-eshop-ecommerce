@@ -2,6 +2,8 @@ import { useLoaderData } from 'react-router'
 // INTERFACES
 import type { Product } from '../../interfaces/product.interface'
 import type { Category } from '../../data/data-categories'
+// HOOKS
+import { usePageLoading } from '../../hooks/usePageLoading'
 // COMPONENTS
 import { HeroSlider } from '../../components/sliders/HeroSlider/HeroSlider'
 import { CategorySlider } from '../../components/sliders/CategorySlider/CategorySlider'
@@ -17,12 +19,14 @@ export const Home = () => {
 
   const { products, categories } = useLoaderData() as LoaderData;
 
-  
+  const isLoading = usePageLoading();
+
+
   return (
     <>
       <HeroSlider />
-      <CategorySlider categories={categories} />
-      <FeaturedProducts products={products} />
+      {categories?.length > 0 && <CategorySlider categories={categories} isLoading={isLoading} />}
+      {products?.length > 0 && <FeaturedProducts products={products} isLoading={isLoading} />}
       <StoreServices />
     </>
   )

@@ -8,7 +8,7 @@ import { ProductContainer } from '../ProductContainer/ProductContainer';
 
 type LoaderData = {
   allProducts: Product[];
-  filteredProducts: {
+  filteredRes: {
     products: Product[]
     total: number
     currentPage: number
@@ -20,7 +20,7 @@ type LoaderData = {
 
 export const ProductSection = () => {
 
-  const { allProducts, filteredProducts } = useLoaderData() as LoaderData;
+  const { allProducts, filteredRes } = useLoaderData() as LoaderData;
   
 
   return (
@@ -29,7 +29,7 @@ export const ProductSection = () => {
         
         <ProductFilterSidebar products={allProducts}  />
        
-        <ProductContainer products={allProducts} filteredProducts={filteredProducts} />
+        <ProductContainer products={allProducts} filteredRes={filteredRes} />
         
       </div>
     </section>

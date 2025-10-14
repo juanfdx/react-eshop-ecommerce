@@ -9,7 +9,8 @@ export const useLoadingStates =() => {
 
   const [isPageTransition, setIsPageTransition] = useState(false);
   const [isDataRefetch, setIsDataRefetch] = useState(false);
-
+  
+  
   useEffect(() => {
     if (navigation.state === 'loading') {
       const nextPath = navigation.location?.pathname;

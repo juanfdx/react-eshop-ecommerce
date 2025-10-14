@@ -12,15 +12,17 @@ import { formatPrice } from '../../../utils/currencyUtils';
 import { Title } from '../../shared/Title/Title';
 import { RatingBadge } from '../../shared/RatingBadge/RatingBadge';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
+import { FeaturedCardSkeleton } from '../FeaturedCardSkeleton/FeaturedCardSkeleton';
 
 type RelatedProductsProps = {
   product: Product;
   products: Product[];
+  isLoading?: boolean
 };
 
 
 
-export const RelatedProducts = ({ product, products }: RelatedProductsProps) => {
+export const RelatedProducts = ({ product, products, isLoading }: RelatedProductsProps) => {
 
   const { relatedProducts, isRelated } = getRelatedProducts(product, products);
 
@@ -99,6 +101,10 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
   };
 
 
+  const showSkeletons = isLoading || !productsArray?.length;
+  const skeletonCount = productsArray?.length || 4;
+
+
 
   return (
     <section className='related'>
@@ -113,46 +119,52 @@ export const RelatedProducts = ({ product, products }: RelatedProductsProps) => 
               className='related__slide'
               style={{width: `${slideWidth}%`}}
             >
-              {productsArray?.map(product => (
-                <li
-                  key={product._id} 
-                  className='related__card'
-                  style={{
-                    width : `${cardWidth}%`,  
-                    transform: ((imgToShow + 2) <= relatedProducts?.length ) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
-                    transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
-                  }}
-                >
-                  {/* IMAGE */}
-                  <Link className='related__link' to={getFirstVariantUrl(product)}>
-                    <div className='related__img-wrapper'>
-                      <img 
-                        className='related__img' 
-                        src={product?.variations[0]?.images[0]?.url} 
-                        alt={product?.variations[0]?.name} 
-                      />
-                  
-                      <div className='related__overlay'></div>
-                    </div>
-                  </Link>
+              {showSkeletons ? (
+                Array.from({ length: skeletonCount }).map((_, i) => (
+                  <FeaturedCardSkeleton key={`skeleton-${i}`} />
+                ))
+              ) : (                 
+                productsArray?.map(product => (
+                  <li
+                    key={product._id} 
+                    className='related__card'
+                    style={{
+                      width : `${cardWidth}%`,  
+                      transform: ((imgToShow + 2) <= relatedProducts?.length ) ? `translateX(${-100 * index}%)` : 'translateX(0%)',
+                      transition: transition ? 'transform 0.5s ease-in-out' : 'none',  
+                    }}
+                  >
+                    {/* IMAGE */}
+                    <Link className='related__link' to={getFirstVariantUrl(product)}>
+                      <div className='related__img-wrapper'>
+                        <img 
+                          className='related__img' 
+                          src={product?.variations[0]?.images[0]?.url} 
+                          alt={product?.variations[0]?.name} 
+                        />
+                    
+                        <div className='related__overlay'></div>
+                      </div>
+                    </Link>
 
-                  {/* TEXT */}
-                  <div className='related__text-wrapper'>   
-                    <Link className='related__title' to={getFirstVariantUrl(product)}>
-                    {product?.variations[0]?.name}
-                    </Link>     
-                    {product?.reviews?.length > 0 &&
-                      <RatingBadge rating={product?.averageRating} reviews={product?.reviews?.length} small={true} />
-                    }              
-                    <p className='related__price'>{formatPrice(product?.variations[0]?.price)}</p>        
-                  </div>
-                </li>
+                    {/* TEXT */}
+                    <div className='related__text-wrapper'>   
+                      <Link className='related__title' to={getFirstVariantUrl(product)}>
+                      {product?.variations[0]?.name}
+                      </Link>     
+                      {product?.reviews?.length > 0 &&
+                        <RatingBadge rating={product?.averageRating} reviews={product?.reviews?.length} small={true} />
+                      }              
+                      <p className='related__price'>{formatPrice(product?.variations[0]?.price)}</p>        
+                    </div>
+                  </li>
+                )
               ))}
             </ul>
           </div>
 
           {/* BUTTONS */}
-          {(imgToShow + 2) <= relatedProducts?.length && (
+          {(imgToShow + 2 <= relatedProducts?.length) && !showSkeletons && (
             <div className='related__btns'>
               <button className='related__btn related__btn--prev' onClick={handlePrevImage}>
                 <HiChevronLeft className='related__btn-chevron' />

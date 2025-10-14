@@ -1,10 +1,17 @@
 // INTERFACES
 import type { AxiosError } from 'axios';
+import type { Product } from '../interfaces/product.interface';
+import type { Category } from '../data/data-categories';
 // SERVICES
 import { getAllProducts, getCategories } from '../services/product.mock.service';
 
+type HomeLoaderData = {
+  products: Product[];
+  categories: Category[];
+};
 
-export const homeLoader = async () => {
+
+export const homeLoader = async (): Promise<HomeLoaderData> => {
 
   try {
 
@@ -14,9 +21,10 @@ export const homeLoader = async () => {
     ]);
 
     return {
-      products: allRes.data.products,
-      categories: catRes.data.categories
+      products: allRes?.data?.products ?? [], // avoid returning undefined
+      categories: catRes?.data?.categories ?? []
     };
+    
     
   } catch (err) {
     const axiosErr = err as AxiosError<{ message?: string }>; // type it explicitly, TypeScript doesn’t know that data contains a message.

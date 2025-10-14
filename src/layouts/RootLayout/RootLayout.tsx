@@ -15,6 +15,7 @@ export const RootLayout = () => {
 
   const { isPageTransition } = useLoadingStates();
 
+  
   return (
     <div className='root-layout'>
       

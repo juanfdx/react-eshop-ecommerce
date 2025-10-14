@@ -4,7 +4,8 @@
 .pagination {
   /* - only appears in bigger screens - */
   display: none;
-
+  margin-bottom: 100px;
+  
   @include min-576px {
     display: block;
   }

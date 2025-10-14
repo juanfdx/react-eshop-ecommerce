@@ -10,10 +10,11 @@ import { ProductsGrid } from '../ProductsGrid/ProductsGrid';
 
 type FeaturedProductsProps = {
   products: Product[]
+  isLoading?: boolean
 };
 
 
-export const FeaturedProducts = ({ products}: FeaturedProductsProps) => {
+export const FeaturedProducts = ({ products, isLoading }: FeaturedProductsProps) => {
 
   const featuredProducts = useMemo(() => getFeaturedProducts(products), [ products ]);
   
@@ -24,7 +25,7 @@ export const FeaturedProducts = ({ products}: FeaturedProductsProps) => {
 
         <Title title={'Featured Products'} />
 
-        <ProductsGrid products={featuredProducts} variant={'featured'} />
+        <ProductsGrid products={featuredProducts} variant={'featured'} isLoading={isLoading} />
 
       </div>
     </section>
