@@ -4,15 +4,24 @@
 .product-image-skeleton {
   position: relative;
   background-color: var(--color-secondary);
+  overflow: clip;
   
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex(row, nowrap, center, center);
 
   // if your product images are square, use aspect-ratio
   aspect-ratio: 1 / 1;
   // OR use a fixed height (e.g. height: 400px;)
   // height: 400px;
+
+  &--thumbnail {
+    margin: 0 5px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    @include min-380px {
+      border-radius: 10px;
+    }
+  }
 
   &__layer-canvas {
     position: absolute;

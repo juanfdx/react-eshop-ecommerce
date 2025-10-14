@@ -72,6 +72,7 @@ export const ProductImageSlider = ({ images, isLoading }: ProductSliderProps) =>
       <ProductThumbnailSlider 
         images={images} 
         handlePosition={handlePosition} 
+        isLoading={isLoading}
       />
     </div>
   )

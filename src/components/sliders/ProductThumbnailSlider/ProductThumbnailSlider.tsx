@@ -7,14 +7,16 @@ import type { ProductImage } from '../../../interfaces/product.interface';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 // COMPONENTS
 import { Icon } from '../../shared/Icon/Icon';
+import { ProductImageSkeleton } from '../ProductImageSkeleton/ProductImageSkeleton';
 
 type ProductThumbnailSliderProps = {
   images: ProductImage[];
   handlePosition: (index: number) => void;
+  isLoading?: boolean
 };
 
 
-export const ProductThumbnailSlider = ({ images, handlePosition }: ProductThumbnailSliderProps) => {
+export const ProductThumbnailSlider = ({ images, handlePosition, isLoading }: ProductThumbnailSliderProps) => {
 
   const location = useLocation();
   const [imgSelected, setImgSelected]     = useState<number>(0);
@@ -68,13 +70,14 @@ export const ProductThumbnailSlider = ({ images, handlePosition }: ProductThumbn
     if (slidePosition > slideTranslate - 100) { setSlidePosition(slidePosition - cardWidth) }   
   }
 
+  const skeletonCount = images?.length;
 
 
   return (
     <div className='product-thumbnail-slider'>
       <div className='product-thumbnail-slider__container'>
         {/* slider buttons */}
-        {images?.length > imgToShow &&
+        {(images?.length > imgToShow) && !isLoading &&
           <>
             <button 
               className='product-thumbnail-slider__btn product-thumbnail-slider__btn--left'
@@ -97,20 +100,24 @@ export const ProductThumbnailSlider = ({ images, handlePosition }: ProductThumbn
           <ul 
             className={`product-thumbnail-slider__slide ${transition ? 'product-thumbnail-slider__slide--transition' : ''}`}
             style={{width: `${slideWidth}%`, transform : `translateX(${slidePosition}%)`}}
-          >
-          
-            {images?.map((img, index) => 
-              <li
-                key={index} 
-                className={`product-thumbnail-slider__card ${(imgSelected === index) ? 'product-thumbnail-slider__card--active' : ''}`}
-                style={{width : `${cardWidth}%`}}
-                onClick={()=> { handlePosition(index); setImgSelected(index) }}
-              >
-                <img className='product-thumbnail-slider__img' src={img?.url} alt={`image ${index}`} />
-                <div className='product-thumbnail-slider__layer-canvas'></div>
-              </li>
-            )}
-          
+          >       
+            {isLoading ? (
+              Array.from({ length: skeletonCount }).map((_, i) => (
+                <ProductImageSkeleton key={i} cardWidth={cardWidth} type='thumbnail' />  
+              ))
+            ):(              
+              images?.map((img, index) => 
+                <li
+                  key={index} 
+                  className={`product-thumbnail-slider__card ${(imgSelected === index) ? 'product-thumbnail-slider__card--active' : ''}`}
+                  style={{width : `${cardWidth}%`}}
+                  onClick={()=> { handlePosition(index); setImgSelected(index) }}
+                >
+                  <img className='product-thumbnail-slider__img' src={img?.url} alt={`image ${index}`} />
+                  <div className='product-thumbnail-slider__layer-canvas'></div>
+                </li>
+              )
+            )}        
           </ul>
         </div>
 
