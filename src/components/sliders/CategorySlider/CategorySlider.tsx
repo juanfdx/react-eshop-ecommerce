@@ -135,7 +135,6 @@ export const CategorySlider = ({ categories, isLoading }: CategorySliderProps) =
               onMouseOver={handleMouseOver} 
               onMouseLeave={handleMouseLeave}
             >
-
               {showSkeletons ? (
                 Array.from({ length: skeletonCount }).map((_, i) => (
                   <CategoryCardSkeleton key={`skeleton-${i}`} />

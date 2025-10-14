@@ -1,0 +1,26 @@
+@use '../../../scss/mixins.scss' as *;
+
+
+.product-image-skeleton {
+  position: relative;
+  background-color: var(--color-secondary);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // if your product images are square, use aspect-ratio
+  aspect-ratio: 1 / 1;
+  // OR use a fixed height (e.g. height: 400px;)
+  // height: 400px;
+
+  &__layer-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.04;
+  }
+}

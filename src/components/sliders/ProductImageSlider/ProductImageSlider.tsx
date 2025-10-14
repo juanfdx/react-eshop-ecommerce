@@ -5,13 +5,15 @@ import { useLocation } from 'react-router';
 import type { ProductImage } from '../../../interfaces/product.interface';
 // COMPONENTS
 import { ProductThumbnailSlider } from '../ProductThumbnailSlider/ProductThumbnailSlider';
+import { ProductImageSkeleton } from '../ProductImageSkeleton/ProductImageSkeleton';
 
 type ProductSliderProps = {
   images: ProductImage[]
+  isLoading?: boolean
 }
 
 
-export const ProductImageSlider = ({ images }: ProductSliderProps) => {
+export const ProductImageSlider = ({ images, isLoading }: ProductSliderProps) => {
   
   const location = useLocation();
   const [position, setPosition] = useState<number>(0);
@@ -40,6 +42,7 @@ export const ProductImageSlider = ({ images }: ProductSliderProps) => {
     }
   }
 
+  const skeletonCount = images?.length;
 
 
   return (
@@ -50,14 +53,18 @@ export const ProductImageSlider = ({ images }: ProductSliderProps) => {
           className={`product-image-slider__slide ${(transition) ? 'product-image-slider__slide--transition' : ''}`}
           style={{width: `${slideWidth}%`, transform : `translateX(${position}%)`}}
         >
-
-          {images?.map((img, i) => 
-            <li key={i} className='product-image-slider__card' style={{width : `${cardWidth}%`}}>
-              <img className='product-image-slider__img' src={img.url} alt={`image ${i}`} />
-              <div className='product-image-slider__layer-canvas'></div>
-            </li>
+          {isLoading ? (
+            Array.from({ length: skeletonCount }).map((_, i) => (
+              <ProductImageSkeleton key={i} cardWidth={cardWidth} />  
+            ))
+          ):(
+            images?.map((img, i) => 
+              <li key={i} className='product-image-slider__card' style={{width : `${cardWidth}%`}}>
+                <img className='product-image-slider__img' src={img.url} alt={`image ${i}`} />
+                <div className='product-image-slider__layer-canvas'></div>
+              </li>
+            )
           )}
-
         </ul>
       </div>
 

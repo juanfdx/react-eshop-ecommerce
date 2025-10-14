@@ -82,6 +82,7 @@ export const Product = () => {
         memories={getUniqueMemoryOptions(product)} 
         sizes={getUniqueSizeOptions(product)}
         handleVariantChange={handleVariantChange}
+        isLoading={isLoading}
       />
       <RelatedProducts 
         product={product} 

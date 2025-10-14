@@ -21,10 +21,11 @@ type VariantProps = {
   colors: [string, string][];
   memories: string[];
   sizes: string[];
-  handleVariantChange: (color: string, memory: string, size: string) => void
+  handleVariantChange: (color: string, memory: string, size: string) => void;
+  isLoading?: boolean
 }
 
-export const Variant = ({ product, variant, colors, memories, sizes, handleVariantChange }: VariantProps) => {
+export const Variant = ({ product, variant, colors, memories, sizes, handleVariantChange, isLoading }: VariantProps) => {
 
   const [amount, setAmount] = useState<number>(1);
 
@@ -55,7 +56,7 @@ export const Variant = ({ product, variant, colors, memories, sizes, handleVaria
       <div className='variant__container'>
         {/* ROW 1 */}
         <div className='variant__images'>
-          <ProductImageSlider images={variant?.images} />
+          <ProductImageSlider images={variant?.images} isLoading={isLoading} />
         </div>
         
         {/* ROW 2 */}
